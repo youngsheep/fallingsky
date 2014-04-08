@@ -1,0 +1,3 @@
+[submodule "client/deps/libpomelo"]
+	path = client/deps/libpomelo
+	url = http://github.com/NetEase/libpomelo
