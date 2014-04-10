@@ -79,7 +79,7 @@ pc_request_cb resp_cb[MAX_REQUEST_COUNT] = {
 
 int hand_shake_cb(pc_client_t *client, json_t *msg)
 {
-	json_t *clientEntry = json_object_get((json_t*)client->client_protos, "test");
+	json_t *clientEntry = json_object_get((json_t*)client->client_protos, "connector.entryHandler.entry");
 	
 	return 0;
 }

@@ -31,6 +31,6 @@ Handler.prototype.entry = function(msg, session, next) {
         result:200,
         playerid:playerid
     };
-    next(null,data);
+    next(null,data,null);
     console.log(data);
 };

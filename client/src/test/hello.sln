@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hello", "hello.vcxproj", "{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpomelo", "..\..\deps\libpomelo\libpomelo.vcxproj", "{625FF492-B59F-569D-16CD-9D8893159070}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jansson", "..\..\deps\libpomelo\deps\jansson\jansson.vcxproj", "{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libuv", "..\..\deps\libpomelo\deps\uv\libuv.vcxproj", "{603C6853-166F-A229-0CE7-B001CAF96C76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Default|Win32 = Default|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Debug|Win32.Build.0 = Debug|Win32
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Default|Win32.ActiveCfg = Debug|Win32
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Default|Win32.Build.0 = Debug|Win32
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Release|Win32.ActiveCfg = Release|Win32
+		{E6A12150-BD59-4AE0-8EAC-4D12AF88B11A}.Release|Win32.Build.0 = Release|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Debug|Win32.ActiveCfg = Default|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Debug|Win32.Build.0 = Default|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Default|Win32.ActiveCfg = Default|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Default|Win32.Build.0 = Default|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Release|Win32.ActiveCfg = Default|Win32
+		{625FF492-B59F-569D-16CD-9D8893159070}.Release|Win32.Build.0 = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Debug|Win32.ActiveCfg = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Debug|Win32.Build.0 = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Default|Win32.ActiveCfg = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Default|Win32.Build.0 = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Release|Win32.ActiveCfg = Default|Win32
+		{D6F69B1D-C352-4321-DB83-D64F1E7E60C4}.Release|Win32.Build.0 = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Debug|Win32.ActiveCfg = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Debug|Win32.Build.0 = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Default|Win32.ActiveCfg = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Default|Win32.Build.0 = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Release|Win32.ActiveCfg = Default|Win32
+		{603C6853-166F-A229-0CE7-B001CAF96C76}.Release|Win32.Build.0 = Default|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

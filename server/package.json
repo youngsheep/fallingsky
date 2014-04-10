@@ -6,7 +6,8 @@
     "pomelo":"0.9.5"
     , "crc" : ">=0.0.1"
     , "pomelo-collection": ">=0.1.0"
-    , "pomelo-logger": "0.0.2" 
+    , "pomelo-logger": "0.1.2"
+    , "pomelo-sync-plugin": ">=0.0.1"
   }
 }
 

@@ -11,9 +11,13 @@ app.configure('production|development', 'connector', function(){
 	app.set('connectorConfig',
 		{
 			connector : pomelo.connectors.hybridconnector,
-			heartbeat : 3,
+			heartbeat : 30,
 			useDict : true,
-			useProtobuf : true
+			useProtobuf : true,
+                        handshake : function(msg, cb){
+                                console.log("handshake"+msg);
+				cb(null, {});
+                        }
 		});
 });
 
