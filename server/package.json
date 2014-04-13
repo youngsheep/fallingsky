@@ -8,6 +8,7 @@
     , "pomelo-collection": ">=0.1.0"
     , "pomelo-logger": "0.1.2"
     , "pomelo-sync-plugin": ">=0.0.1"
+	, "redis": "0.10.1"
   }
 }
 

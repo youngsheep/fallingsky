@@ -1,3 +1,6 @@
 [submodule "client/deps/libpomelo"]
 	path = client/deps/libpomelo
 	url = http://github.com/NetEase/libpomelo
+[submodule "client/deps/cocos2dx"]
+	path = client/deps/cocos2dx
+	url = https://github.com/cocos2d/cocos2d-x
