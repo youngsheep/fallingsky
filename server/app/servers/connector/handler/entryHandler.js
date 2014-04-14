@@ -28,7 +28,7 @@ Handler.prototype.entry = function(msg, session, next) {
     session.set('serverId', this.serverId);
 
     var data = {
-        result:200,
+        result:100,
         playerid:playerid
     };
     next(null,data,null);

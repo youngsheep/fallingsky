@@ -13,10 +13,11 @@
 #include <istream>
 #include <sstream>
 #include <cstdlib>
-
+#include <jansson.h>
 namespace json {
 	// include Jansson C library into the json namespace
-	#include <jansson.h>
+	// move to out
+	//#include <jansson.h>
 
 	class Iterator;
 	class Value;

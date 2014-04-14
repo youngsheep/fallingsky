@@ -1,12 +1,16 @@
 #include "PomeloConnection.h"
 #include "ConnectionObject.h"
+#ifdef _WIN32
+#include <winsock2.h>
+#else
+#include <unistd.h>
+#endif
+#include "pomelo.h"
 
 void on_response(pc_request_t *req, int status, json_t *resp)  {
 	PomeloConnection::getInstance().OnResponse(req->id,json::Value(resp));
 	
 	// release relative resource with pc_request_t
-	json_t *msg = req->msg;
-	json_decref(msg);
 	pc_request_destroy(req);
 }
 
@@ -77,6 +81,7 @@ int PomeloConnection::DoRequest(ConnectObject* obj,const char* route)
 	{
 		m_ReqObjMap.insert(std::pair<int,ConnectObject*>(request->id,obj));
 	}
+
 	return 0;
 }
 

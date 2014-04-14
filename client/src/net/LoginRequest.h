@@ -6,13 +6,17 @@
 class LoginRequest: public ConnectObject
 {
 public:
-	LoginRequest();
-	virtual ~LoginRequest();
+	LoginRequest():
+	  m_req(json::object())
+	{}
+	virtual ~LoginRequest()
+	{}
 
 	virtual void RequestCallback(json::Value& data);
-	virtual json_t* GetJson();
+	virtual json_t* GetJson(){return m_req.as_json();}
 	virtual void PushCallback(json::Value& data);
 
+	void DoLogin();
 protected:
 	json::Value m_req;
 };

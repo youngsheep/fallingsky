@@ -3,8 +3,10 @@
 
 #include <map>
 #include <string>
-#include "pomelo.h"
-#include "jansson.hpp"
+struct pc_client_s;
+namespace json{
+	class Value;
+};
 
 class ConnectObject;
 class PomeloConnection
@@ -21,7 +23,7 @@ public:
 	void OnEvent(const char* event,json::Value eventData);
 	void OnClose();
 protected:
-	pc_client_t *m_pClient;
+	struct pc_client_s *m_pClient;
 	
 	std::map<int,ConnectObject*> m_ReqObjMap;
 	std::map<std::string,ConnectObject*> m_EventObjMap;
