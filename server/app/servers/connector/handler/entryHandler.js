@@ -1,3 +1,6 @@
+var userDao = require('../../../dao/userDao');
+var async = require('async');
+
 module.exports = function(app) {
   return new Handler(app);
 };
@@ -24,13 +27,21 @@ Handler.prototype.entry = function(msg, session, next) {
     var self = this;
     var playerid = parseInt(this.serverId + id, 10);
     id += 1;
+    
     session.bind(playerid);
     session.set('serverId', this.serverId);
-
     var data = {
         result:100,
         playerid:playerid
     };
-    next(null,data,null);
-    console.log(data);
+                    
+    userDao.createPlayer(msg.username,msg.passwd,function(result){
+            if(result){
+                next(null,data,null);
+             }else{
+                data.result = 200;
+                next(null,data,null);
+             }
+        });
+     console.log(data);
 };
