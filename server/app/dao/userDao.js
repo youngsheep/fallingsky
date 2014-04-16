@@ -2,7 +2,7 @@ var pomelo = require('pomelo');
 
 var userDao = module.exports;
 
-userDao.createPlayer = function(username,passwd,createcb){
+userDao.createUser = function(username,passwd,createcb){
     pomelo.app.get('dbclient').execute(function(client,execb){
         client.hsetnx("users",username ,passwd,function(err,replies){
             execb();
@@ -18,4 +18,14 @@ userDao.createPlayer = function(username,passwd,createcb){
         });
     });
 
+};
+
+
+userDao.getUserByName = function(name,cb){
+    pomelo.app.get('dbclient').execute(function(client,release){
+        client.hhet("users",name ,function(err,res){
+            release();
+            cb(err,res);
+        });
+    });        
 };

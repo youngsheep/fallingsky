@@ -9,12 +9,10 @@ var Handler = function(app) {
     this.app = app;
     if(!this.app)
         logger.error(app);
-
-    this.matchService = new RandomMatchService(app);
 };
 
 Handler.prototype.match = function(msg, session, next) {
-    this.matchService.add(session.uid,function(matchid){
+    RandomMatchService.add(session.uid,function(matchid){
         if(matchid !== -1)
         {
             var data1 = {
@@ -30,7 +28,7 @@ Handler.prototype.match = function(msg, session, next) {
                 result : 0,
                 matchid: session.uid
             };
-            pomelo.app.get('channelService').pushMessageByUids('match.randomHandler.match', data2, [uid] , null);
+            pomelo.app.get('channelService').pushMessageByUids('battle.randomHandler.match', data2, [uid] , null);
         }
         else
         {

@@ -34,14 +34,29 @@ Handler.prototype.entry = function(msg, session, next) {
         result:100,
         playerid:playerid
     };
+
+    async.waterfall( [
+        function ( cb ){
+                userDao.getUserByName( msg.username, cb );
+            },
+        function (err,res,cb){
+                if(err){
+                    console.error("error response - " + err);
+                }else{
+                    if(res){
+                        console.log("get user res : "+ res);         
+                    }
+                }
                     
-    userDao.createPlayer(msg.username,msg.passwd,function(result){
-            if(result){
-                next(null,data,null);
-             }else{
-                data.result = 200;
-                next(null,data,null);
-             }
-        });
-     console.log(data);
+            },
+        function (cb) { 
+
+            }
+        ],
+        function ( err ) { 
+
+        }
+    );
+
+    console.log(data);
 };

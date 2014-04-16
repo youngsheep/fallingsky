@@ -1,9 +1,10 @@
-var RandomMatchService = function(app) {
-    this.app = app;
+var RandomMatchService = function() {
     this.first = -1;
 };
 
-module.exports = RandomMatchService;
+module.exports = function(){
+    return new RandomMatchService();
+}
 
 RandomMatchService.prototype.add = function(uid,cb){
     if(this.first !== -1)

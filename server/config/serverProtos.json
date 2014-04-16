@@ -3,7 +3,7 @@
         "required uInt32 result" : 1,
         "required uInt32 playerid" : 2
     },
-    "match.randomHandler.match" :{
+    "battle.randomHandler.match" :{
         "required uInt32 result" : 1,
         "required uInt32 matchid" : 2
     }
