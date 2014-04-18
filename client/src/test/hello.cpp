@@ -9,7 +9,20 @@ int main() {
 	PomeloConnection::getInstance().Connect(ip,port);
 
 	static LoginRequest login;
-	login.DoLogin();
+
+    char input[6];
+
+    printf("Input a line to send message to server and input `bye` to exit.\n");
+    while(1) {
+        scanf("%s", input);
+        if(!strcmp(input, "end")) {
+            break;
+        }
+        else if (!strcmp(input, "login"))
+        {
+            login.DoLogin();
+        }
+    }
 
 	return 0;
 }

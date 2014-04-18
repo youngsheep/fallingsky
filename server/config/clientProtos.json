@@ -1,6 +1,0 @@
-{
-    "connector.entryHandler.entry" : {
-        "required string username" : 1,
-        "required string passwd" : 2
-    }
-}
