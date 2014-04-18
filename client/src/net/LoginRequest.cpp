@@ -14,12 +14,15 @@ void LoginRequest::PushCallback(json::Value& data)
 void LoginRequest::DoLogin()
 {
 	m_req.clear();
+    
+    json::Value head(json::object());
 
-	json::Value name("aaa");
-	json::Value passwd("bbb");
+    head.set_key("magic",json::Value(PROTO_MAGIC));
+    head.set_key("playerid",json::Value(0));
 
-	m_req.set_key("username",name);
-	m_req.set_key("passwd",passwd);
+    m_req.set_key("head",head);
+	m_req.set_key("username",json::Value("aaa"));
+	m_req.set_key("token",json::Value("bbb"));
 
 	PomeloConnection::getInstance().DoRequest(this,"connector.entryHandler.entry");
 }

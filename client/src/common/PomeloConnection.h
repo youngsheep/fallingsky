@@ -3,6 +3,9 @@
 
 #include <map>
 #include <string>
+
+#define PROTO_MAGIC 1101
+
 struct pc_client_s;
 namespace json{
 	class Value;
