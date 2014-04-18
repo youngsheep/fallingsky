@@ -4,3 +4,6 @@
 [submodule "client/deps/cocos2dx"]
 	path = client/deps/cocos2dx
 	url = https://github.com/cocos2d/cocos2d-x
+[submodule "server"]
+	path = server
+	url = https://github.com/youngsheep/fallingsky-server
