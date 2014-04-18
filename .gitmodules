@@ -7,3 +7,6 @@
 [submodule "server"]
 	path = server
 	url = https://github.com/youngsheep/fallingsky-server
+[submodule "client/deps/share"]
+	path = client/deps/share
+	url = https://github.com/youngsheep/fallingsky-share
