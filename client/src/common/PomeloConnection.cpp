@@ -14,7 +14,7 @@ void on_response(pc_request_t *req, int status, json_t *resp)  {
 	pc_request_destroy(req);
 }
 
-void on_notify_event(pc_client_t *client, const char *event, void *data) {
+void on_push_event(pc_client_t *client, const char *event, void *data) {
 	PomeloConnection::getInstance().OnEvent(event,json::Value((json_t*)data));
 }
 
@@ -87,7 +87,7 @@ int PomeloConnection::DoRequest(ConnectObject* obj,const char* route)
 
 int PomeloConnection::RegisterEvent(ConnectObject* obj,const char* route)
 {
-	pc_add_listener(m_pClient, route, on_notify_event);
+	pc_add_listener(m_pClient, route, on_push_event);
 	std::map<std::string,ConnectObject*>::iterator itor = m_EventObjMap.find(std::string(route));
 	if (itor != m_EventObjMap.end())
 	{
