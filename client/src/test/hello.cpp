@@ -1,10 +1,14 @@
 #include "common/PomeloConnection.h"
 #include "net/LoginRequest.h"
+#include "config/srcgen/testConfigHolder.h"
 
 const char *ip = "127.0.0.1";
 int port = 3010;
 
 int main() {
+
+    testConfigHolder testHolder;
+    testHolder.LoadConfig();
 
 	PomeloConnection::getInstance().Connect(ip,port);
 

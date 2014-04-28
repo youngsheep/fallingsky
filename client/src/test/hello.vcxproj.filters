@@ -8,6 +8,12 @@
     <ClCompile Include="..\net\LoginRequest.cpp">
       <Filter>net</Filter>
     </ClCompile>
+    <ClCompile Include="..\common\ResMgr.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\config\srcgen\testConfigHolder.cpp">
+      <Filter>config\srcgen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
@@ -15,6 +21,12 @@
     </Filter>
     <Filter Include="net">
       <UniqueIdentifier>{3ad4ea4a-680d-4fb3-9a69-8a9991c27b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{882913d4-67b1-4fed-bd97-a89929a5d001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config\srcgen">
+      <UniqueIdentifier>{2591d81e-068e-42aa-bd2b-90dcd0a325aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +44,15 @@
     </ClInclude>
     <ClInclude Include="..\net\LoginRequest.h">
       <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\ResMgr.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\config\ConfigHolder.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\config\srcgen\testConfigHolder.h">
+      <Filter>config\srcgen</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

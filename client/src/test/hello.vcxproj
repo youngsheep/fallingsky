@@ -52,14 +52,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_NONSTDC_NO_DEPRECATE;_USRDLL;JANSSON_DLL_EXPORTS;_WINDLL;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\deps\libpomelo\deps\jansson\src;$(SolutionDir)\..\..\deps\libpomelo\deps\uv\include;$(SolutionDir)\..\..\deps\libpomelo\include;$(SolutionDir)\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_CONSOLE;_CRT_NONSTDC_NO_DEPRECATE;_USRDLL;JANSSON_DLL_EXPORTS;_WINDLL;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\..\deps\cocos2dx\cocos2dx;$(SolutionDir)\..\..\deps\cocos2dx\cocos2dx\include;$(SolutionDir)\..\..\deps\cocos2dx\cocos2dx\kazmath\include;$(SolutionDir)\..\..\deps\cocos2dx\cocos2dx\platform\win32;$(SolutionDir)\..\..\deps\cocos2dx\cocos2dx\platform\third_party\win32\OGLES;$(SolutionDir)\..\..\deps\libpomelo\deps\jansson\src;$(SolutionDir)\..\..\deps\libpomelo\deps\uv\include;$(SolutionDir)\..\..\deps\libpomelo\include;$(SolutionDir)\..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>jansson.lib;libpomelo.lib;libuv.lib;ws2_32.lib;psapi.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\default\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcocos2d.lib;jansson.lib;libpomelo.lib;libuv.lib;ws2_32.lib;psapi.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\default\lib;$(SolutionDir)$(Configuration).win32\</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,6 +81,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\common\PomeloConnection.cpp" />
+    <ClCompile Include="..\common\ResMgr.cpp" />
+    <ClCompile Include="..\config\srcgen\testConfigHolder.cpp" />
     <ClCompile Include="..\net\LoginRequest.cpp" />
     <ClCompile Include="hello.cpp" />
   </ItemGroup>
@@ -89,6 +91,9 @@
     <ClInclude Include="..\common\jansson-impl.hpp" />
     <ClInclude Include="..\common\jansson.hpp" />
     <ClInclude Include="..\common\PomeloConnection.h" />
+    <ClInclude Include="..\common\ResMgr.h" />
+    <ClInclude Include="..\config\ConfigHolder.h" />
+    <ClInclude Include="..\config\srcgen\testConfigHolder.h" />
     <ClInclude Include="..\net\LoginRequest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
