@@ -23,7 +23,7 @@ FLGame::FLGame()
     _background = NULL;
     _gameBlock = NULL;
 
-    m_BlockSpeed = 8;
+    m_BlockSpeed = 1;
 }
 
 FLGame::~FLGame()
@@ -72,16 +72,14 @@ void FLGame::update(float delta)
         }
         else
         {
-            if (getGameBlock()->GetBlockY() <= 0 )
+            if (getGameBlock()->GetBlockY() < 0 )
             {
                 //gameover
                 unscheduleUpdate();
             }
-            else
-            {
-                fill_block();
-                generate_block();
-            }
+
+            fill_block();
+            generate_block();
             return;
         }
     }
@@ -111,7 +109,7 @@ void FLGame::fill_block()
             if (getGameBlock()->GetBlockStatus(i,j) != 0)
             {
                 int bgx = j + getGameBlock()->GetBlockX();
-                int bgy = i + getGameBlock()->GetBlockY();
+                int bgy = i + getGameBlock()->GetBlockY()+1;
 
                 const CCSize& LayerSize = getBackground()->getLayerSize();
                 CCAssert((bgy >= 0 && bgy < LayerSize.height) , "error");
@@ -150,12 +148,12 @@ bool FLGame::can_move_y()
                     continue;
                 }
 
-                if ((bgy >= LayerSize.height))
+                if ((bgy >= LayerSize.height - 1))
                 {
                     return false;
                 }
 
-                int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 1 - bgy));
+                int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 2 - bgy));
                 if (status > 0 && status != 4)
                 {
                     return false;
@@ -164,4 +162,33 @@ bool FLGame::can_move_y()
         }
     }
     return true;
+}
+
+void FLGame::onEnter(){
+    
+    //CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
+    CCLayer::onEnter();
+}
+
+void FLGame::onExit(){
+    
+    //CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    CCLayer::onExit();
+}
+
+bool FLGame::ccTouchBegan(CCTouch* touch, CCEvent* event)
+{
+	CCLOG("ccTouchBegan");
+    return true;
+}
+
+void FLGame::ccTouchMoved(CCTouch* touch, CCEvent* event){
+    CCLOG("ccTouchMoved");
+}
+
+void FLGame::ccTouchEnded(CCTouch* touch, CCEvent* event)
+{
+	CCLOG("ccTouchEnded");
+    //获取离开屏幕时对应的坐标
+    CCPoint point = touch->getLocation();
 }

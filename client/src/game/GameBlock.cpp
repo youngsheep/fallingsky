@@ -1,6 +1,8 @@
 #include "GameBlock.h"
 #include "sprite_nodes/CCSprite.h"
 #include "support/CCPointExtension.h"
+#include "CCDirector.h"
+#include "touch_dispatcher/CCTouchDispatcher.h"
 
 USING_NS_CC;
 
@@ -94,7 +96,8 @@ void FLGameBlock::SetBlockXY(int x, int y)
     m_blockY = y;
 
     setPosition(x*GAME_BLOCK_SIZE,y*GAME_BLOCK_SIZE);
-    CCLOG("bloc x :%f  block y :%f",getPositionX(),getPositionY());
+    //CCLOG("pos x :%.0f  pos y :%.0f",getPositionX(),getPositionY());
+    //CCLOG("block x :%d  block y :%d",m_blockX,m_blockY);
 }
 
 int FLGameBlock::GetBlockStatus(int x ,int y)
@@ -103,4 +106,53 @@ int FLGameBlock::GetBlockStatus(int x ,int y)
     CCAssert(y >= 0 && y < 4 , "y error!");
 
     return m_block[x][y];
+}
+
+void FLGameBlock::onEnter()
+{
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
+    CCSpriteBatchNode::onEnter();
+}
+
+void FLGameBlock::onExit()
+{
+    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    CCSpriteBatchNode::onExit();
+}
+
+CCRect FLGameBlock::rect()
+{
+    return CCRectMake(0, 0, 4 * GAME_BLOCK_SIZE, 4 * GAME_BLOCK_SIZE);
+}
+
+bool FLGameBlock::containsTouchLocation(CCTouch *touch)
+{
+    return rect().containsPoint(convertTouchToNodeSpaceAR(touch));
+}
+
+bool FLGameBlock::ccTouchBegan(CCTouch *touch, CCEvent *event)
+{
+    if (containsTouchLocation(touch)) {
+        return true;
+    }
+    return false;
+}
+
+void FLGameBlock::ccTouchMoved(CCTouch *touch, CCEvent *event)
+{
+    static int offset = 0;
+    CCPoint delta = touch->getDelta();
+    CCLOG("delta x : %.0f , y %.0f " , delta.x,delta.y);
+    offset = delta.x ;
+    int i = offset / GAME_BLOCK_SIZE;
+    if (i > 0) {
+        SetBlockXY(m_blockX + i, m_blockY);
+        offset %= GAME_BLOCK_SIZE;
+    }
+    setPosition(getPositionX()+offset, getPositionY());
+}
+
+void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)
+{
+    
 }

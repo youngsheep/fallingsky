@@ -17,6 +17,16 @@ public:
     virtual bool init();  
 
     virtual void update(float delta);
+    
+    //重写触屏回调函数
+    virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+    virtual void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+    virtual void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
+    
+    //重写生命周期函数
+    virtual void onEnter();
+    virtual void onExit();
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::CCScene* scene();
     
