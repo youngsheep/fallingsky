@@ -23,7 +23,7 @@ FLGame::FLGame()
     _background = NULL;
     _gameBlock = NULL;
 
-    m_BlockSpeed = 2;
+    m_BlockSpeed = 8;
 }
 
 FLGame::~FLGame()
@@ -58,25 +58,38 @@ bool FLGame::init()
 
 void FLGame::update(float delta)
 {
-    if (can_move_y(m_BlockSpeed))
+    static int offset = 0;
+
+    offset += m_BlockSpeed;
+
+    int blockoffset = offset / GAME_BLOCK_SIZE;
+
+    for (int i = 0 ; i < blockoffset ; i++)
     {
-        const CCPoint& p = getGameBlock()->getPosition();
-        getGameBlock()->setPosition(p.x,p.y + m_BlockSpeed);
-    }
-    else
-    {
-        if (getGameBlock()->GetBlockY() <= 0 )
-        {
-            //gameover
-            unscheduleUpdate();
+        if (can_move_y())
+        {      
+            getGameBlock()->SetBlockXY(getGameBlock()->GetBlockX(),getGameBlock()->GetBlockY() + 1);
         }
         else
         {
-            fill_block();
-            generate_block();
+            if (getGameBlock()->GetBlockY() <= 0 )
+            {
+                //gameover
+                unscheduleUpdate();
+            }
+            else
+            {
+                fill_block();
+                generate_block();
+            }
+            return;
         }
     }
 
+    offset = offset % GAME_BLOCK_SIZE;
+    int inc = blockoffset > 0 ? offset : m_BlockSpeed;
+    const CCPoint& p = getGameBlock()->getPosition();
+    getGameBlock()->setPosition(p.x,p.y + inc);
 }
 
 void FLGame::generate_block()
@@ -89,6 +102,8 @@ void FLGame::generate_block()
 
 void FLGame::fill_block()
 {
+    getGameBlock()->setVisible(false);
+
     for(int i = 0 ; i < 4 ; i++)
     {
         for(int j = 0 ; j < 4 ;j++)
@@ -96,20 +111,18 @@ void FLGame::fill_block()
             if (getGameBlock()->GetBlockStatus(i,j) != 0)
             {
                 int bgx = j + getGameBlock()->GetBlockX();
-                int bgy = i + getGameBlock()->GetBlockY() - 4;
+                int bgy = i + getGameBlock()->GetBlockY();
 
                 const CCSize& LayerSize = getBackground()->getLayerSize();
                 CCAssert((bgy >= 0 && bgy < LayerSize.height) , "error");
 
-                int status = getBackground()->tileGIDAt(ccp(bgx,bgy));
+                int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 1 - bgy));
                 CCAssert(status == 0 || status == 4 , "this position already have tile" );
                
-                getBackground()->setTileGID(1,ccp(bgx,LayerSize.height - bgy));
+                getBackground()->setTileGID(1,ccp(bgx,LayerSize.height - 1 - bgy));
             }
         }
     }
-
-    getGameBlock()->setVisible(false);
 }
 
 bool FLGame::can_move_x(bool left)
@@ -118,17 +131,9 @@ bool FLGame::can_move_x(bool left)
     return true;
 }
 
-bool FLGame::can_move_y(int offset)
+bool FLGame::can_move_y()
 {
     CCAssert(getGameBlock() , "move block is null");
-
-    static int y = GAME_BLOCK_SIZE;
-
-    if (y < GAME_BLOCK_SIZE)
-    {
-        y += offset;
-        return true;
-    }
 
     for(int i = 0 ; i < 4 ; i++)
     {
@@ -137,7 +142,7 @@ bool FLGame::can_move_y(int offset)
             if (getGameBlock()->GetBlockStatus(i,j) != 0)
             {
                 int bgx = j + getGameBlock()->GetBlockX();
-                int bgy = i + getGameBlock()->GetBlockY() - 3;
+                int bgy = i + getGameBlock()->GetBlockY() + 1;
 
                 const CCSize& LayerSize = getBackground()->getLayerSize();
                 if (bgy < 0)
@@ -145,23 +150,18 @@ bool FLGame::can_move_y(int offset)
                     continue;
                 }
 
-                if ((bgy >= LayerSize.height - 1))
+                if ((bgy >= LayerSize.height))
                 {
-                    y = GAME_BLOCK_SIZE;
                     return false;
                 }
 
                 int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 1 - bgy));
                 if (status > 0 && status != 4)
                 {
-                    y = GAME_BLOCK_SIZE;
                     return false;
                 }                
             }
         }
     }
-
-    getGameBlock()->SetBlockXY(getGameBlock()->GetBlockX(),getGameBlock()->GetBlockY() + y / GAME_BLOCK_SIZE);
-    y = 0;
     return true;
 }

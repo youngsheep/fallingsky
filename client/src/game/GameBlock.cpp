@@ -64,7 +64,7 @@ void FLGameBlock::InitBlock(int type)
     CCAssert(type >= 0 && type < 7 , "type error!");
     InitItem((const int*)BLOCK_TYPE_VALUE[type]);
 
-    SetBlockXY(8,0);
+    SetBlockXY(8,-4);
 
 }
 
@@ -81,6 +81,7 @@ void FLGameBlock::InitItem(const int* bItem)
                 CCRect rect = CCRectMake(1,1,GAME_BLOCK_SIZE,GAME_BLOCK_SIZE);
                 CCSprite* item = CCSprite::createWithTexture(this->getTexture(),rect);
                 item->setPosition( ccp(j*GAME_BLOCK_SIZE, i*GAME_BLOCK_SIZE) );
+                item->setAnchorPoint(ccp(0,0));
                 addChild(item);
             }
         }
@@ -92,7 +93,8 @@ void FLGameBlock::SetBlockXY(int x, int y)
     m_blockX = x;
     m_blockY = y;
 
-    setPosition(x*GAME_BLOCK_SIZE,(y-4)*GAME_BLOCK_SIZE);
+    setPosition(x*GAME_BLOCK_SIZE,y*GAME_BLOCK_SIZE);
+    CCLOG("bloc x :%f  block y :%f",getPositionX(),getPositionY());
 }
 
 int FLGameBlock::GetBlockStatus(int x ,int y)

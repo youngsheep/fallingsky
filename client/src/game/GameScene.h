@@ -31,7 +31,7 @@ protected:
     void fill_block();
 
     bool can_move_x(bool left);
-    bool can_move_y(int offset);
+    bool can_move_y();
 
 protected:
     int m_BlockSpeed;

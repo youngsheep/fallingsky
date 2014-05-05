@@ -42,6 +42,9 @@
     <ClCompile Include="..\..\src\game\GameScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\GameBlock.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -81,6 +84,9 @@
       <Filter>net</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameBlock.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
