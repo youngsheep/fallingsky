@@ -3,6 +3,7 @@
 #include "support/CCPointExtension.h"
 #include "CCDirector.h"
 #include "touch_dispatcher/CCTouchDispatcher.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -51,7 +52,8 @@ const int BLOCK_TYPE_VALUE[][4][4] = {
     }
 };
 
-FLGameBlock::FLGameBlock(void)
+FLGameBlock::FLGameBlock(FLGame& pGame)
+    : m_pGame(pGame)
 {
     initWithFile("block.png",16);
 }
@@ -66,7 +68,8 @@ void FLGameBlock::InitBlock(int type)
     CCAssert(type >= 0 && type < 7 , "type error!");
     InitItem((const int*)BLOCK_TYPE_VALUE[type]);
 
-    SetBlockXY(8,-4);
+    SetBlockXY(8,0);
+    setVisible(true);
 
 }
 
@@ -140,16 +143,11 @@ bool FLGameBlock::ccTouchBegan(CCTouch *touch, CCEvent *event)
 
 void FLGameBlock::ccTouchMoved(CCTouch *touch, CCEvent *event)
 {
-    static int offset = 0;
     CCPoint delta = touch->getDelta();
     CCLOG("delta x : %.0f , y %.0f " , delta.x,delta.y);
-    offset = delta.x ;
-    int i = offset / GAME_BLOCK_SIZE;
-    if (i > 0) {
-        SetBlockXY(m_blockX + i, m_blockY);
-        offset %= GAME_BLOCK_SIZE;
-    }
-    setPosition(getPositionX()+offset, getPositionY());
+    setPosition(getPositionX()+delta.x, getPositionY());
+    m_blockX = int (getPositionX() / GAME_BLOCK_SIZE);
+    m_pGame.CheckXMove();
 }
 
 void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)

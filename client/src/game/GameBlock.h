@@ -8,12 +8,13 @@
 
 #define GAME_BLOCK_SIZE 32
 
+class FLGame;
 class FLGameBlock :
     public cocos2d::CCSpriteBatchNode,
     public cocos2d::CCTargetedTouchDelegate
 {
 public:
-    FLGameBlock(void);
+    explicit FLGameBlock(FLGame& pGame);
     virtual ~FLGameBlock(void);
 
     void InitBlock(int type);
@@ -41,6 +42,8 @@ protected:
 
     int m_blockX;
     int m_blockY;
+
+    FLGame& m_pGame;
 };
 
 #endif

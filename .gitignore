@@ -1,0 +1,10 @@
+Debug*
+*.sdf
+*.opensdf
+bin
+obj
+*.suo
+*.user
+.settings
+assets
+Default

@@ -36,11 +36,13 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(FLGame);
 
+public:
+    bool CheckXMove();
+
 protected:
     void generate_block();
     void fill_block();
 
-    bool can_move_x(bool left);
     bool can_move_y();
 
 protected:

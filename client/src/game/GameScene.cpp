@@ -23,7 +23,7 @@ FLGame::FLGame()
     _background = NULL;
     _gameBlock = NULL;
 
-    m_BlockSpeed = 1;
+    m_BlockSpeed = 8;
 }
 
 FLGame::~FLGame()
@@ -48,6 +48,8 @@ bool FLGame::init()
         this->setBackground(_tileMap->layerNamed("back"));
         this->addChild(_tileMap, -1);
 
+        setGameBlock(new FLGameBlock(*this));
+        getTileMap()->addChild(getGameBlock());
         generate_block();
 
     } while (0);
@@ -72,7 +74,7 @@ void FLGame::update(float delta)
         }
         else
         {
-            if (getGameBlock()->GetBlockY() < 0 )
+            if (getGameBlock()->GetBlockY() < 4 )
             {
                 //gameover
                 unscheduleUpdate();
@@ -80,6 +82,7 @@ void FLGame::update(float delta)
 
             fill_block();
             generate_block();
+
             return;
         }
     }
@@ -93,9 +96,7 @@ void FLGame::update(float delta)
 void FLGame::generate_block()
 {
     int type = rand()%7;
-    setGameBlock(new FLGameBlock());
     getGameBlock()->InitBlock(type);
-    getTileMap()->addChild(getGameBlock());
 }
 
 void FLGame::fill_block()
@@ -123,9 +124,66 @@ void FLGame::fill_block()
     }
 }
 
-bool FLGame::can_move_x(bool left)
+bool FLGame::CheckXMove()
 {
-    CCAssert(getGameBlock(), "move block is null");
+    int blockX = getGameBlock()->GetBlockX();
+    const CCSize& LayerSize = getBackground()->getLayerSize();
+    if (blockX  > 0 && blockX < LayerSize.width - 4)
+    {
+        return true;
+    }
+
+    bool leftCheck = true;
+
+    if (blockX > LayerSize.width /2)
+    {
+        leftCheck = false;
+    }
+
+    int offx = leftCheck ? 3 : 0;
+    for(int i = 0 ; i < 4 ; i++)
+    {
+        for(int j = 0 ; j < 4 ;j++)
+        {
+            int y = leftCheck ? j : 3-j ;
+            if (getGameBlock()->GetBlockStatus(i,y) != 0)
+            {
+                if (leftCheck)
+                {
+                    if (offx > y)
+                    {
+                        offx = y;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (offx < y)
+                    {
+                        offx = y;
+                        break;
+                    }
+                }                             
+            }
+        }
+    }
+
+    int bx = blockX + offx;
+    if (leftCheck)
+    {
+        if (bx <= 0)
+        {
+            getGameBlock()->SetBlockXY(blockX - bx , getGameBlock()->GetBlockY());
+        }
+    }
+    else
+    {
+        if (bx >= LayerSize.width - 1)
+        {
+            getGameBlock()->SetBlockXY(blockX + LayerSize.width - 1 - bx , getGameBlock()->GetBlockY());
+        }
+    }
+
     return true;
 }
 
