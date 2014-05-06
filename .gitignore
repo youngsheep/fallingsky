@@ -8,3 +8,6 @@ obj
 .settings
 assets
 Default
+xcuserdata
+project.xcworkspace
+.DS_Store
