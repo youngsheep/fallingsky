@@ -54,7 +54,7 @@ bool FLGame::init()
 
     } while (0);
   
-    scheduleUpdate();
+    //scheduleUpdate();
     return true;
 }
 
