@@ -77,9 +77,12 @@ void FLGame::update(float delta)
             if (getGameBlock()->GetBlockY() < 4 )
             {
                 //gameover
-                unscheduleUpdate();
+                //unscheduleUpdate();
             }
 
+            unscheduleUpdate();
+            getGameBlock()->SetState(GAME_BLOCK_STATE_IDLE);
+            
             fill_block();
             generate_block();
 
@@ -128,7 +131,7 @@ bool FLGame::CheckXMove()
 {
     int blockX = getGameBlock()->GetBlockX();
     const CCSize& LayerSize = getBackground()->getLayerSize();
-    if (blockX  > 0 && blockX < LayerSize.width - 4)
+    if (blockX  >= 0 && blockX <= LayerSize.width - 4)
     {
         return true;
     }

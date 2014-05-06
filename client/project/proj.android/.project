@@ -125,5 +125,9 @@
 			<name>COCOS2DX</name>
 			<value>$%7BPARENT-2-PROJECT_LOC%7D/deps/cocos2dx</value>
 		</variable>
+		<variable>
+			<name>NDK_ROOT</name>
+			<value>file:/Developer/android-ndk-r9d</value>
+		</variable>
 	</variableList>
 </projectDescription>

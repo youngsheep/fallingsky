@@ -47,7 +47,7 @@ protected:
 
 protected:
     int m_BlockSpeed;
-
+    bool m_isBlockMove;
     
 };
 

@@ -3,7 +3,7 @@ APPNAME="HelloCpp"
 # options
 
 buildexternalsfromsource=
-
+NDK_ROOT=/Developer/android-ndk-r9d/
 
 usage(){
 cat << EOF
@@ -75,5 +75,4 @@ else
     echo "Using prebuilt externals"
     "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt"
-   
 fi

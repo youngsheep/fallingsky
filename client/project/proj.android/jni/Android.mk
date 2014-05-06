@@ -8,7 +8,7 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../../src/game/AppDelegate.cpp \
-                   ../../../src/game/HelloWorldScene.cpp
+                   ../../../src/game/GameScene.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../src/game/
 

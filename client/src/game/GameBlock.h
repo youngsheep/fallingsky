@@ -8,6 +8,13 @@
 
 #define GAME_BLOCK_SIZE 32
 
+enum{
+    GAME_BLOCK_STATE_IDLE = 0,
+    GAME_BLOCK_STATE_H_MOVING,
+    GAME_BLOCK_STATE_V_MOVING,
+    GAME_BLOCK_STATE_ROTATE,
+};
+
 class FLGame;
 class FLGameBlock :
     public cocos2d::CCSpriteBatchNode,
@@ -27,6 +34,8 @@ public:
 
     int GetBlockStatus(int x ,int y);
     
+    void SetState(int state){m_state = state;}
+    
     virtual void onEnter();
     virtual void onExit();
     
@@ -38,10 +47,15 @@ public:
     virtual void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
 
 protected:
+    void rotate();
+    
+protected:
     int m_block[4][4];
 
     int m_blockX;
     int m_blockY;
+    
+    int m_state;
 
     FLGame& m_pGame;
 };

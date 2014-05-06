@@ -54,6 +54,7 @@ const int BLOCK_TYPE_VALUE[][4][4] = {
 
 FLGameBlock::FLGameBlock(FLGame& pGame)
     : m_pGame(pGame)
+    , m_state(GAME_BLOCK_STATE_IDLE)
 {
     initWithFile("block.png",16);
 }
@@ -66,10 +67,13 @@ FLGameBlock::~FLGameBlock(void)
 void FLGameBlock::InitBlock(int type)
 {
     CCAssert(type >= 0 && type < 7 , "type error!");
+    
+    removeAllChildren();
     InitItem((const int*)BLOCK_TYPE_VALUE[type]);
 
     SetBlockXY(8,0);
     setVisible(true);
+    SetState(GAME_BLOCK_STATE_IDLE);
 
 }
 
@@ -91,6 +95,19 @@ void FLGameBlock::InitItem(const int* bItem)
             }
         }
     }
+}
+
+void FLGameBlock::rotate()
+{
+    int temp[4][4] = {{0}};
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0 ; j < 4; j++) {
+            temp[i][j] = m_block[3-j][i];
+        }
+    }
+    
+    removeAllChildren();
+    InitItem((const int*)temp);
 }
 
 void FLGameBlock::SetBlockXY(int x, int y)
@@ -135,6 +152,10 @@ bool FLGameBlock::containsTouchLocation(CCTouch *touch)
 
 bool FLGameBlock::ccTouchBegan(CCTouch *touch, CCEvent *event)
 {
+    if (m_state > GAME_BLOCK_STATE_IDLE) {
+        return false;
+    }
+    
     if (containsTouchLocation(touch)) {
         return true;
     }
@@ -144,13 +165,35 @@ bool FLGameBlock::ccTouchBegan(CCTouch *touch, CCEvent *event)
 void FLGameBlock::ccTouchMoved(CCTouch *touch, CCEvent *event)
 {
     CCPoint delta = touch->getDelta();
-    CCLOG("delta x : %.0f , y %.0f " , delta.x,delta.y);
-    setPosition(getPositionX()+delta.x, getPositionY());
-    m_blockX = int (getPositionX() / GAME_BLOCK_SIZE);
-    m_pGame.CheckXMove();
+    if (m_state == GAME_BLOCK_STATE_IDLE
+        && abs(delta.x * 2) < abs(delta.y) && abs(delta.y) > 10)
+    {
+        m_pGame.scheduleUpdate();
+        m_state = GAME_BLOCK_STATE_V_MOVING;
+    }
+    else if((m_state == GAME_BLOCK_STATE_IDLE && abs(delta.y * 2) < abs(delta.x) )
+            || m_state == GAME_BLOCK_STATE_H_MOVING)
+    {
+        CCLOG("delta x : %.0f , y %.0f " , delta.x,delta.y);
+        setPosition(getPositionX() + delta.x, getPositionY());
+        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE);
+        m_pGame.CheckXMove();
+        m_state = GAME_BLOCK_STATE_H_MOVING;
+    }
 }
 
 void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)
 {
+    if (m_state == GAME_BLOCK_STATE_IDLE) {
+        CCPoint delta = touch->getDelta();
+        if (delta.getLength() < 3) {
+            rotate();
+        }
+    }
+    else if(m_state == GAME_BLOCK_STATE_H_MOVING)
+    {
+        SetBlockXY(m_blockX, m_blockY);
+        m_state = GAME_BLOCK_STATE_IDLE;
+    }
     
 }
