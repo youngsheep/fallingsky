@@ -47,9 +47,13 @@ bool FLGame::init()
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
     do 
-    {    
+    {
+        CCSprite* bg = CCSprite::create("bg.png");
+        bg->setAnchorPoint(ccp(0,0));
+        addChild(bg,-2);
+        
         this->setTileMap(CCTMXTiledMap::create("bg.tmx"));
-        this->setBackground(_tileMap->layerNamed("back"));
+        this->setBackground(_tileMap->layerNamed("block_grid"));
         this->addChild(_tileMap, -1);
 
         setGameBlock(new FLGameBlock(*this));
@@ -148,7 +152,10 @@ void FLGame::check_score()
     bool needrefresh = false;
     for(int i = 0 ; i < 4 ;i++)
     {
-        int bgy = LayerSize.height - 1 - getGameBlock()->GetBlockY() - i;
+        int bgy = LayerSize.height - 2 - getGameBlock()->GetBlockY() - i;
+        if (bgy < 0 )
+            break;
+        
         bool isFull = true;
         unsigned int* tiles = getBackground()->getTiles();
         for (int j = 0 ; j < LayerSize.width ; j++)
@@ -157,7 +164,7 @@ void FLGame::check_score()
             if (status == 0 || status == 4)
             {
                 isFull = false;
-                continue;
+                break;
             }
         }
 
@@ -169,6 +176,7 @@ void FLGame::check_score()
                 int w = LayerSize.width;
                 memcpy(tiles + j*w , tiles + (j+1)*w,sizeof(unsigned int)*w);              
             }
+            --m_BlockHeight;
         }
     }
 
