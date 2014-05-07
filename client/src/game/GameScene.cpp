@@ -85,6 +85,7 @@ void FLGame::update(float delta)
             getGameBlock()->SetState(GAME_BLOCK_STATE_IDLE);
             
             fill_block();
+            check_score();
             
             const CCSize& LayerSize = getBackground()->getLayerSize();
             if (LayerSize.height - m_BlockHeight < 4 )
