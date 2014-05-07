@@ -3,7 +3,7 @@ APPNAME="HelloCpp"
 # options
 
 buildexternalsfromsource=
-NDK_ROOT=/Developer/android-ndk-r9d/
+#NDK_ROOT=/Developer/android-ndk-r9d/
 
 usage(){
 cat << EOF

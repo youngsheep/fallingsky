@@ -4,6 +4,12 @@
 #include "cocos2d.h"
 #include "GameBlock.h"
 
+enum 
+{
+    enuMyGameArea_Tag = 0,
+    enuEnemyGameArea_Tag
+};
+
 class FLGame : public cocos2d::CCLayer
 {
     CC_SYNTHESIZE_RETAIN(cocos2d::CCTMXTiledMap*, _tileMap, TileMap);
@@ -42,11 +48,12 @@ public:
 protected:
     void generate_block();
     void fill_block();
-
     bool can_move_y();
+    void check_score();
 
 protected:
     int m_BlockSpeed;
+    int m_BlockHeight;
     bool m_isBlockMove;
     
 };

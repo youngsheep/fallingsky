@@ -8,11 +8,14 @@ CCScene* FLGame::scene()
     CCScene *scene = CCScene::create();
     
     // 'layer' is an autorelease object
-    FLGame *layer = FLGame::create();
+    FLGame *myLayer = FLGame::create();
 
     // add layer as a child to scene
-    scene->addChild(layer);
+    scene->addChild(myLayer,1,enuMyGameArea_Tag);
 
+    FLGame *eneLayer = FLGame::create();
+    eneLayer->setPositionX(480);
+    scene->addChild(eneLayer,1,enuEnemyGameArea_Tag);
     // return the scene
     return scene;
 }
@@ -24,6 +27,7 @@ FLGame::FLGame()
     _gameBlock = NULL;
 
     m_BlockSpeed = 8;
+    m_BlockHeight = 0;
 }
 
 FLGame::~FLGame()
@@ -54,6 +58,9 @@ bool FLGame::init()
 
     } while (0);
   
+    m_BlockSpeed = 8;
+    m_BlockHeight = 0;
+
     //scheduleUpdate();
     return true;
 }
@@ -74,16 +81,18 @@ void FLGame::update(float delta)
         }
         else
         {
-            if (getGameBlock()->GetBlockY() < 4 )
-            {
-                //gameover
-                //unscheduleUpdate();
-            }
-
             unscheduleUpdate();
             getGameBlock()->SetState(GAME_BLOCK_STATE_IDLE);
             
             fill_block();
+            
+            const CCSize& LayerSize = getBackground()->getLayerSize();
+            if (LayerSize.height - m_BlockHeight < 4 )
+            {
+                //gameover
+                return;
+            
+            }
             generate_block();
 
             return;
@@ -122,8 +131,49 @@ void FLGame::fill_block()
                 CCAssert(status == 0 || status == 4 , "this position already have tile" );
                
                 getBackground()->setTileGID(1,ccp(bgx,LayerSize.height - 1 - bgy));
+
+                if (m_BlockHeight < LayerSize.height - 1 - bgy)
+                {
+                    m_BlockHeight = LayerSize.height - 1 - bgy;
+                }
             }
         }
+    }
+}
+
+void FLGame::check_score()
+{
+    const CCSize& LayerSize = getBackground()->getLayerSize();
+    bool needrefresh = false;
+    for(int i = 0 ; i < 4 ;i++)
+    {
+        int bgy = LayerSize.height - 1 - getGameBlock()->GetBlockY() - i;
+        bool isFull = true;
+        unsigned int* tiles = getBackground()->getTiles();
+        for (int j = 0 ; j < LayerSize.width ; j++)
+        {
+            int status = *(tiles + int(bgy*LayerSize.width) + j);
+            if (status == 0 || status == 4)
+            {
+                isFull = false;
+                continue;
+            }
+        }
+
+        if (isFull)
+        {
+            needrefresh  = true;
+            for (int j = bgy ; j <= m_BlockHeight ; j++)
+            {
+                int w = LayerSize.width;
+                memcpy(tiles + j*w , tiles + (j+1)*w,sizeof(unsigned int)*w);              
+            }
+        }
+    }
+
+    if (needrefresh)
+    {
+        getBackground()->setupTiles();
     }
 }
 

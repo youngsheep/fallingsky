@@ -192,6 +192,7 @@ void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)
     }
     else if(m_state == GAME_BLOCK_STATE_H_MOVING)
     {
+        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE + 0.5);
         SetBlockXY(m_blockX, m_blockY);
         m_state = GAME_BLOCK_STATE_IDLE;
     }
