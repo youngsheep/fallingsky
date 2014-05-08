@@ -3,7 +3,7 @@
 
 #include "common/ConnectionObject.h"
 
-class LoginRequest: public ConnectObject
+class LoginRequest: public RequestDeletegate
 {
 public:
 	LoginRequest():
@@ -12,9 +12,7 @@ public:
 	virtual ~LoginRequest()
 	{}
 
-	virtual void RequestCallback(json::Value& data);
-	virtual json_t* GetJson(){return m_req.as_json();}
-	virtual void PushCallback(json::Value& data);
+	virtual void RequestCallback(json::Value& data,const char* route);
 
 	void DoLogin();
 protected:

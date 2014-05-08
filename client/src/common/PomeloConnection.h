@@ -11,7 +11,8 @@ namespace json{
 	class Value;
 };
 
-class ConnectObject;
+class RequestDeletegate;
+class PushEventListener;
 class PomeloConnection
 {
 public:
@@ -19,17 +20,17 @@ public:
 
 	int Connect(const char* ip,int port);
 
-	int DoRequest(ConnectObject* obj,const char* route);
-	int RegisterEvent(ConnectObject* obj,const char* route);
+	int DoRequest(RequestDeletegate* obj,json::Value& reqJson,const char* route);
+	int RegisterEvent(PushEventListener* obj,const char* route);
 
-	void OnResponse(int reqId,json::Value res);
+	void OnResponse(int reqId,json::Value res,const char* route);
 	void OnEvent(const char* event,json::Value eventData);
 	void OnClose();
 protected:
 	struct pc_client_s *m_pClient;
 	
-	std::map<int,ConnectObject*> m_ReqObjMap;
-	std::map<std::string,ConnectObject*> m_EventObjMap;
+	std::map<int,RequestDeletegate*> m_ReqObjMap;
+	std::map<std::string,PushEventListener*> m_EventObjMap;
 
 private:
 	PomeloConnection();

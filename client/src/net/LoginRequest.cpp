@@ -1,12 +1,7 @@
 #include "LoginRequest.h"
 #include "common/PomeloConnection.h"
 
-void LoginRequest::RequestCallback(json::Value& data)
-{
-
-}
-
-void LoginRequest::PushCallback(json::Value& data)
+void LoginRequest::RequestCallback(json::Value& data,const char* route)
 {
 
 }
@@ -24,5 +19,5 @@ void LoginRequest::DoLogin()
 	m_req.set_key("username",json::Value("aaa"));
 	m_req.set_key("token",json::Value("bbb"));
 
-	PomeloConnection::getInstance().DoRequest(this,"connector.entryHandler.entry");
+	PomeloConnection::getInstance().DoRequest(this,m_req,"connector.entryHandler.entry");
 }

@@ -3,7 +3,7 @@
 
 #include "common/ConnectionObject.h"
 
-class BattleRequest: public ConnectObject
+class BattleRequest: public RequestDeletegate
 {
 public:
     BattleRequest()
@@ -13,8 +13,7 @@ public:
     virtual ~BattleRequest()
     {}
 
-    virtual void RequestCallback(json::Value& data);
-    virtual json_t* GetJson(){return m_req.as_json();}
+    virtual void RequestCallback(json::Value& data,const char* route);
     virtual void PushCallback(json::Value& data);
 
     void StartBattleReq();

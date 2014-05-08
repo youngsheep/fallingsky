@@ -13,6 +13,8 @@
 		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
 		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
+		1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */; };
+		1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */; };
 		1B5347C61913D38C00EB74AE /* PomeloConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5347B01913D38C00EB74AE /* PomeloConnection.cpp */; };
 		1B5347C71913D38C00EB74AE /* ResMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5347B21913D38C00EB74AE /* ResMgr.cpp */; };
 		1B5347C91913D38C00EB74AE /* testConfigHolder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5347B91913D38C00EB74AE /* testConfigHolder.cpp */; };
@@ -29,7 +31,6 @@
 		1B5348E41913DDA400EB74AE /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E11913DDA400EB74AE /* block.png */; };
 		1B5348E51913DDA400EB74AE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E21913DDA400EB74AE /* fonts */; };
 		1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5348E91917C6BE00EB74AE /* GameBlock.cpp */; };
-		1BD81595191A9DE900A760EC /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1BD81594191A9DE900A760EC /* bg.png */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -121,6 +122,10 @@
 		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
+		1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleRequest.cpp; sourceTree = "<group>"; };
+		1B3E73BE191BCD0100DBB93C /* BattleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleRequest.h; sourceTree = "<group>"; };
+		1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FLPlayer.cpp; path = ../../src/entity/FLPlayer.cpp; sourceTree = "<group>"; };
+		1B3E73C2191BE39200DBB93C /* FLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLPlayer.h; path = ../../src/entity/FLPlayer.h; sourceTree = "<group>"; };
 		1B5347AD1913D38C00EB74AE /* ConnectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionObject.h; sourceTree = "<group>"; };
 		1B5347AE1913D38C00EB74AE /* jansson-impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "jansson-impl.hpp"; sourceTree = "<group>"; };
 		1B5347AF1913D38C00EB74AE /* jansson.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jansson.hpp; sourceTree = "<group>"; };
@@ -150,7 +155,6 @@
 		1B5348E21913DDA400EB74AE /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../resources/fonts; sourceTree = "<group>"; };
 		1B5348E91917C6BE00EB74AE /* GameBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameBlock.cpp; sourceTree = "<group>"; };
 		1B5348EA1917C6BE00EB74AE /* GameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBlock.h; sourceTree = "<group>"; };
-		1BD81594191A9DE900A760EC /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../resources/bg.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -256,9 +260,19 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		1B3E73C0191BE35800DBB93C /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */,
+				1B3E73C2191BE39200DBB93C /* FLPlayer.h */,
+			);
+			name = entity;
+			sourceTree = "<group>";
+		};
 		1B5347AB1913D36300EB74AE /* fallingsky */ = {
 			isa = PBXGroup;
 			children = (
+				1B3E73C0191BE35800DBB93C /* entity */,
 				1B5347AC1913D38C00EB74AE /* common */,
 				1B5347B51913D38C00EB74AE /* config */,
 				1B5347BD1913D38C00EB74AE /* game */,
@@ -320,6 +334,8 @@
 		1B5347C31913D38C00EB74AE /* net */ = {
 			isa = PBXGroup;
 			children = (
+				1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */,
+				1B3E73BE191BCD0100DBB93C /* BattleRequest.h */,
 				1B5347C41913D38C00EB74AE /* LoginRequest.cpp */,
 				1B5347C51913D38C00EB74AE /* LoginRequest.h */,
 			);
@@ -407,7 +423,6 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1BD81594191A9DE900A760EC /* bg.png */,
 				1B5348E01913DDA400EB74AE /* bg.tmx */,
 				1B5348E11913DDA400EB74AE /* block.png */,
 				1B5348E21913DDA400EB74AE /* fonts */,
@@ -535,7 +550,6 @@
 				1B5348E51913DDA400EB74AE /* fonts in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
-				1BD81595191A9DE900A760EC /* bg.png in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
@@ -559,7 +573,9 @@
 				1B5347C91913D38C00EB74AE /* testConfigHolder.cpp in Sources */,
 				1B5347CB1913D38C00EB74AE /* AppDelegate.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
+				1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */,
 				1B5347C61913D38C00EB74AE /* PomeloConnection.cpp in Sources */,
+				1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */,
 				1B5347C71913D38C00EB74AE /* ResMgr.cpp in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */,
