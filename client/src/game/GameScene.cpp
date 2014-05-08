@@ -48,9 +48,9 @@ bool FLGame::init()
 
     do 
     {
-        CCSprite* bg = CCSprite::create("bg.png");
-        bg->setAnchorPoint(ccp(0,0));
-        addChild(bg,-2);
+        //CCSprite* bg = CCSprite::create("bg.png");
+        //bg->setAnchorPoint(ccp(0,0));
+        //addChild(bg,-2);
         
         this->setTileMap(CCTMXTiledMap::create("bg.tmx"));
         this->setBackground(_tileMap->layerNamed("block_grid"));
