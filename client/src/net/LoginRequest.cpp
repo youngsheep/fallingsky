@@ -3,7 +3,6 @@
 
 void LoginRequest::RequestCallback(json::Value& data,const char* route)
 {
-
 }
 
 void LoginRequest::DoLogin()

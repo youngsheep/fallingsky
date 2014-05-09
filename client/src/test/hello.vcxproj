@@ -83,6 +83,9 @@
     <ClCompile Include="..\common\PomeloConnection.cpp" />
     <ClCompile Include="..\common\ResMgr.cpp" />
     <ClCompile Include="..\config\srcgen\testConfigHolder.cpp" />
+    <ClCompile Include="..\entity\FLBattle.cpp" />
+    <ClCompile Include="..\entity\FLPlayer.cpp" />
+    <ClCompile Include="..\net\BattleRequest.cpp" />
     <ClCompile Include="..\net\LoginRequest.cpp" />
     <ClCompile Include="hello.cpp" />
   </ItemGroup>
@@ -94,6 +97,9 @@
     <ClInclude Include="..\common\ResMgr.h" />
     <ClInclude Include="..\config\ConfigHolder.h" />
     <ClInclude Include="..\config\srcgen\testConfigHolder.h" />
+    <ClInclude Include="..\entity\FLBattle.h" />
+    <ClInclude Include="..\entity\FLPlayer.h" />
+    <ClInclude Include="..\net\BattleRequest.h" />
     <ClInclude Include="..\net\LoginRequest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

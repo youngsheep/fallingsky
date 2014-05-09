@@ -102,6 +102,8 @@ int PomeloConnection::RegisterEvent(PushEventListener* obj,const char* route)
 
 void PomeloConnection::OnResponse(int reqId,json::Value res,const char* route)
 {
+    printf("%s |  data : %s  \n" , route, res.save_string());
+
 	std::map<int,RequestDeletegate*>::iterator itor = m_ReqObjMap.find(reqId);
 	if (itor != m_ReqObjMap.end())
 	{

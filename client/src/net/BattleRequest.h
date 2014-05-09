@@ -3,12 +3,14 @@
 
 #include "common/ConnectionObject.h"
 
+class FLBattle;
 class BattleRequest: public RequestDeletegate
 {
 public:
-    BattleRequest()
+    BattleRequest(FLBattle& battle)
         : m_startReq(json::object())
         , m_cmdReq(json::object())
+        , m_Battle(battle)
     {}
     virtual ~BattleRequest()
     {}
@@ -17,10 +19,11 @@ public:
     virtual void PushCallback(json::Value& data);
 
     void StartBattleReq();
-    void BattleCmdReq();
+    void BattleCmdReq(int battleid,int xpos,int ypos,int flag);
 
 protected:
     json::Value m_startReq;
     json::Value m_cmdReq;
+    FLBattle& m_Battle;
 };
 #endif

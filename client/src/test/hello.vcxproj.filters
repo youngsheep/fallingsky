@@ -14,6 +14,15 @@
     <ClCompile Include="..\config\srcgen\testConfigHolder.cpp">
       <Filter>config\srcgen</Filter>
     </ClCompile>
+    <ClCompile Include="..\net\BattleRequest.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\entity\FLPlayer.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\entity\FLBattle.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
@@ -27,6 +36,9 @@
     </Filter>
     <Filter Include="config\srcgen">
       <UniqueIdentifier>{2591d81e-068e-42aa-bd2b-90dcd0a325aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entity">
+      <UniqueIdentifier>{3e98e118-7303-4ed6-95f9-c40399e0a1a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +65,15 @@
     </ClInclude>
     <ClInclude Include="..\config\srcgen\testConfigHolder.h">
       <Filter>config\srcgen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\net\BattleRequest.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\entity\FLPlayer.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\entity\FLBattle.h">
+      <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

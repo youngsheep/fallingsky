@@ -28,7 +28,7 @@ void ConfigHolder<Entity,KeyType>::LoadConfig()
         }
     }
 
-    printf("data is %s\n",data.save_string());
+    //printf("data is %s\n",data.save_string());
 
     const json::Value dataArr = data[m_szEntityName].as_json();
     if (dataArr.is_array())

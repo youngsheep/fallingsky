@@ -5,6 +5,7 @@
 #include <string>
 
 #define PROTO_MAGIC 1101
+#define MAX_ROUTE_LEN 128
 
 struct pc_client_s;
 namespace json{
