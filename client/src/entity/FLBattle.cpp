@@ -5,6 +5,7 @@ FLBattle::FLBattle()
     , m_battleid(-1)
     , m_oppid(-1)
     , m_nextBlock(-1)
+    , m_battleReq(*this)
 {
     memset(m_oppname,0x0,MAX_USERNAME_LEN);
     memset(m_clearLines,0x0,sizeof(int)*4);
@@ -24,7 +25,7 @@ void FLBattle::Init(json::Value& data)
 
 void FLBattle::Update(json::Value& data)
 {
-    json::Value lines = data["clearLines"].as_json();
+    json::Value lines(data["clearLines"].as_json());
     if (lines.is_array())
     {
         for (unsigned int i = 0 ; i < lines.size() && i < 4; i++)

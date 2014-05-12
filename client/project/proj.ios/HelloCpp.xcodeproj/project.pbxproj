@@ -31,6 +31,8 @@
 		1B5348E41913DDA400EB74AE /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E11913DDA400EB74AE /* block.png */; };
 		1B5348E51913DDA400EB74AE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E21913DDA400EB74AE /* fonts */; };
 		1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5348E91917C6BE00EB74AE /* GameBlock.cpp */; };
+		1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */; };
+		1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE20CF191E30720072627B /* FLBattle.cpp */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -155,6 +157,10 @@
 		1B5348E21913DDA400EB74AE /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../resources/fonts; sourceTree = "<group>"; };
 		1B5348E91917C6BE00EB74AE /* GameBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameBlock.cpp; sourceTree = "<group>"; };
 		1B5348EA1917C6BE00EB74AE /* GameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBlock.h; sourceTree = "<group>"; };
+		1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInfoScene.cpp; sourceTree = "<group>"; };
+		1B536F0C19210BA90042886E /* PlayerInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoScene.h; sourceTree = "<group>"; };
+		1BAE20CF191E30720072627B /* FLBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FLBattle.cpp; path = ../../src/entity/FLBattle.cpp; sourceTree = "<group>"; };
+		1BAE20D0191E30720072627B /* FLBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLBattle.h; path = ../../src/entity/FLBattle.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -263,6 +269,8 @@
 		1B3E73C0191BE35800DBB93C /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				1BAE20CF191E30720072627B /* FLBattle.cpp */,
+				1BAE20D0191E30720072627B /* FLBattle.h */,
 				1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */,
 				1B3E73C2191BE39200DBB93C /* FLPlayer.h */,
 			);
@@ -326,6 +334,8 @@
 				1B5347C01913D38C00EB74AE /* AppMacros.h */,
 				1B5347C11913D38C00EB74AE /* GameScene.cpp */,
 				1B5347C21913D38C00EB74AE /* GameScene.h */,
+				1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */,
+				1B536F0C19210BA90042886E /* PlayerInfoScene.h */,
 			);
 			name = game;
 			path = ../../src/game;
@@ -570,9 +580,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B5347CC1913D38C00EB74AE /* GameScene.cpp in Sources */,
+				1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */,
 				1B5347C91913D38C00EB74AE /* testConfigHolder.cpp in Sources */,
 				1B5347CB1913D38C00EB74AE /* AppDelegate.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
+				1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */,
 				1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */,
 				1B5347C61913D38C00EB74AE /* PomeloConnection.cpp in Sources */,
 				1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */,

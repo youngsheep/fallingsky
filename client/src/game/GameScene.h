@@ -4,6 +4,11 @@
 #include "cocos2d.h"
 #include "GameBlock.h"
 
+//tmp
+#include "net/BattleRequest.h"
+#include "net/LoginRequest.h"
+#include "entity/FLBattle.h"
+
 enum 
 {
     enuMyGameArea_Tag = 0,
@@ -56,6 +61,10 @@ protected:
     int m_BlockHeight;
     bool m_isBlockMove;
     
+public:
+    //connection
+    static LoginRequest m_loginReq;
+    static FLBattle m_battle;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
