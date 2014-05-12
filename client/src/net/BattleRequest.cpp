@@ -4,12 +4,12 @@
 
 void BattleRequest::RequestCallback(json::Value& data,const char* route)
 {
-    if (strncmp(route,"battle.battleHandler.start",MAX_ROUTE_LEN) == 0)
+    if (strncmp(route,"game.battleHandler.start",MAX_ROUTE_LEN) == 0)
     {
         m_Battle.Init(data);
         m_startReq.clear();
     }
-    else if (strncmp(route,"battle.battleHandler.cmd",MAX_ROUTE_LEN) == 0)
+    else if (strncmp(route,"game.battleHandler.cmd",MAX_ROUTE_LEN) == 0)
     {
         m_Battle.Update(data);
         m_cmdReq.clear();
@@ -33,7 +33,7 @@ void BattleRequest::StartBattleReq()
     m_startReq.set_key("head",head);
     m_startReq.set_key("type",json::Value(0));
 
-    PomeloConnection::getInstance().DoRequest(this,m_startReq,"battle.battleHandler.start");
+    PomeloConnection::getInstance().DoRequest(this,m_startReq,"game.battleHandler.start");
 }
 
 void BattleRequest::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
@@ -51,5 +51,5 @@ void BattleRequest::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     m_cmdReq.set_key("yPos",json::Value(ypos));
     m_cmdReq.set_key("rotateFlag",json::Value(flag));
 
-    PomeloConnection::getInstance().DoRequest(this,m_cmdReq,"battle.battleHandler.cmd");
+    PomeloConnection::getInstance().DoRequest(this,m_cmdReq,"game.battleHandler.cmd");
 }
