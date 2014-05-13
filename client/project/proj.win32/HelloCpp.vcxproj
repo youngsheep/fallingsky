@@ -137,6 +137,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\..\src\game\AppDelegate.cpp" />
     <ClCompile Include="..\..\src\game\GameBlock.cpp" />
     <ClCompile Include="..\..\src\game\GameScene.cpp" />
+    <ClCompile Include="..\..\src\game\PlayerInfoScene.cpp" />
     <ClCompile Include="..\..\src\net\LoginRequest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\..\src\game\AppMacros.h" />
     <ClInclude Include="..\..\src\game\GameBlock.h" />
     <ClInclude Include="..\..\src\game\GameScene.h" />
+    <ClInclude Include="..\..\src\game\PlayerInfoScene.h" />
     <ClInclude Include="..\..\src\net\LoginRequest.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>

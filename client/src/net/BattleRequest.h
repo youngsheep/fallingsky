@@ -4,19 +4,15 @@
 #include "common/ConnectionObject.h"
 
 class FLBattle;
-class BattleRequest: public RequestDeletegate
+class BattleRequest: public RequestDeletegate ,public PushEventListener
 {
 public:
-    BattleRequest(FLBattle& battle)
-        : m_startReq(json::object())
-        , m_cmdReq(json::object())
-        , m_Battle(battle)
-    {}
+    BattleRequest(FLBattle& battle);
     virtual ~BattleRequest()
     {}
 
     virtual void RequestCallback(json::Value& data,const char* route);
-    virtual void PushCallback(json::Value& data);
+    virtual void PushCallback(json::Value& data,const char* route);
 
     void StartBattleReq();
     void BattleCmdReq(int battleid,int xpos,int ypos,int flag);

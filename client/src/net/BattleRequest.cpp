@@ -2,6 +2,14 @@
 #include "common/PomeloConnection.h"
 #include "entity/FLBattle.h"
 
+BattleRequest::BattleRequest(FLBattle& battle)
+    : m_startReq(json::object())
+    , m_cmdReq(json::object())
+    , m_Battle(battle)
+{
+    PomeloConnection::getInstance().RegisterEvent(this,"game.battleHandler.start");
+}
+
 void BattleRequest::RequestCallback(json::Value& data,const char* route)
 {
     if (strncmp(route,"game.battleHandler.start",MAX_ROUTE_LEN) == 0)
@@ -16,9 +24,12 @@ void BattleRequest::RequestCallback(json::Value& data,const char* route)
     }
 }    
 
-void BattleRequest::PushCallback(json::Value& data)
+void BattleRequest::PushCallback(json::Value& data,const char* route)
 {
-
+    if (strncmp(route,"game.battleHandler.start",MAX_ROUTE_LEN) == 0)
+    {
+        m_Battle.Init(data);
+    }
 }
 
 void BattleRequest::StartBattleReq()

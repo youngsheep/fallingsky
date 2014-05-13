@@ -117,7 +117,7 @@ void PomeloConnection::OnEvent(const char* event,json::Value eventData)
 	std::map<std::string,PushEventListener*>::iterator itor = m_EventObjMap.find(std::string(event));
 	if (itor != m_EventObjMap.end())
 	{
-		itor->second->PushCallback(eventData);
+		itor->second->PushCallback(eventData,event);
 		m_EventObjMap.erase(itor);
 	}
 }

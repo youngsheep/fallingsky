@@ -12,6 +12,6 @@ public:
 class PushEventListener
 {
 public:
-    virtual void PushCallback(json::Value& data) = 0;
+    virtual void PushCallback(json::Value& data,const char* route) = 0;
 };
 #endif
