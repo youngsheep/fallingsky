@@ -53,7 +53,9 @@ const int BLOCK_TYPE_VALUE[][4][4] = {
 };
 
 FLGameBlock::FLGameBlock(FLGame& pGame)
-    : m_pGame(pGame)
+    : m_blockType(0)
+    , m_rotateFlag(0)
+    , m_pGame(pGame)
     , m_state(GAME_BLOCK_STATE_IDLE)
 {
     initWithFile("block.png",16);
@@ -68,6 +70,7 @@ void FLGameBlock::InitBlock(int type)
 {
     CCAssert(type >= 0 && type < 7 , "type error!");
     
+    m_blockType = type;
     removeAllChildren();
     InitItem((const int*)BLOCK_TYPE_VALUE[type]);
 
@@ -99,11 +102,68 @@ void FLGameBlock::InitItem(const int* bItem)
 
 void FLGameBlock::rotate()
 {
+    m_rotateFlag ++;
+    m_rotateFlag %= 4;
+    
     int temp[4][4] = {{0}};
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0 ; j < 4; j++) {
-            temp[i][j] = m_block[3-j][i];
+    switch (m_blockType) {
+        case 0:
+            return;
+            break;
+        case 1:
+        case 2:
+        case 3:
+        {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0 ; j < 3; j++) {
+                    temp[i][j] = m_block[2-j][i];
+                }
+            }
+            break;
         }
+        case 4:
+        case 5:
+        {
+            int flag = m_rotateFlag%2;
+            if (flag == 0) {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0 ; j < 3; j++) {
+                        temp[2-j][i] = m_block[i][j];
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++) {
+                    for (int j = 0 ; j < 3; j++) {
+                        temp[i][j] = m_block[2-j][i];
+                    }
+                }
+            }
+            break;
+        }
+        case 6:
+        {
+            int flag = m_rotateFlag%2;
+            if (flag == 0) {
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0 ; j < 4; j++) {
+                        temp[3-j][i] = m_block[i][j];
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0 ; j < 4; j++) {
+                        temp[i][j] = m_block[3-j][i];
+                    }
+                }
+            }
+            break;
+        }
+        default:
+            break;
     }
     
     removeAllChildren();

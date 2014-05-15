@@ -51,6 +51,8 @@ protected:
     
 protected:
     int m_block[4][4];
+    int m_blockType;
+    int m_rotateFlag;
 
     int m_blockX;
     int m_blockY;

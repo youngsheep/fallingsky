@@ -33,6 +33,8 @@
 		1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5348E91917C6BE00EB74AE /* GameBlock.cpp */; };
 		1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */; };
 		1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE20CF191E30720072627B /* FLBattle.cpp */; };
+		1BDB389E1924F48B00380F47 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDB389B1924F48B00380F47 /* libWeiboSDK.a */; };
+		1BDB389F1924F48B00380F47 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BDB389C1924F48B00380F47 /* WeiboSDK.bundle */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -161,6 +163,9 @@
 		1B536F0C19210BA90042886E /* PlayerInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoScene.h; sourceTree = "<group>"; };
 		1BAE20CF191E30720072627B /* FLBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FLBattle.cpp; path = ../../src/entity/FLBattle.cpp; sourceTree = "<group>"; };
 		1BAE20D0191E30720072627B /* FLBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLBattle.h; path = ../../src/entity/FLBattle.h; sourceTree = "<group>"; };
+		1BDB389B1924F48B00380F47 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = ../../deps/weibo_ios_sdk/libWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
+		1BDB389C1924F48B00380F47 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = ../../deps/weibo_ios_sdk/libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
+		1BDB389D1924F48B00380F47 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = ../../deps/weibo_ios_sdk/libWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -192,6 +197,7 @@
 				1B5348DF1913DD1200EB74AE /* libuv.a in Frameworks */,
 				1B5348C21913D65100EB74AE /* libcurl.a in Frameworks */,
 				1B5348C31913D65100EB74AE /* libwebp.a in Frameworks */,
+				1BDB389E1924F48B00380F47 /* libWeiboSDK.a in Frameworks */,
 				1B5348BF1913D5AA00EB74AE /* libcocos2dx.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -395,9 +401,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1BDB389A1924F47000380F47 /* weibosdk */ = {
+			isa = PBXGroup;
+			children = (
+				1BDB389B1924F48B00380F47 /* libWeiboSDK.a */,
+				1BDB389C1924F48B00380F47 /* WeiboSDK.bundle */,
+				1BDB389D1924F48B00380F47 /* WeiboSDK.h */,
+			);
+			name = weibosdk;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1BDB389A1924F47000380F47 /* weibosdk */,
 				1B5348D01913DCCA00EB74AE /* libpomelo */,
 				1B5348B71913D53E00EB74AE /* cocos2dx.xcodeproj */,
 				1B5347AB1913D36300EB74AE /* fallingsky */,
@@ -567,6 +584,7 @@
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				1B5348E31913DDA400EB74AE /* bg.tmx in Resources */,
+				1BDB389F1924F48B00380F47 /* WeiboSDK.bundle in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				1B5348E41913DDA400EB74AE /* block.png in Resources */,
 			);
@@ -655,13 +673,15 @@
 					"\"$(SRCROOT)/../../deps/libpomelo/deps/jansson/src\"",
 					"\"$(SRCROOT)/../../deps/libpomelo/deps/uv/include\"",
 					"\"$(SRCROOT)/../../src\"",
+					"\"$(SRCROOT)/../../deps/weibo_ios_sdk/libWeiboSDK\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
-					/project/fallingsky/client/deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries,
+					"\"$(SRCROOT)/../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../deps/cocos2dx/external/libwebsockets/ios/lib\"",
+					"\"$(SRCROOT)/../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../deps/weibo_ios_sdk/libWeiboSDK\"",
 				);
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = HelloCpp;
@@ -705,13 +725,15 @@
 					"\"$(SRCROOT)/../../deps/libpomelo/deps/jansson/src\"",
 					"\"$(SRCROOT)/../../deps/libpomelo/deps/uv/include\"",
 					"\"$(SRCROOT)/../../src\"",
+					"\"$(SRCROOT)/../../deps/weibo_ios_sdk/libWeiboSDK\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
-					/project/fallingsky/client/deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries,
+					"\"$(SRCROOT)/../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../deps/cocos2dx/external/libwebsockets/ios/lib\"",
+					"\"$(SRCROOT)/../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries\"",
+					"\"$(SRCROOT)/../../deps/weibo_ios_sdk/libWeiboSDK\"",
 				);
 				PRODUCT_NAME = HelloCpp;
 				PROVISIONING_PROFILE = "";

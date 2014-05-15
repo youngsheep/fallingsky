@@ -9,6 +9,9 @@
 #ifndef __Entity__FLPlayer__
 #define __Entity__FLPlayer__
 
+#include "common/jansson.hpp"
+#include "FLBattle.h"
+
 #define MAX_NICKNAME_LEN 128
 #define MAX_PORTRAIT_LEN 128
 

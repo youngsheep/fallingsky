@@ -295,13 +295,13 @@ bool FLGame::can_move_y()
 
 void FLGame::onEnter(){
     
-    //CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
     CCLayer::onEnter();
 }
 
 void FLGame::onExit(){
     
-    //CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     CCLayer::onExit();
 }
 

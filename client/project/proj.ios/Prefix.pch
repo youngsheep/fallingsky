@@ -6,3 +6,6 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+#define kAppKey         @"2045436852"
+#define kRedirectURI    @"http://www.sina.com"
