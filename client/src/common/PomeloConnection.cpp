@@ -11,6 +11,9 @@ void on_response(pc_request_t *req, int status, json_t *resp)  {
 	PomeloConnection::getInstance().OnResponse(req->id,json::Value(resp),req->route);
 	
 	// release relative resource with pc_request_t
+    json_t *msg = req->msg;
+    pc_client_t *client = req->client;
+    json_decref(msg);
 	pc_request_destroy(req);
 }
 
@@ -70,7 +73,8 @@ int PomeloConnection::Connect(const char* ip,int port)
 int PomeloConnection::DoRequest(RequestDeletegate* obj,json::Value& reqJson,const char* route)
 {
 	pc_request_t *request = pc_request_new();
-	pc_request(m_pClient, request, route, reqJson.as_json(), on_response);
+    json_t* req = json_incref(reqJson.as_json());
+	pc_request(m_pClient, request, route, req, on_response);
 
 	std::map<int,RequestDeletegate*>::iterator itor = m_ReqObjMap.find(request->id);
 	if (itor != m_ReqObjMap.end())

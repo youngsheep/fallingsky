@@ -7,6 +7,8 @@ void LoginRequest::RequestCallback(json::Value& data,const char* route)
 
 void LoginRequest::DoLogin()
 {
+    json::Value m_req(json::object());
+
 	m_req.clear();
     
     json::Value head(json::object());

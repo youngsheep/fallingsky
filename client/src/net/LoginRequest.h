@@ -6,8 +6,8 @@
 class LoginRequest: public RequestDeletegate
 {
 public:
-	LoginRequest():
-	  m_req(json::object())
+	LoginRequest()
+	  //: m_req(json::object())
 	{}
 	virtual ~LoginRequest()
 	{}
@@ -16,6 +16,6 @@ public:
 
 	void DoLogin();
 protected:
-	json::Value m_req;
+
 };
 #endif

@@ -5,9 +5,9 @@
 #include "GameBlock.h"
 
 //tmp
-#include "net/BattleRequest.h"
-#include "net/LoginRequest.h"
-#include "entity/FLBattle.h"
+//#include "net/BattleRequest.h"
+//#include "net/LoginRequest.h"
+//#include "entity/FLBattle.h"
 
 enum 
 {
@@ -63,8 +63,8 @@ protected:
     
 public:
     //connection
-    static LoginRequest m_loginReq;
-    static FLBattle m_battle;
+    //static LoginRequest m_loginReq;
+    //static FLBattle m_battle;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

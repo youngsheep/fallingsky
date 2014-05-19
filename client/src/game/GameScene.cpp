@@ -1,10 +1,10 @@
 #include "GameScene.h"
-#include "common/PomeloConnection.h"
+//#include "common/PomeloConnection.h"
 
 USING_NS_CC;
 
-LoginRequest FLGame::m_loginReq;
-FLBattle FLGame::m_battle;
+//LoginRequest FLGame::m_loginReq;
+//FLBattle FLGame::m_battle;
 
 CCScene* FLGame::scene()
 {
@@ -21,9 +21,9 @@ CCScene* FLGame::scene()
     eneLayer->setPositionX(480);
     scene->addChild(eneLayer,1,enuEnemyGameArea_Tag);
     
-    PomeloConnection::getInstance().Connect("127.0.0.1", 3010);
-    FLGame::m_loginReq.DoLogin();
-    FLGame::m_battle.GetRequest().StartBattleReq();
+    //PomeloConnection::getInstance().Connect("127.0.0.1", 3010);
+    //FLGame::m_loginReq.DoLogin();
+    //FLGame::m_battle.GetRequest().StartBattleReq();
     
     // return the scene
     return scene;
@@ -37,6 +37,7 @@ FLGame::FLGame()
 
     m_BlockSpeed = 8;
     m_BlockHeight = 0;
+    m_isBlockMove = false;
 }
 
 FLGame::~FLGame()
