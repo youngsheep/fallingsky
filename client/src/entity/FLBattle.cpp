@@ -5,7 +5,6 @@ FLBattle::FLBattle()
     , m_battleid(-1)
     , m_oppid(-1)
     , m_nextBlock(-1)
-    , m_battleReq(*this)
 {
     memset(m_oppname,0x0,MAX_USERNAME_LEN);
     memset(m_clearLines,0x0,sizeof(int)*4);

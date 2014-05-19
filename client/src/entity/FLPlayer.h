@@ -18,12 +18,17 @@
 class FLPlayer 
 {
 public:
-    FLPlayer()
-    {}
-    ~FLPlayer();
+    static FLPlayer& GetInstance()
+    {
+        static FLPlayer inst;
+        return inst;
+    }
+
+    ~FLPlayer(){}
     
     void InitBaseInfo(json::Value& data);
 
+    FLBattle& GetBattle(){return m_battle;}
 protected:
     int m_uid;
     char m_username[MAX_USERNAME_LEN];
@@ -31,6 +36,10 @@ protected:
     char m_portrait[MAX_PORTRAIT_LEN];
 
     FLBattle m_battle;
+
+private:
+    FLPlayer()
+    {}
 };
 
 #endif /* defined(__Entity__FLPlayer__) */

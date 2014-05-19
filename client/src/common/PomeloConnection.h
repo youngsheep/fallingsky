@@ -17,7 +17,8 @@ class PushEventListener;
 class PomeloConnection
 {
 public:
-	static PomeloConnection& getInstance();
+    PomeloConnection();
+    ~PomeloConnection();
 
 	int Connect(const char* ip,int port);
 
@@ -33,8 +34,5 @@ protected:
 	std::map<int,RequestDeletegate*> m_ReqObjMap;
 	std::map<std::string,PushEventListener*> m_EventObjMap;
 
-private:
-	PomeloConnection();
-	~PomeloConnection();
 };
 #endif

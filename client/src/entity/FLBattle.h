@@ -2,7 +2,6 @@
 #define __ENTITY_FLBATTLE_H__
 
 #include "common/jansson.hpp"
-#include "net/BattleRequest.h"
 
 #define MAX_USERNAME_LEN 64
 
@@ -33,9 +32,7 @@ public:
         m_nextBlock = -1;
         return next;
     }
-    
-    BattleRequest& GetRequest(){return m_battleReq;}
-    
+
 protected:
     int m_BattleState;
 
@@ -45,7 +42,5 @@ protected:
 
     int m_nextBlock;
     int m_clearLines[4];
-    
-    BattleRequest m_battleReq;
 };
 #endif

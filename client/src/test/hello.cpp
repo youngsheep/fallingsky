@@ -1,7 +1,6 @@
 #include "common/PomeloConnection.h"
-#include "net/LoginRequest.h"
-#include "net/BattleRequest.h"
-#include "entity/FLBattle.h"
+#include "net/GameProtoHandler.h"
+#include "entity/FLPlayer.h"
 #include "config/srcgen/testConfigHolder.h"
 
 const char *ip = "127.0.0.1";
@@ -12,11 +11,9 @@ int main() {
     testConfigHolder testHolder;
     testHolder.LoadConfig();
 
-	PomeloConnection::getInstance().Connect(ip,port);
-
-    FLBattle battle;
-	LoginRequest login;
-    BattleRequest battlereq(battle);
+    FLPlayer& player = FLPlayer::GetInstance();
+	GameProtoHandler& handler = GameProtoHandler::GetInstance();
+    handler.ConnectGameSvr(ip,port);
 
     char input[6];
 
@@ -28,17 +25,17 @@ int main() {
         }
         else if (!strcmp(input, "login"))
         {
-            login.DoLogin();
+            handler.DoLogin();
         }
         else if (!strcmp(input, "start"))
         {
-            battlereq.StartBattleReq();
+            handler.StartBattleReq();
         }
         else if (!strcmp(input, "cmd"))
         {
-            if (battle.GetState() == FL_BATTLE_STATE_START)
+            if (player.GetBattle().GetState() == FL_BATTLE_STATE_START)
             {
-                battlereq.BattleCmdReq(battle.GetID(),2,2,0);
+                handler.BattleCmdReq(player.GetBattle().GetID(),2,2,0);
             }
         }
     }
