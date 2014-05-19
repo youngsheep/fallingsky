@@ -14,12 +14,18 @@
 class PlayerInfo : public cocos2d::CCLayer
 {
 public:
-    PlayerInfo();
-    virtual ~PlayerInfo();
+    PlayerInfo(){}
+    virtual ~PlayerInfo(){}
     
     virtual bool init();
-    
 
+    static cocos2d::CCScene* scene();
+    
+    // a selector callback
+    void loginCallback(CCObject* pSender);
+    
+    // implement the "static node()" method manually
+    CREATE_FUNC(PlayerInfo);
 };
 
 #endif /* defined(__HelloCpp__PlayerInfoScene__) */
