@@ -28,6 +28,16 @@ public:
     
     void InitBaseInfo(json::Value& data);
 
+    int GetPlayerID(){return m_uid;}
+    void SetPlayerID(int id){m_uid = id;}
+
+    const char* GetUserName(){return m_username;}
+    void SetUserName(const char* name);
+    const char* GetNickName(){return m_nickname;}
+    void SetNickName(const char* name);
+    const char* GetPortrait(){return m_portrait;}
+    void SetPortrait(const char* p);
+
     FLBattle& GetBattle(){return m_battle;}
 protected:
     int m_uid;
@@ -38,8 +48,7 @@ protected:
     FLBattle m_battle;
 
 private:
-    FLPlayer()
-    {}
+    FLPlayer();
 };
 
 #endif /* defined(__Entity__FLPlayer__) */

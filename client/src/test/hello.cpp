@@ -7,6 +7,7 @@ const char *ip = "127.0.0.1";
 int port = 3010;
 
 int main() {
+    char input[64];
 
     testConfigHolder testHolder;
     testHolder.LoadConfig();
@@ -14,28 +15,39 @@ int main() {
     FLPlayer& player = FLPlayer::GetInstance();
 	GameProtoHandler& handler = GameProtoHandler::GetInstance();
     handler.ConnectGameSvr(ip,port);
+    handler.AddAllPushEvent();
+    printf("Input username to login :");
+    scanf("%s", input);
+    handler.DoLogin(input);
 
-    char input[6];
-
-    printf("Input a line to send message to server and input `end` to exit.\n");
     while(1) {
-        scanf("%s", input);
-        if(!strcmp(input, "end")) {
-            break;
-        }
-        else if (!strcmp(input, "login"))
+        if ( !handler.IsWait())
         {
-            handler.DoLogin();
-        }
-        else if (!strcmp(input, "start"))
-        {
-            handler.StartBattleReq();
-        }
-        else if (!strcmp(input, "cmd"))
-        {
-            if (player.GetBattle().GetState() == FL_BATTLE_STATE_START)
+            printf("\n\nInput cmd:");
+            scanf("%s", input);
+            if(!strcmp(input, "end")) {
+                break;
+            }
+            else if (!strcmp(input, "create"))
             {
-                handler.BattleCmdReq(player.GetBattle().GetID(),2,2,0);
+                printf("Input nickname to register : ");
+                scanf("%s", input);
+                handler.RoleCreateReq(input);
+            }
+            else if (!strcmp(input, "info"))
+            {
+                handler.RoleInfoReq();
+            }
+            else if (!strcmp(input, "start"))
+            {
+                handler.StartBattleReq();
+            }
+            else if (!strcmp(input, "cmd"))
+            {
+                if (player.GetBattle().GetState() == FL_BATTLE_STATE_START)
+                {
+                    handler.BattleCmdReq(player.GetBattle().GetID(),2,2,0);
+                }
             }
         }
     }

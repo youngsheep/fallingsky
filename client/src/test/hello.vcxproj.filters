@@ -26,6 +26,12 @@
     <ClCompile Include="..\net\GameProtoHandler.cpp">
       <Filter>net</Filter>
     </ClCompile>
+    <ClCompile Include="..\net\pushEventHandler.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\net\roleRequest.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
@@ -52,9 +58,6 @@
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\common\PomeloConnection.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\common\ConnectionObject.h">
       <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\common\ResMgr.h">

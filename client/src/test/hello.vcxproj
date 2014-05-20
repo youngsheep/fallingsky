@@ -88,10 +88,11 @@
     <ClCompile Include="..\net\BattleRequest.cpp" />
     <ClCompile Include="..\net\GameProtoHandler.cpp" />
     <ClCompile Include="..\net\LoginRequest.cpp" />
+    <ClCompile Include="..\net\pushEventHandler.cpp" />
+    <ClCompile Include="..\net\roleRequest.cpp" />
     <ClCompile Include="hello.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\common\ConnectionObject.h" />
     <ClInclude Include="..\common\jansson-impl.hpp" />
     <ClInclude Include="..\common\jansson.hpp" />
     <ClInclude Include="..\common\PomeloConnection.h" />

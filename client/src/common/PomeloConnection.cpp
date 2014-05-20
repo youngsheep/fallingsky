@@ -55,7 +55,8 @@ void on_conn_close(pc_client_t *client, const char *event, void *data) {
     }
 }
 
-PomeloConnection::PomeloConnection()
+PomeloConnection::PomeloConnection(IPomeloConnection& handler)
+    : m_protoHandler(handler)
 {
 	m_pClient = pc_client_new();
 	m_pClient->handshake_cb = hand_shake;
@@ -94,61 +95,33 @@ int PomeloConnection::Connect(const char* ip,int port)
 	return 0;
 }
 
-int PomeloConnection::DoRequest(RequestDeletegate* obj,json::Value& reqJson,const char* route)
+int PomeloConnection::DoRequest(json::Value& reqJson,const char* route)
 {
 	pc_request_t *request = pc_request_new();
     request->data = (void*)this;
     json_t* req = json_incref(reqJson.as_json());
 	pc_request(m_pClient, request, route, req, on_response);
-
-	std::map<int,RequestDeletegate*>::iterator itor = m_ReqObjMap.find(request->id);
-	if (itor != m_ReqObjMap.end())
-	{
-		itor->second = obj;
-	}
-	else
-	{
-		m_ReqObjMap.insert(std::pair<int,RequestDeletegate*>(request->id,obj));
-	}
-
 	return 0;
 }
 
-int PomeloConnection::RegisterEvent(PushEventListener* obj,const char* route)
+int PomeloConnection::RegisterEvent(const char* route)
 {
 	pc_add_listener(m_pClient, route, on_push_event);
-	std::map<std::string,PushEventListener*>::iterator itor = m_EventObjMap.find(std::string(route));
-	if (itor != m_EventObjMap.end())
-	{
-		itor->second = obj;
-	}
-	else
-	{
-		m_EventObjMap.insert(std::pair<std::string,PushEventListener*>(std::string(route),obj));
-	}
 	return 0;
 }
 
 void PomeloConnection::OnResponse(int reqId,json::Value res,const char* route)
 {
-    printf("%s |  data : %s  \n" , route, res.save_string());
+    const char* str = res.save_string();
+    printf("%s |  data : %s  \n" , route, str);
+    free((void*)str);
 
-	std::map<int,RequestDeletegate*>::iterator itor = m_ReqObjMap.find(reqId);
-	if (itor != m_ReqObjMap.end())
-	{
-		itor->second->RequestCallback(res,route);
-		m_ReqObjMap.erase(itor);
-	}
+	m_protoHandler.RequestCallback(res,route);
 }
 
 void PomeloConnection::OnEvent(const char* event,json::Value eventData)
 {
-	std::map<std::string,PushEventListener*>::iterator itor = m_EventObjMap.find(std::string(event));
-	if (itor != m_EventObjMap.end())
-	{
-		itor->second->PushCallback(eventData,event);
-		m_EventObjMap.erase(itor);
-	}
+	m_protoHandler.PushCallback(eventData,event);
 }
 
 void PomeloConnection::OnClose()

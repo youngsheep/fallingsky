@@ -3,36 +3,36 @@
 
 #include <map>
 #include <string>
+#include "jansson.hpp"
 
 #define PROTO_MAGIC 1101
 #define MAX_ROUTE_LEN 128
 
 struct pc_client_s;
-namespace json{
-	class Value;
+class IPomeloConnection
+{
+public:
+    virtual void RequestCallback(json::Value& data,const char* route) = 0;
+    virtual void PushCallback(json::Value& data,const char* route) = 0;
 };
 
-class RequestDeletegate;
-class PushEventListener;
 class PomeloConnection
 {
 public:
-    PomeloConnection();
+    PomeloConnection(IPomeloConnection& handler);
     ~PomeloConnection();
 
 	int Connect(const char* ip,int port);
 
-	int DoRequest(RequestDeletegate* obj,json::Value& reqJson,const char* route);
-	int RegisterEvent(PushEventListener* obj,const char* route);
+	int DoRequest(json::Value& reqJson,const char* route);
+	int RegisterEvent(const char* route);
 
 	void OnResponse(int reqId,json::Value res,const char* route);
 	void OnEvent(const char* event,json::Value eventData);
 	void OnClose();
 protected:
 	struct pc_client_s *m_pClient;
-	
-	std::map<int,RequestDeletegate*> m_ReqObjMap;
-	std::map<std::string,PushEventListener*> m_EventObjMap;
+	IPomeloConnection& m_protoHandler;
 
 };
 #endif
