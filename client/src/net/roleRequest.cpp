@@ -27,7 +27,7 @@ void GameProtoHandler::RoleCreateReq(const char* name)
     DoRequest(req,route,&GameProtoHandler::OnRoleCreate);
 }
 
-void GameProtoHandler::OnRoleCreate(json::Value data,const char* route)
+int GameProtoHandler::OnRoleCreate(json::Value data,const char* route)
 {
     printf("recv role create response!\n");
     int result = data["result"].as_integer();
@@ -40,6 +40,7 @@ void GameProtoHandler::OnRoleCreate(json::Value data,const char* route)
     }
 
     RemoveRequest(route);
+    return  result;
 }
 
 void GameProtoHandler::RoleInfoReq()
@@ -60,7 +61,7 @@ void GameProtoHandler::RoleInfoReq()
     DoRequest(req,route,&GameProtoHandler::OnRoleCreate);
 }
 
-void GameProtoHandler::OnRoleInfo(json::Value data,const char* route)
+int GameProtoHandler::OnRoleInfo(json::Value data,const char* route)
 {
     printf("recv role info response!\n");
     int result = data["result"].as_integer();
@@ -73,4 +74,5 @@ void GameProtoHandler::OnRoleInfo(json::Value data,const char* route)
     }
 
     RemoveRequest(route);
+    return result;
 }

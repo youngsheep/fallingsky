@@ -10,7 +10,9 @@
 
 FLPlayer::FLPlayer()
 {
-
+    SetUid("");
+    SetNickName("");
+    SetPortrait("");
 }
 
 void FLPlayer::InitBaseInfo(json::Value& data)
@@ -38,3 +40,11 @@ void FLPlayer::SetPortrait(const char* p)
     len = len > MAX_PORTRAIT_LEN ? MAX_PORTRAIT_LEN : len ;
     strncpy(m_portrait,p,len);
 }
+
+void FLPlayer::SetWeiboToken(const char* t)
+{
+    int len = strlen(t);
+    len = len > MAX_PORTRAIT_LEN ? MAX_PORTRAIT_LEN : len ;
+    strncpy(m_weiboToken,t,len);
+}
+

@@ -19,7 +19,7 @@ void GameProtoHandler::DoLogin(const char* uid,const char* access_token)
     FLPlayer::GetInstance().SetUid(uid);
 }
 
-void GameProtoHandler::OnLogin(json::Value data,const char* route)
+int GameProtoHandler::OnLogin(json::Value data,const char* route)
 {
     printf("recv login response!\n");
     int result = data["result"].as_integer();
@@ -42,4 +42,5 @@ void GameProtoHandler::OnLogin(json::Value data,const char* route)
         }
     }
     RemoveRequest(std::string(route));
+    return result;
 }

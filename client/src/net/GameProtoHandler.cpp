@@ -5,7 +5,10 @@ void GameProtoHandler::RequestCallback(json::Value& data,const char* route)
     std::map<std::string,ProtoCallBack>::iterator itor = m_reqCBMap.find(route);
     if (itor != m_reqCBMap.end())
     {
-        (this->*(itor->second))(data, route);
+        int result = (this->*(itor->second))(data, route);
+        for (std::set<IGameProtoHandler*>::iterator it = m_uiHandlerSet.begin(); it != m_uiHandlerSet.end(); it++) {
+            (*it)->Response(route, result);
+        }
     }
 }
 
@@ -14,7 +17,10 @@ void GameProtoHandler::PushCallback(json::Value& data,const char* route)
     std::map<std::string,ProtoCallBack>::iterator itor = m_pushCBMap.find(route);
     if (itor != m_pushCBMap.end())
     {
-        (this->*(itor->second))(data, route);
+        int result = (this->*(itor->second))(data, route);
+        for (std::set<IGameProtoHandler*>::iterator it = m_uiHandlerSet.begin(); it != m_uiHandlerSet.end(); it++) {
+            (*it)->Response(route, result);
+        }
     }
 }
 
@@ -61,4 +67,14 @@ void GameProtoHandler::AddAllPushEvent()
     AddPushEvent("roleBaseInfo",&GameProtoHandler::OnRoleBaseInfo);
     AddPushEvent("game.battleHandler.start",&GameProtoHandler::OnStartBattle);
     AddPushEvent("oppstate",&GameProtoHandler::OnOppState);
+}
+
+void GameProtoHandler::RegisterProtoHandler(IGameProtoHandler* handler)
+{
+    m_uiHandlerSet.insert(handler);
+}
+
+void GameProtoHandler::UnRegisterProtoHandler(IGameProtoHandler* handler)
+{
+    m_uiHandlerSet.erase(handler);
 }

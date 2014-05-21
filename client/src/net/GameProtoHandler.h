@@ -1,16 +1,18 @@
 #ifndef _NET_GAME_PROTO_HANDLER_H_
 #define _NET_GAME_PROTO_HANDLER_H_
 
+#include <set>
 #include "common/PomeloConnection.h"
 
 class IGameProtoHandler
 {
-    virtual void Response(std::string route,int result);
+public:
+    virtual void Response(std::string route,int result) = 0;
 };
 
 class GameProtoHandler : public IPomeloConnection 
 {
-    typedef void (GameProtoHandler::*ProtoCallBack)(json::Value data,const char* route);
+    typedef int (GameProtoHandler::*ProtoCallBack)(json::Value data,const char* route);
 public:
     static GameProtoHandler& GetInstance()
     {
@@ -30,23 +32,23 @@ public:
 
     //loginRequest
     void DoLogin(const char* uid,const char* access_token);
-    void OnLogin(json::Value data,const char* route);
+    int OnLogin(json::Value data,const char* route);
 
     //battleRequest
     void StartBattleReq();
-    void OnStartBattle(json::Value data,const char* route);
+    int OnStartBattle(json::Value data,const char* route);
     void BattleCmdReq(int battleid,int xpos,int ypos,int flag);
-    void OnBattleCmd(json::Value data,const char* route);
+    int OnBattleCmd(json::Value data,const char* route);
 
     //roleRequest
     void RoleCreateReq(const char* name);
-    void OnRoleCreate(json::Value data,const char* route);
+    int OnRoleCreate(json::Value data,const char* route);
     void RoleInfoReq();
-    void OnRoleInfo(json::Value data,const char* route);
+    int OnRoleInfo(json::Value data,const char* route);
 
     //push event
-    void OnRoleBaseInfo(json::Value data,const char* route);
-    void OnOppState(json::Value data,const char* route);
+    int OnRoleBaseInfo(json::Value data,const char* route);
+    int OnOppState(json::Value data,const char* route);
 
     bool IsWait(){return m_bWait;}
     void NeedWait(bool w){m_bWait = w;}
@@ -65,6 +67,8 @@ protected:
 protected:
     std::map<std::string ,ProtoCallBack> m_reqCBMap;
     std::map<std::string ,ProtoCallBack> m_pushCBMap;
+    
+    std::set<IGameProtoHandler*> m_uiHandlerSet;
 
 private:
     PomeloConnection m_pomeloConn;

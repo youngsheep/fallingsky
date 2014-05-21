@@ -14,6 +14,7 @@
 
 #define MAX_NICKNAME_LEN 128
 #define MAX_PORTRAIT_LEN 128
+#define MAX_TOKEN_LEN 128
 
 class FLPlayer 
 {
@@ -37,14 +38,17 @@ public:
     void SetNickName(const char* name);
     const char* GetPortrait(){return m_portrait;}
     void SetPortrait(const char* p);
-
+    const char* GetWeiboToken(){return m_weiboToken;}
+    void SetWeiboToken(const char* t);
+    
     FLBattle& GetBattle(){return m_battle;}
 protected:
     int m_pid;
     char m_uid[MAX_USERNAME_LEN];
     char m_nickname[MAX_NICKNAME_LEN];
     char m_portrait[MAX_PORTRAIT_LEN];
-
+    char m_weiboToken[MAX_TOKEN_LEN];
+    
     FLBattle m_battle;
 
 private:

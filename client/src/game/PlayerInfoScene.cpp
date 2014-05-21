@@ -8,8 +8,10 @@
 
 #include "PlayerInfoScene.h"
 #include "GameScene.h"
+#include "net/GameProtoHandler.h"
+#include "RegisterScene.h"
 
-//extern void registerWeiboLogin(cocos2d::CCObject* obj);
+extern void registerWeiboLogin();
 
 USING_NS_CC;
 
@@ -30,15 +32,49 @@ bool PlayerInfo::init()
     CCMenu* menu = CCMenu::create( item , NULL);
     addChild(menu);
     
+    GameProtoHandler::GetInstance().ConnectGameSvr("127.0.0.1", 3010);
+    
     return true;
+}
+
+void PlayerInfo::onEnter()
+{
+    GameProtoHandler::GetInstance().RegisterProtoHandler(this);
+    CCLayer::onEnter();
+}
+
+void PlayerInfo::onExit()
+{
+    GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
+    CCLayer::onExit();
 }
 
 void PlayerInfo::loginCallback(CCObject* pSender)
 {
-    //registerWeiboLogin(this);
-    CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
-    if (transition)
-    {
-        CCDirector::sharedDirector()->replaceScene(transition);
+    registerWeiboLogin();
+}
+
+void PlayerInfo::Response(std::string route,int result)
+{
+    if (route.compare("connector.entryHandler.entry") == 0) {
+        if (result == 100) {
+            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(2, RegisterLayer::scene());
+            if (transition)
+            {
+                CCDirector::sharedDirector()->replaceScene(transition);
+            }
+        }
+        else if(result == 0)
+        {
+            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
+            if (transition)
+            {
+                CCDirector::sharedDirector()->replaceScene(transition);
+            }
+        }
+        else if (result < 0)
+        {
+            
+        }
     }
 }

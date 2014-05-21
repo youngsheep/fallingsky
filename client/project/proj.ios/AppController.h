@@ -9,9 +9,11 @@
     RootViewController    *viewController;
     
     NSString* wbtoken;
+    NSString* wbuin;
 }
 
 @property (strong, retain) NSString* wbtoken;
+@property (strong, retain) NSString* wbuin;
 
 @end
 

@@ -3,6 +3,13 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "FLPlayer.h"
+#import "GameProtoHandler.h"
+
+void weiboUICallBack(const char* uid,const char* token)
+{
+    GameProtoHandler::GetInstance().DoLogin(uid, token);
+}
 
 @implementation AppController
 
@@ -13,6 +20,7 @@
 static AppDelegate s_sharedApplication;
 
 @synthesize wbtoken;
+@synthesize wbuin;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
@@ -143,19 +151,30 @@ static AppDelegate s_sharedApplication;
     }
     else if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
-        NSString *title = @"认证结果";
-        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
-                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"确定"
-                                              otherButtonTitles:nil];
+//        NSString *title = @"认证结果";
+//        NSString *message = [NSString stringWithFormat:@"响应状态: %d\nresponse.userId: %@\nresponse.accessToken: %@\n响应UserInfo数据: %@\n原请求UserInfo数据: %@",
+//                             response.statusCode, [(WBAuthorizeResponse *)response userID], [(WBAuthorizeResponse *)response accessToken], response.userInfo, response.requestUserInfo];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+//                                                        message:message
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"确定"
+//                                              otherButtonTitles:nil];
         
         self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
+        self.wbuin = [(WBAuthorizeResponse *)response userID];
         
-        [alert show];
-        [alert release];
+        char token[MAX_TOKEN_LEN] = {0};
+        [self.wbtoken getCString:token maxLength:MAX_TOKEN_LEN encoding:NSUTF8StringEncoding];
+        FLPlayer::GetInstance().SetWeiboToken(token);
+        
+        char uid[MAX_USERNAME_LEN] = {0};
+        [self.wbuin getCString:uid maxLength:MAX_USERNAME_LEN encoding:NSUTF8StringEncoding];
+        FLPlayer::GetInstance().SetUid(uid);
+        
+        weiboUICallBack(uid,token);
+        
+        //[alert show];
+        //[alert release];
     }
 }
 

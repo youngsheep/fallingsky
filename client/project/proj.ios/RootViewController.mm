@@ -1,7 +1,6 @@
 #import "RootViewController.h"
-#import "cocos2d.h"
 
-void registerWeiboLogin(cocos2d::CCObject* obj)
+void registerWeiboLogin()
 {
     WBAuthorizeRequest *request = [WBAuthorizeRequest request];
     request.redirectURI = kRedirectURI;

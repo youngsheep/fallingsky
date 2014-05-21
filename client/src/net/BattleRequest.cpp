@@ -18,7 +18,7 @@ void GameProtoHandler::StartBattleReq()
     DoRequest(req,route,&GameProtoHandler::OnStartBattle);
 }
 
-void GameProtoHandler::OnStartBattle(json::Value data,const char* route)
+int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
 {
     int result = data["result"].as_integer();
     if (result == 0)
@@ -31,6 +31,7 @@ void GameProtoHandler::OnStartBattle(json::Value data,const char* route)
         printf("fail to start battle!\n");
     }
     RemoveRequest(route);
+    return result;
 }
 
 void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
@@ -53,8 +54,9 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     DoRequest(req,route,&GameProtoHandler::OnBattleCmd);
 }
 
-void GameProtoHandler::OnBattleCmd(json::Value data,const char* route)
+int GameProtoHandler::OnBattleCmd(json::Value data,const char* route)
 {
     printf("recv battle cmd resp!\n");
     RemoveRequest(route);
+    return 0;
 }

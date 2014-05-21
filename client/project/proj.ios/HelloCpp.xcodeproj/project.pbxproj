@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624316D4A1E8000847F2 /* AppController.mm */; };
 		1AC3624B16D4A1E8000847F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624516D4A1E8000847F2 /* main.m */; };
-		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
-		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
+		1B213FB1192CE52300FE3C95 /* GameProtoHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FAD192CE52300FE3C95 /* GameProtoHandler.cpp */; };
+		1B213FB2192CE52300FE3C95 /* pushEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FAF192CE52300FE3C95 /* pushEventHandler.cpp */; };
+		1B213FB3192CE52300FE3C95 /* roleRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FB0192CE52300FE3C95 /* roleRequest.cpp */; };
+		1B213FCC192CE96400FE3C95 /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FBF192CE93800FE3C95 /* libjansson.a */; };
+		1B213FCD192CE96400FE3C95 /* libpomelo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FB9192CE92200FE3C95 /* libpomelo.a */; };
+		1B213FCE192CE96400FE3C95 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FC5192CE94A00FE3C95 /* libuv.a */; };
+		1B213FD2192CFCB500FE3C95 /* FLTextInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FD0192CFCB500FE3C95 /* FLTextInput.cpp */; };
 		1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */; };
 		1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */; };
 		1B5347C61913D38C00EB74AE /* PomeloConnection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5347B01913D38C00EB74AE /* PomeloConnection.cpp */; };
@@ -24,14 +28,12 @@
 		1B5348BF1913D5AA00EB74AE /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348BC1913D53F00EB74AE /* libcocos2dx.a */; };
 		1B5348C21913D65100EB74AE /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348C01913D65100EB74AE /* libcurl.a */; };
 		1B5348C31913D65100EB74AE /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348C11913D65100EB74AE /* libwebp.a */; };
-		1B5348DD1913DD1200EB74AE /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348CF1913DCBF00EB74AE /* libjansson.a */; };
-		1B5348DE1913DD1200EB74AE /* libpomelo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348C91913DCAC00EB74AE /* libpomelo.a */; };
-		1B5348DF1913DD1200EB74AE /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5348D61913DCEB00EB74AE /* libuv.a */; };
 		1B5348E31913DDA400EB74AE /* bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E01913DDA400EB74AE /* bg.tmx */; };
 		1B5348E41913DDA400EB74AE /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E11913DDA400EB74AE /* block.png */; };
 		1B5348E51913DDA400EB74AE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E21913DDA400EB74AE /* fonts */; };
 		1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5348E91917C6BE00EB74AE /* GameBlock.cpp */; };
 		1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */; };
+		1B6BB73C19265D4300DAC401 /* RegisterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B6BB73A19265D4300DAC401 /* RegisterScene.cpp */; };
 		1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE20CF191E30720072627B /* FLBattle.cpp */; };
 		1BDB389E1924F48B00380F47 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BDB389B1924F48B00380F47 /* libWeiboSDK.a */; };
 		1BDB389F1924F48B00380F47 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BDB389C1924F48B00380F47 /* WeiboSDK.bundle */; };
@@ -55,6 +57,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1B213FB8192CE92200FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 07390FDF2C637EBD093867CC;
+			remoteInfo = libpomelo;
+		};
+		1B213FBE192CE93800FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 59F286A69EC2A309743023EC;
+			remoteInfo = jansson;
+		};
+		1B213FC4192CE94A00FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1366FBDA3B41EA03E9CC86CA;
+			remoteInfo = libuv;
+		};
+		1B213FC6192CE95400FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 178071661CB321BB5A46AC92;
+			remoteInfo = libuv;
+		};
+		1B213FC8192CE95B00FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A42BD6BC281DD5AD92086C4D;
+			remoteInfo = jansson;
+		};
+		1B213FCA192CE95B00FE3C95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FFDDF0E039E6E9D6BDF304D9;
+			remoteInfo = libpomelo;
+		};
 		1B5348BB1913D53F00EB74AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B5348B71913D53E00EB74AE /* cocos2dx.xcodeproj */;
@@ -69,48 +113,6 @@
 			remoteGlobalIDString = 1551A33E158F2AB200E66CFE;
 			remoteInfo = cocos2dx;
 		};
-		1B5348C81913DCAC00EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348C41913DCAC00EB74AE /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 07390FDF2C637EBD093867CC;
-			remoteInfo = libpomelo;
-		};
-		1B5348CE1913DCBF00EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348CA1913DCBF00EB74AE /* jansson.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 59F286A69EC2A309743023EC;
-			remoteInfo = jansson;
-		};
-		1B5348D51913DCEB00EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348D11913DCEB00EB74AE /* uv.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1366FBDA3B41EA03E9CC86CA;
-			remoteInfo = libuv;
-		};
-		1B5348D71913DD0400EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348D11913DCEB00EB74AE /* uv.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 178071661CB321BB5A46AC92;
-			remoteInfo = libuv;
-		};
-		1B5348D91913DD0400EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348CA1913DCBF00EB74AE /* jansson.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A42BD6BC281DD5AD92086C4D;
-			remoteInfo = jansson;
-		};
-		1B5348DB1913DD0400EB74AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B5348C41913DCAC00EB74AE /* pomelo.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FFDDF0E039E6E9D6BDF304D9;
-			remoteInfo = libpomelo;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -121,16 +123,20 @@
 		1AC3624516D4A1E8000847F2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		1AC3624616D4A1E8000847F2 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
-		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
+		1B213FAD192CE52300FE3C95 /* GameProtoHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameProtoHandler.cpp; sourceTree = "<group>"; };
+		1B213FAE192CE52300FE3C95 /* GameProtoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameProtoHandler.h; sourceTree = "<group>"; };
+		1B213FAF192CE52300FE3C95 /* pushEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pushEventHandler.cpp; sourceTree = "<group>"; };
+		1B213FB0192CE52300FE3C95 /* roleRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roleRequest.cpp; sourceTree = "<group>"; };
+		1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pomelo.xcodeproj; path = ../../deps/libpomelo/pomelo.xcodeproj; sourceTree = "<group>"; };
+		1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jansson.xcodeproj; path = ../../deps/libpomelo/deps/jansson/jansson.xcodeproj; sourceTree = "<group>"; };
+		1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = uv.xcodeproj; path = ../../deps/libpomelo/deps/uv/uv.xcodeproj; sourceTree = "<group>"; };
+		1B213FD0192CFCB500FE3C95 /* FLTextInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLTextInput.cpp; sourceTree = "<group>"; };
+		1B213FD1192CFCB500FE3C95 /* FLTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTextInput.h; sourceTree = "<group>"; };
 		1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleRequest.cpp; sourceTree = "<group>"; };
-		1B3E73BE191BCD0100DBB93C /* BattleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleRequest.h; sourceTree = "<group>"; };
 		1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FLPlayer.cpp; path = ../../src/entity/FLPlayer.cpp; sourceTree = "<group>"; };
 		1B3E73C2191BE39200DBB93C /* FLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLPlayer.h; path = ../../src/entity/FLPlayer.h; sourceTree = "<group>"; };
-		1B5347AD1913D38C00EB74AE /* ConnectionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionObject.h; sourceTree = "<group>"; };
 		1B5347AE1913D38C00EB74AE /* jansson-impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "jansson-impl.hpp"; sourceTree = "<group>"; };
 		1B5347AF1913D38C00EB74AE /* jansson.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = jansson.hpp; sourceTree = "<group>"; };
 		1B5347B01913D38C00EB74AE /* PomeloConnection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PomeloConnection.cpp; sourceTree = "<group>"; };
@@ -147,13 +153,9 @@
 		1B5347C11913D38C00EB74AE /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		1B5347C21913D38C00EB74AE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		1B5347C41913D38C00EB74AE /* LoginRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginRequest.cpp; sourceTree = "<group>"; };
-		1B5347C51913D38C00EB74AE /* LoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequest.h; sourceTree = "<group>"; };
 		1B5348B71913D53E00EB74AE /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../deps/cocos2dx/cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		1B5348C01913D65100EB74AE /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1B5348C11913D65100EB74AE /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = ../../deps/cocos2dx/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
-		1B5348C41913DCAC00EB74AE /* pomelo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pomelo.xcodeproj; path = ../../deps/libpomelo/pomelo.xcodeproj; sourceTree = "<group>"; };
-		1B5348CA1913DCBF00EB74AE /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jansson.xcodeproj; path = ../../deps/libpomelo/deps/jansson/jansson.xcodeproj; sourceTree = "<group>"; };
-		1B5348D11913DCEB00EB74AE /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = uv.xcodeproj; path = ../../deps/libpomelo/deps/uv/uv.xcodeproj; sourceTree = "<group>"; };
 		1B5348E01913DDA400EB74AE /* bg.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = bg.tmx; path = ../resources/bg.tmx; sourceTree = "<group>"; };
 		1B5348E11913DDA400EB74AE /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block.png; path = ../resources/block.png; sourceTree = "<group>"; };
 		1B5348E21913DDA400EB74AE /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../resources/fonts; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 		1B5348EA1917C6BE00EB74AE /* GameBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBlock.h; sourceTree = "<group>"; };
 		1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerInfoScene.cpp; sourceTree = "<group>"; };
 		1B536F0C19210BA90042886E /* PlayerInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoScene.h; sourceTree = "<group>"; };
+		1B6BB73A19265D4300DAC401 /* RegisterScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegisterScene.cpp; sourceTree = "<group>"; };
+		1B6BB73B19265D4300DAC401 /* RegisterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterScene.h; sourceTree = "<group>"; };
 		1BAE20CF191E30720072627B /* FLBattle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FLBattle.cpp; path = ../../src/entity/FLBattle.cpp; sourceTree = "<group>"; };
 		1BAE20D0191E30720072627B /* FLBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FLBattle.h; path = ../../src/entity/FLBattle.h; sourceTree = "<group>"; };
 		1BDB389B1924F48B00380F47 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = ../../deps/weibo_ios_sdk/libWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
@@ -192,9 +196,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B5348DD1913DD1200EB74AE /* libjansson.a in Frameworks */,
-				1B5348DE1913DD1200EB74AE /* libpomelo.a in Frameworks */,
-				1B5348DF1913DD1200EB74AE /* libuv.a in Frameworks */,
+				1B213FCC192CE96400FE3C95 /* libjansson.a in Frameworks */,
+				1B213FCD192CE96400FE3C95 /* libpomelo.a in Frameworks */,
+				1B213FCE192CE96400FE3C95 /* libuv.a in Frameworks */,
 				1B5348C21913D65100EB74AE /* libcurl.a in Frameworks */,
 				1B5348C31913D65100EB74AE /* libwebp.a in Frameworks */,
 				1BDB389E1924F48B00380F47 /* libWeiboSDK.a in Frameworks */,
@@ -272,6 +276,30 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		1B213FB5192CE92200FE3C95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B213FB9192CE92200FE3C95 /* libpomelo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B213FBB192CE93800FE3C95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B213FBF192CE93800FE3C95 /* libjansson.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B213FC1192CE94A00FE3C95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B213FC5192CE94A00FE3C95 /* libuv.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1B3E73C0191BE35800DBB93C /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,13 +326,14 @@
 		1B5347AC1913D38C00EB74AE /* common */ = {
 			isa = PBXGroup;
 			children = (
-				1B5347AD1913D38C00EB74AE /* ConnectionObject.h */,
 				1B5347AE1913D38C00EB74AE /* jansson-impl.hpp */,
 				1B5347AF1913D38C00EB74AE /* jansson.hpp */,
 				1B5347B01913D38C00EB74AE /* PomeloConnection.cpp */,
 				1B5347B11913D38C00EB74AE /* PomeloConnection.h */,
 				1B5347B21913D38C00EB74AE /* ResMgr.cpp */,
 				1B5347B31913D38C00EB74AE /* ResMgr.h */,
+				1B213FD0192CFCB500FE3C95 /* FLTextInput.cpp */,
+				1B213FD1192CFCB500FE3C95 /* FLTextInput.h */,
 			);
 			name = common;
 			path = ../../src/common;
@@ -342,6 +371,8 @@
 				1B5347C21913D38C00EB74AE /* GameScene.h */,
 				1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */,
 				1B536F0C19210BA90042886E /* PlayerInfoScene.h */,
+				1B6BB73A19265D4300DAC401 /* RegisterScene.cpp */,
+				1B6BB73B19265D4300DAC401 /* RegisterScene.h */,
 			);
 			name = game;
 			path = ../../src/game;
@@ -350,10 +381,12 @@
 		1B5347C31913D38C00EB74AE /* net */ = {
 			isa = PBXGroup;
 			children = (
+				1B213FAD192CE52300FE3C95 /* GameProtoHandler.cpp */,
+				1B213FAE192CE52300FE3C95 /* GameProtoHandler.h */,
+				1B213FAF192CE52300FE3C95 /* pushEventHandler.cpp */,
+				1B213FB0192CE52300FE3C95 /* roleRequest.cpp */,
 				1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */,
-				1B3E73BE191BCD0100DBB93C /* BattleRequest.h */,
 				1B5347C41913D38C00EB74AE /* LoginRequest.cpp */,
-				1B5347C51913D38C00EB74AE /* LoginRequest.h */,
 			);
 			name = net;
 			path = ../../src/net;
@@ -367,38 +400,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1B5348C51913DCAC00EB74AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1B5348C91913DCAC00EB74AE /* libpomelo.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1B5348CB1913DCBF00EB74AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1B5348CF1913DCBF00EB74AE /* libjansson.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		1B5348D01913DCCA00EB74AE /* libpomelo */ = {
 			isa = PBXGroup;
 			children = (
-				1B5348D11913DCEB00EB74AE /* uv.xcodeproj */,
-				1B5348CA1913DCBF00EB74AE /* jansson.xcodeproj */,
-				1B5348C41913DCAC00EB74AE /* pomelo.xcodeproj */,
+				1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */,
+				1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */,
+				1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */,
 			);
 			name = libpomelo;
-			sourceTree = "<group>";
-		};
-		1B5348D21913DCEB00EB74AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1B5348D61913DCEB00EB74AE /* libuv.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		1BDB389A1924F47000380F47 /* weibosdk */ = {
@@ -453,9 +462,6 @@
 				1B5348E01913DDA400EB74AE /* bg.tmx */,
 				1B5348E11913DDA400EB74AE /* block.png */,
 				1B5348E21913DDA400EB74AE /* fonts */,
-				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
-				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
-				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 				D41A0AD0160F154A004552AE /* Default-568h@2x.png */,
 				7855E0DF153FEF240059DD9A /* Default.png */,
 				D446FD6D16102124000ADA7B /* Default@2x.png */,
@@ -482,9 +488,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				1B5348D81913DD0400EB74AE /* PBXTargetDependency */,
-				1B5348DA1913DD0400EB74AE /* PBXTargetDependency */,
-				1B5348DC1913DD0400EB74AE /* PBXTargetDependency */,
+				1B213FC9192CE95B00FE3C95 /* PBXTargetDependency */,
+				1B213FCB192CE95B00FE3C95 /* PBXTargetDependency */,
+				1B213FC7192CE95400FE3C95 /* PBXTargetDependency */,
 				1B5348BE1913D57900EB74AE /* PBXTargetDependency */,
 			);
 			name = HelloCpp;
@@ -518,16 +524,16 @@
 					ProjectRef = 1B5348B71913D53E00EB74AE /* cocos2dx.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B5348CB1913DCBF00EB74AE /* Products */;
-					ProjectRef = 1B5348CA1913DCBF00EB74AE /* jansson.xcodeproj */;
+					ProductGroup = 1B213FBB192CE93800FE3C95 /* Products */;
+					ProjectRef = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B5348C51913DCAC00EB74AE /* Products */;
-					ProjectRef = 1B5348C41913DCAC00EB74AE /* pomelo.xcodeproj */;
+					ProductGroup = 1B213FB5192CE92200FE3C95 /* Products */;
+					ProjectRef = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B5348D21913DCEB00EB74AE /* Products */;
-					ProjectRef = 1B5348D11913DCEB00EB74AE /* uv.xcodeproj */;
+					ProductGroup = 1B213FC1192CE94A00FE3C95 /* Products */;
+					ProjectRef = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -538,32 +544,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		1B213FB9192CE92200FE3C95 /* libpomelo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libpomelo.a;
+			remoteRef = 1B213FB8192CE92200FE3C95 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B213FBF192CE93800FE3C95 /* libjansson.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjansson.a;
+			remoteRef = 1B213FBE192CE93800FE3C95 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B213FC5192CE94A00FE3C95 /* libuv.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libuv.a;
+			remoteRef = 1B213FC4192CE94A00FE3C95 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		1B5348BC1913D53F00EB74AE /* libcocos2dx.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libcocos2dx.a;
 			remoteRef = 1B5348BB1913D53F00EB74AE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B5348C91913DCAC00EB74AE /* libpomelo.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libpomelo.a;
-			remoteRef = 1B5348C81913DCAC00EB74AE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B5348CF1913DCBF00EB74AE /* libjansson.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjansson.a;
-			remoteRef = 1B5348CE1913DCBF00EB74AE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B5348D61913DCEB00EB74AE /* libuv.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libuv.a;
-			remoteRef = 1B5348D51913DCEB00EB74AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -581,11 +587,8 @@
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
-				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
-				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				1B5348E31913DDA400EB74AE /* bg.tmx in Resources */,
 				1BDB389F1924F48B00380F47 /* WeiboSDK.bundle in Resources */,
-				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				1B5348E41913DDA400EB74AE /* block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -598,16 +601,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B5347CC1913D38C00EB74AE /* GameScene.cpp in Sources */,
+				1B213FD2192CFCB500FE3C95 /* FLTextInput.cpp in Sources */,
+				1B213FB1192CE52300FE3C95 /* GameProtoHandler.cpp in Sources */,
 				1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */,
 				1B5347C91913D38C00EB74AE /* testConfigHolder.cpp in Sources */,
+				1B213FB2192CE52300FE3C95 /* pushEventHandler.cpp in Sources */,
 				1B5347CB1913D38C00EB74AE /* AppDelegate.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
 				1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */,
 				1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */,
 				1B5347C61913D38C00EB74AE /* PomeloConnection.cpp in Sources */,
 				1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */,
+				1B213FB3192CE52300FE3C95 /* roleRequest.cpp in Sources */,
 				1B5347C71913D38C00EB74AE /* ResMgr.cpp in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
+				1B6BB73C19265D4300DAC401 /* RegisterScene.cpp in Sources */,
 				1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */,
 				1B5347CD1913D38C00EB74AE /* LoginRequest.cpp in Sources */,
 				1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */,
@@ -617,25 +625,25 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1B213FC7192CE95400FE3C95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libuv;
+			targetProxy = 1B213FC6192CE95400FE3C95 /* PBXContainerItemProxy */;
+		};
+		1B213FC9192CE95B00FE3C95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = jansson;
+			targetProxy = 1B213FC8192CE95B00FE3C95 /* PBXContainerItemProxy */;
+		};
+		1B213FCB192CE95B00FE3C95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libpomelo;
+			targetProxy = 1B213FCA192CE95B00FE3C95 /* PBXContainerItemProxy */;
+		};
 		1B5348BE1913D57900EB74AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = cocos2dx;
 			targetProxy = 1B5348BD1913D57900EB74AE /* PBXContainerItemProxy */;
-		};
-		1B5348D81913DD0400EB74AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libuv;
-			targetProxy = 1B5348D71913DD0400EB74AE /* PBXContainerItemProxy */;
-		};
-		1B5348DA1913DD0400EB74AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = jansson;
-			targetProxy = 1B5348D91913DD0400EB74AE /* PBXContainerItemProxy */;
-		};
-		1B5348DC1913DD0400EB74AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libpomelo;
-			targetProxy = 1B5348DB1913DD0400EB74AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

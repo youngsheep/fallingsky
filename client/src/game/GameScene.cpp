@@ -21,7 +21,6 @@ CCScene* FLGame::scene()
     eneLayer->setPositionX(480);
     scene->addChild(eneLayer,1,enuEnemyGameArea_Tag);
     
-    //PomeloConnection::getInstance().Connect("127.0.0.1", 3010);
     //FLGame::m_loginReq.DoLogin();
     //FLGame::m_battle.GetRequest().StartBattleReq();
     
