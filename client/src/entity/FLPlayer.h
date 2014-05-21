@@ -28,11 +28,11 @@ public:
     
     void InitBaseInfo(json::Value& data);
 
-    int GetPlayerID(){return m_uid;}
-    void SetPlayerID(int id){m_uid = id;}
+    int GetPlayerID(){return m_pid;}
+    void SetPlayerID(int id){m_pid = id;}
 
-    const char* GetUserName(){return m_username;}
-    void SetUserName(const char* name);
+    const char* GetUid(){return m_uid;}
+    void SetUid(const char* uid);
     const char* GetNickName(){return m_nickname;}
     void SetNickName(const char* name);
     const char* GetPortrait(){return m_portrait;}
@@ -40,8 +40,8 @@ public:
 
     FLBattle& GetBattle(){return m_battle;}
 protected:
-    int m_uid;
-    char m_username[MAX_USERNAME_LEN];
+    int m_pid;
+    char m_uid[MAX_USERNAME_LEN];
     char m_nickname[MAX_NICKNAME_LEN];
     char m_portrait[MAX_PORTRAIT_LEN];
 

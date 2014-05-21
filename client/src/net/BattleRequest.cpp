@@ -42,14 +42,14 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     json::Value head(json::object());
 
     head.set_key("magic",json::Value(PROTO_MAGIC));
-    head.set_key("playerid",json::Value(0));
+    head.set_key("pid",json::Value(0));
 
     req.set_key("head",head);
     req.set_key("battleid",json::Value(battleid));
     req.set_key("xPos",json::Value(xpos));
     req.set_key("yPos",json::Value(ypos));
     req.set_key("rotateFlag",json::Value(flag));
-
+     
     DoRequest(req,route,&GameProtoHandler::OnBattleCmd);
 }
 

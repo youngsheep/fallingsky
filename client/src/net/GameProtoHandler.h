@@ -29,7 +29,7 @@ public:
     int ConnectGameSvr(const char* ip,int port);
 
     //loginRequest
-    void DoLogin(const char* name);
+    void DoLogin(const char* uid,const char* access_token);
     void OnLogin(json::Value data,const char* route);
 
     //battleRequest

@@ -9,16 +9,14 @@ int port = 3010;
 int main() {
     char input[64];
 
-    testConfigHolder testHolder;
-    testHolder.LoadConfig();
+    //testConfigHolder testHolder;
+    //testHolder.LoadConfig();
 
     FLPlayer& player = FLPlayer::GetInstance();
 	GameProtoHandler& handler = GameProtoHandler::GetInstance();
     handler.ConnectGameSvr(ip,port);
     handler.AddAllPushEvent();
-    printf("Input username to login :");
-    scanf("%s", input);
-    handler.DoLogin(input);
+    handler.DoLogin("1449516883","2.00ZYBGaBrInXhC5fd379312ddlQZkB");
 
     while(1) {
         if ( !handler.IsWait())

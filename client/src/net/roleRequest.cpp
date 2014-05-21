@@ -11,11 +11,18 @@ void GameProtoHandler::RoleCreateReq(const char* name)
     json::Value head(json::object());
 
     head.set_key("magic",json::Value(PROTO_MAGIC));
-    head.set_key("playerid",json::Value(player.GetPlayerID()));
-    head.set_key("username",json::Value(player.GetUserName()));
+    head.set_key("pid",json::Value(player.GetPlayerID()));
+    head.set_key("uid",json::Value(player.GetUid()));
 
     req.set_key("head",head);
-    req.set_key("nickname",json::Value(name));
+    if (name == NULL || strlen(name) == 0)
+    {
+        req.set_key("nickname",json::Value(player.GetNickName()));
+    }
+    else
+    {
+        req.set_key("nickname",json::Value(name));
+    }
 
     DoRequest(req,route,&GameProtoHandler::OnRoleCreate);
 }
@@ -45,8 +52,8 @@ void GameProtoHandler::RoleInfoReq()
     json::Value head(json::object());
 
     head.set_key("magic",json::Value(PROTO_MAGIC));
-    head.set_key("playerid",json::Value(player.GetPlayerID()));
-    head.set_key("username",json::Value(player.GetUserName()));
+    head.set_key("pid",json::Value(player.GetPlayerID()));
+    head.set_key("uid",json::Value(player.GetUid()));
 
     req.set_key("head",head);
 

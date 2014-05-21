@@ -18,11 +18,11 @@ void FLPlayer::InitBaseInfo(json::Value& data)
 
 }
 
-void FLPlayer::SetUserName(const char* name)
+void FLPlayer::SetUid(const char* uid)
 {
-    int len = strlen(name);
+    int len = strlen(uid);
     len = len > MAX_USERNAME_LEN ? MAX_USERNAME_LEN : len ;
-    strncpy(m_username,name,len);
+    strncpy(m_uid,uid,len);
 }
 
 void FLPlayer::SetNickName(const char* name)

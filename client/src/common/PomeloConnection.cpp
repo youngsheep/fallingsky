@@ -1,5 +1,4 @@
 #include "PomeloConnection.h"
-#include "ConnectionObject.h"
 #ifdef _WIN32
 #include <winsock2.h>
 #else
