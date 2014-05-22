@@ -131,18 +131,26 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\common\FLTextInput.cpp" />
     <ClCompile Include="..\..\src\common\PomeloConnection.cpp" />
     <ClCompile Include="..\..\src\common\ResMgr.cpp" />
     <ClCompile Include="..\..\src\config\srcgen\testConfigHolder.cpp" />
+    <ClCompile Include="..\..\src\entity\FLBattle.cpp" />
+    <ClCompile Include="..\..\src\entity\FLPlayer.cpp" />
     <ClCompile Include="..\..\src\game\AppDelegate.cpp" />
     <ClCompile Include="..\..\src\game\GameBlock.cpp" />
     <ClCompile Include="..\..\src\game\GameScene.cpp" />
     <ClCompile Include="..\..\src\game\PlayerInfoScene.cpp" />
+    <ClCompile Include="..\..\src\game\RegisterScene.cpp" />
+    <ClCompile Include="..\..\src\net\BattleRequest.cpp" />
+    <ClCompile Include="..\..\src\net\GameProtoHandler.cpp" />
     <ClCompile Include="..\..\src\net\LoginRequest.cpp" />
+    <ClCompile Include="..\..\src\net\pushEventHandler.cpp" />
+    <ClCompile Include="..\..\src\net\roleRequest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\common\ConnectionObject.h" />
+    <ClInclude Include="..\..\src\common\FLTextInput.h" />
     <ClInclude Include="..\..\src\common\jansson-impl.hpp" />
     <ClInclude Include="..\..\src\common\jansson.hpp" />
     <ClInclude Include="..\..\src\common\PomeloConnection.h" />
@@ -150,12 +158,15 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\..\src\config\ConfigHolder.h" />
     <ClInclude Include="..\..\src\config\ConfigHolder.hpp" />
     <ClInclude Include="..\..\src\config\srcgen\testConfigHolder.h" />
+    <ClInclude Include="..\..\src\entity\FLBattle.h" />
+    <ClInclude Include="..\..\src\entity\FLPlayer.h" />
     <ClInclude Include="..\..\src\game\AppDelegate.h" />
     <ClInclude Include="..\..\src\game\AppMacros.h" />
     <ClInclude Include="..\..\src\game\GameBlock.h" />
     <ClInclude Include="..\..\src\game\GameScene.h" />
     <ClInclude Include="..\..\src\game\PlayerInfoScene.h" />
-    <ClInclude Include="..\..\src\net\LoginRequest.h" />
+    <ClInclude Include="..\..\src\game\RegisterScene.h" />
+    <ClInclude Include="..\..\src\net\GameProtoHandler.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

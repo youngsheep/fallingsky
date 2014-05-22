@@ -5,6 +5,8 @@
 #include <unistd.h>
 #endif
 #include "pomelo.h"
+#include "CCDirector.h"
+#include "CCScheduler.h"
 
 static std::map<pc_client_t*,PomeloConnection*> s_connMap;
 
@@ -42,6 +44,11 @@ void on_push_event(pc_client_t *client, const char *event, void *data) {
 int hand_shake(pc_client_t *client, json_t *msg)
 {
 	printf("hand shake success.\n");
+    PomeloConnection* conn = get_conn(client);
+    if (conn)
+    {
+        cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(conn,1,false);
+    }
 	return 0;
 }
 
@@ -50,8 +57,10 @@ void on_conn_close(pc_client_t *client, const char *event, void *data) {
     PomeloConnection* conn = get_conn(client);
     if (conn)
     {
+        cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleUpdateForTarget(conn);
         conn->OnClose();
     }
+
 }
 
 PomeloConnection::PomeloConnection(IPomeloConnection& handler)
@@ -97,7 +106,6 @@ int PomeloConnection::Connect(const char* ip,int port)
 int PomeloConnection::DoRequest(json::Value& reqJson,const char* route)
 {
 	pc_request_t *request = pc_request_new();
-    request->data = (void*)this;
     json_t* req = json_incref(reqJson.as_json());
 	pc_request(m_pClient, request, route, req, on_response);
 	return 0;
@@ -112,15 +120,19 @@ int PomeloConnection::RegisterEvent(const char* route)
 void PomeloConnection::OnResponse(int reqId,json::Value res,const char* route)
 {
     const char* str = res.save_string();
-    printf("%s |  data : %s  \n" , route, str);
+    printf("response :%s |  data : %s  \n" , route, str);
     free((void*)str);
 
-	m_protoHandler.RequestCallback(res,route);
+	AddPomeloMsg(route,res,false);
 }
 
 void PomeloConnection::OnEvent(const char* event,json::Value eventData)
 {
-	m_protoHandler.PushCallback(eventData,event);
+    const char* str = eventData.save_string();
+    printf("push :%s |  data : %s  \n" , event, str);
+    free((void*)str);
+
+	AddPomeloMsg(event,eventData,true);
 }
 
 void PomeloConnection::OnClose()
@@ -128,3 +140,23 @@ void PomeloConnection::OnClose()
 
 }
 
+void PomeloConnection::update(float dt)
+{
+    uv_mutex_lock(&m_pClient->mutex);
+
+    for (std::list<PomeloMsg>::iterator it = m_msgList.begin() ; it != m_msgList.end(); it++)
+    {
+        PomeloMsg& msg = (*it);
+        m_protoHandler.ProtoHandlerCallback(msg._data,msg._route,msg._isPush);
+    }
+
+    m_msgList.clear();
+    uv_mutex_unlock(&m_pClient->mutex);
+}
+
+void PomeloConnection::AddPomeloMsg(const char* route,json::Value data ,bool isPush)
+{
+    uv_mutex_lock(&m_pClient->mutex);
+    m_msgList.push_back(PomeloMsg(route,data,isPush));
+    uv_mutex_unlock(&m_pClient->mutex);
+}

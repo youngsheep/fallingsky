@@ -14,7 +14,7 @@ void GameProtoHandler::DoLogin(const char* uid,const char* access_token)
     req.set_key("head",head);
 	req.set_key("token",json::Value(access_token));
 
-    DoRequest(req,route,&GameProtoHandler::OnLogin);
+    DoRequest(req,route,pomelo_selector(GameProtoHandler::OnLogin));
 
     FLPlayer::GetInstance().SetUid(uid);
 }
@@ -41,6 +41,6 @@ int GameProtoHandler::OnLogin(json::Value data,const char* route)
             FLPlayer::GetInstance().SetUid("");
         }
     }
-    RemoveRequest(std::string(route));
+    RemoveCallBack(std::string(route));
     return result;
 }

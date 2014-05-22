@@ -27,15 +27,17 @@ bool RegisterLayer::init()
 {
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
-    //FLTextInput* TextField = FLTextInput::textFieldWithPlaceHolder("Input Text", "Marker Felt", 30);
-    //TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 200));
-    //this->addChild(TextField);
+    CCLabelTTF* label = CCLabelTTF::create("input nickname:","Marker Felt", 30);
+    label->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 + 100));
+    addChild(label);
+
+    FLTextInput* TextField = FLTextInput::textFieldWithPlaceHolder("Input Text", "Marker Felt", 30);
+    TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 100));
+    this->addChild(TextField);
     
-    CCMenuItemFont *item = CCMenuItemFont::create(" Register ", this, menu_selector(RegisterLayer::registerCallback) );
-    item->setFontSizeObj(20);
-    item->setFontName("Marker Felt");
-    
+    CCMenuItemFont *item = CCMenuItemFont::create("aaaaaaaaaaaaaaaaaaaaaa", this, menu_selector(RegisterLayer::registerCallback) );
     CCMenu* menu = CCMenu::create( item , NULL);
+    TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 200));
     addChild(menu);
     
     return true;

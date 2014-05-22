@@ -15,7 +15,7 @@ void GameProtoHandler::StartBattleReq()
     req.set_key("head",head);
     req.set_key("type",json::Value(0));
 
-    DoRequest(req,route,&GameProtoHandler::OnStartBattle);
+    DoRequest(req,route,pomelo_selector(GameProtoHandler::OnStartBattle));
 }
 
 int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
@@ -30,7 +30,7 @@ int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
     {
         printf("fail to start battle!\n");
     }
-    RemoveRequest(route);
+    RemoveCallBack(route);
     return result;
 }
 
@@ -51,12 +51,12 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     req.set_key("yPos",json::Value(ypos));
     req.set_key("rotateFlag",json::Value(flag));
      
-    DoRequest(req,route,&GameProtoHandler::OnBattleCmd);
+    DoRequest(req,route,pomelo_selector(GameProtoHandler::OnBattleCmd));
 }
 
 int GameProtoHandler::OnBattleCmd(json::Value data,const char* route)
 {
     printf("recv battle cmd resp!\n");
-    RemoveRequest(route);
+    RemoveCallBack(route);
     return 0;
 }

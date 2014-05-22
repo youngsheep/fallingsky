@@ -12,7 +12,6 @@ public:
 
 class GameProtoHandler : public IPomeloConnection 
 {
-    typedef int (GameProtoHandler::*ProtoCallBack)(json::Value data,const char* route);
 public:
     static GameProtoHandler& GetInstance()
     {
@@ -21,8 +20,7 @@ public:
     }
     virtual ~GameProtoHandler(){}
 
-    virtual void RequestCallback(json::Value& data,const char* route);
-    virtual void PushCallback(json::Value& data,const char* route);
+    virtual void ProtoHandlerCallback(json::Value& data,const char* route,bool isPush);
 
     void AddAllPushEvent();
     void RegisterProtoHandler(IGameProtoHandler* handler);
@@ -60,14 +58,11 @@ protected:
     {}
 
     void DoRequest(json::Value& req , std::string route,ProtoCallBack cb);
-    void RemoveRequest(std::string route);
+    void RemoveCallBack(std::string route);
     void AddPushEvent(std::string route, ProtoCallBack cb);
-    void RemovePushEvent(std::string route);
 
 protected:
-    std::map<std::string ,ProtoCallBack> m_reqCBMap;
-    std::map<std::string ,ProtoCallBack> m_pushCBMap;
-    
+    std::map<std::string ,ProtoCallBack> m_protoCBMap;
     std::set<IGameProtoHandler*> m_uiHandlerSet;
 
 private:

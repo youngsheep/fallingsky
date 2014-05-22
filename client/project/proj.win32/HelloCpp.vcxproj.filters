@@ -19,6 +19,9 @@
     <Filter Include="net">
       <UniqueIdentifier>{c4fcbb05-58b3-4e55-b819-285f59449687}</UniqueIdentifier>
     </Filter>
+    <Filter Include="entity">
+      <UniqueIdentifier>{83cf01ec-7815-4833-af5c-5ee72c3d079c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +51,30 @@
     <ClCompile Include="..\..\src\game\PlayerInfoScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\net\BattleRequest.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\GameProtoHandler.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\pushEventHandler.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\net\roleRequest.cpp">
+      <Filter>net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\game\RegisterScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\FLTextInput.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\entity\FLBattle.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\entity\FLPlayer.cpp">
+      <Filter>entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -58,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\AppMacros.h">
       <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\common\ConnectionObject.h">
-      <Filter>common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\common\jansson.hpp">
       <Filter>common</Filter>
@@ -83,9 +107,6 @@
     <ClInclude Include="..\..\src\config\srcgen\testConfigHolder.h">
       <Filter>config\srcgen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\net\LoginRequest.h">
-      <Filter>net</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\game\GameScene.h">
       <Filter>game</Filter>
     </ClInclude>
@@ -94,6 +115,21 @@
     </ClInclude>
     <ClInclude Include="..\..\src\game\PlayerInfoScene.h">
       <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\net\GameProtoHandler.h">
+      <Filter>net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\RegisterScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\FLTextInput.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\entity\FLBattle.h">
+      <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\entity\FLPlayer.h">
+      <Filter>entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

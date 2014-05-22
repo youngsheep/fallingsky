@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __HelloCpp__RegisterScene__
-#define __HelloCpp__RegisterScene__
+#ifndef __HelloCpp__RegisterScene_H_
+#define __HelloCpp__RegisterScene_H_
 
 #include "cocos2d.h"
 
@@ -28,4 +28,4 @@ public:
     CREATE_FUNC(RegisterLayer);
 };
 
-#endif /* defined(__HelloCpp__RegisterScene__) */
+#endif /* defined(__HelloCpp__RegisterScene_H_) */

@@ -1,8 +1,14 @@
 #include "main.h"
 #include "AppDelegate.h"
 #include "CCEGLView.h"
+#include "net/GameProtoHandler.h"
 
 USING_NS_CC;
+
+void registerWeiboLogin()
+{
+    GameProtoHandler::GetInstance().DoLogin("1449516883","2.00ZYBGaBrInXhC5fd379312ddlQZkB");
+}
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,

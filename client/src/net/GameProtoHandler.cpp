@@ -1,21 +1,9 @@
 #include "GameProtoHandler.h"
 
-void GameProtoHandler::RequestCallback(json::Value& data,const char* route)
+void GameProtoHandler::ProtoHandlerCallback(json::Value& data,const char* route,bool isPush)
 {
-    std::map<std::string,ProtoCallBack>::iterator itor = m_reqCBMap.find(route);
-    if (itor != m_reqCBMap.end())
-    {
-        int result = (this->*(itor->second))(data, route);
-        for (std::set<IGameProtoHandler*>::iterator it = m_uiHandlerSet.begin(); it != m_uiHandlerSet.end(); it++) {
-            (*it)->Response(route, result);
-        }
-    }
-}
-
-void GameProtoHandler::PushCallback(json::Value& data,const char* route)
-{
-    std::map<std::string,ProtoCallBack>::iterator itor = m_pushCBMap.find(route);
-    if (itor != m_pushCBMap.end())
+    std::map<std::string,ProtoCallBack>::iterator itor = m_protoCBMap.find(route);
+    if (itor != m_protoCBMap.end())
     {
         int result = (this->*(itor->second))(data, route);
         for (std::set<IGameProtoHandler*>::iterator it = m_uiHandlerSet.begin(); it != m_uiHandlerSet.end(); it++) {
@@ -33,40 +21,29 @@ void GameProtoHandler::DoRequest(json::Value& req , std::string route,ProtoCallB
 {
     m_pomeloConn.DoRequest(req,route.c_str());
 
-    m_reqCBMap.insert(std::make_pair(route,cb));
-    NeedWait(true);
+    m_protoCBMap.insert(std::make_pair(route,cb));
 }
 
-void GameProtoHandler::RemoveRequest(std::string route)
+void GameProtoHandler::RemoveCallBack(std::string route)
 {
-    std::map<std::string,ProtoCallBack>::iterator itor = m_reqCBMap.find(route);
-    if (itor != m_reqCBMap.end())
+    std::map<std::string,ProtoCallBack>::iterator itor = m_protoCBMap.find(route);
+    if (itor != m_protoCBMap.end())
     {
-        m_reqCBMap.erase(itor);
+        m_protoCBMap.erase(itor);
     }
-    NeedWait(false);
 }
 
 void GameProtoHandler::AddPushEvent(std::string route,ProtoCallBack cb)
 {
     m_pomeloConn.RegisterEvent(route.c_str());
-    m_pushCBMap.insert(std::make_pair(route,cb));
-}
-
-void GameProtoHandler::RemovePushEvent(std::string route)
-{
-    std::map<std::string,ProtoCallBack>::iterator itor = m_pushCBMap.find(route);
-    if (itor != m_pushCBMap.end())
-    {
-        m_pushCBMap.erase(itor);
-    }
+    m_protoCBMap.insert(std::make_pair(route,cb));
 }
 
 void GameProtoHandler::AddAllPushEvent()
 {
-    AddPushEvent("roleBaseInfo",&GameProtoHandler::OnRoleBaseInfo);
-    AddPushEvent("game.battleHandler.start",&GameProtoHandler::OnStartBattle);
-    AddPushEvent("oppstate",&GameProtoHandler::OnOppState);
+    AddPushEvent("roleBaseInfo",pomelo_selector(GameProtoHandler::OnRoleBaseInfo));
+    AddPushEvent("game.battleHandler.start",pomelo_selector(GameProtoHandler::OnStartBattle));
+    AddPushEvent("oppstate",pomelo_selector(GameProtoHandler::OnOppState));
 }
 
 void GameProtoHandler::RegisterProtoHandler(IGameProtoHandler* handler)

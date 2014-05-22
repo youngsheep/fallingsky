@@ -24,7 +24,7 @@ void GameProtoHandler::RoleCreateReq(const char* name)
         req.set_key("nickname",json::Value(name));
     }
 
-    DoRequest(req,route,&GameProtoHandler::OnRoleCreate);
+    DoRequest(req,route,pomelo_selector(GameProtoHandler::OnRoleCreate));
 }
 
 int GameProtoHandler::OnRoleCreate(json::Value data,const char* route)
@@ -39,7 +39,7 @@ int GameProtoHandler::OnRoleCreate(json::Value data,const char* route)
     {
     }
 
-    RemoveRequest(route);
+    RemoveCallBack(route);
     return  result;
 }
 
@@ -58,7 +58,7 @@ void GameProtoHandler::RoleInfoReq()
 
     req.set_key("head",head);
 
-    DoRequest(req,route,&GameProtoHandler::OnRoleCreate);
+    DoRequest(req,route,pomelo_selector(GameProtoHandler::OnRoleCreate));
 }
 
 int GameProtoHandler::OnRoleInfo(json::Value data,const char* route)
@@ -73,6 +73,6 @@ int GameProtoHandler::OnRoleInfo(json::Value data,const char* route)
     {
     }
 
-    RemoveRequest(route);
+    RemoveCallBack(route);
     return result;
 }

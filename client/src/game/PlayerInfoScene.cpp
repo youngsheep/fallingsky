@@ -52,6 +52,7 @@ void PlayerInfo::onExit()
 void PlayerInfo::loginCallback(CCObject* pSender)
 {
     registerWeiboLogin();
+    //Response("connector.entryHandler.entry",100);
 }
 
 void PlayerInfo::Response(std::string route,int result)
@@ -61,7 +62,7 @@ void PlayerInfo::Response(std::string route,int result)
             CCTransitionFadeBL* transition = CCTransitionFadeBL::create(2, RegisterLayer::scene());
             if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(transition);
+                CCDirector::sharedDirector()->replaceScene(RegisterLayer::scene());
             }
         }
         else if(result == 0)
