@@ -35,15 +35,32 @@ bool RegisterLayer::init()
     TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 100));
     this->addChild(TextField);
     
-    CCMenuItemFont *item = CCMenuItemFont::create("aaaaaaaaaaaaaaaaaaaaaa", this, menu_selector(RegisterLayer::registerCallback) );
+    CCMenuItemFont *item = CCMenuItemFont::create("Create", this, menu_selector(RegisterLayer::registerCallback) );
     CCMenu* menu = CCMenu::create( item , NULL);
-    TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 200));
+    menu->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 200));
     addChild(menu);
     
     return true;
 }
 
+void RegisterLayer::onEnter()
+{
+    GameProtoHandler::GetInstance().RegisterProtoHandler(this);
+    CCLayer::onEnter();
+}
+
+void RegisterLayer::onExit()
+{
+    GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
+    CCLayer::onExit();
+}
+
 void RegisterLayer::registerCallback(CCObject* pSender)
 {
+    GameProtoHandler::GetInstance().RoleCreateReq("");
+}
 
+void Response(std::string route,int result)
+{
+    
 }
