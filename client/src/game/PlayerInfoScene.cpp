@@ -32,7 +32,7 @@ bool PlayerInfo::init()
     CCMenu* menu = CCMenu::create( item , NULL);
     addChild(menu);
     
-    GameProtoHandler::GetInstance().ConnectGameSvr("127.0.0.1", 3010);
+    GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
     
     return true;
 }

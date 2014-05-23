@@ -127,7 +127,7 @@
 		</variable>
 		<variable>
 			<name>NDK_ROOT</name>
-			<value>file:/Developer/android-ndk-r9d</value>
+			<value>file:/Volumes/Macintosh%20HD/Developer/android-ndk-r9d</value>
 		</variable>
 	</variableList>
 </projectDescription>

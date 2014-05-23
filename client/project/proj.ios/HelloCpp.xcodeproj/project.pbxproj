@@ -10,12 +10,12 @@
 		1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624316D4A1E8000847F2 /* AppController.mm */; };
 		1AC3624B16D4A1E8000847F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624516D4A1E8000847F2 /* main.m */; };
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
+		1B1DE9C9192FB0A300FACB84 /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1DE9BC192FB07F00FACB84 /* libjansson.a */; };
+		1B1DE9CA192FB0A300FACB84 /* libpomelo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1DE9A8192FB07100FACB84 /* libpomelo.a */; };
+		1B1DE9CB192FB0A300FACB84 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1DE9C2192FB09100FACB84 /* libuv.a */; };
 		1B213FB1192CE52300FE3C95 /* GameProtoHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FAD192CE52300FE3C95 /* GameProtoHandler.cpp */; };
 		1B213FB2192CE52300FE3C95 /* pushEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FAF192CE52300FE3C95 /* pushEventHandler.cpp */; };
 		1B213FB3192CE52300FE3C95 /* roleRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FB0192CE52300FE3C95 /* roleRequest.cpp */; };
-		1B213FCC192CE96400FE3C95 /* libjansson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FBF192CE93800FE3C95 /* libjansson.a */; };
-		1B213FCD192CE96400FE3C95 /* libpomelo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FB9192CE92200FE3C95 /* libpomelo.a */; };
-		1B213FCE192CE96400FE3C95 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B213FC5192CE94A00FE3C95 /* libuv.a */; };
 		1B213FD2192CFCB500FE3C95 /* FLTextInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B213FD0192CFCB500FE3C95 /* FLTextInput.cpp */; };
 		1B3E73BF191BCD0100DBB93C /* BattleRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */; };
 		1B3E73C3191BE39200DBB93C /* FLPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B3E73C1191BE39200DBB93C /* FLPlayer.cpp */; };
@@ -57,44 +57,93 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1B213FB8192CE92200FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9A7192FB07100FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 07390FDF2C637EBD093867CC;
 			remoteInfo = libpomelo;
 		};
-		1B213FBE192CE93800FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9A9192FB07100FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FAED8970A57B163CCFC87ECA;
+			remoteInfo = destroy;
+		};
+		1B1DE9AB192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7FA2AD8C43CA89DDC8D3986C;
+			remoteInfo = notify;
+		};
+		1B1DE9AD192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA1D6E61B836B3AD372F7877;
+			remoteInfo = request;
+		};
+		1B1DE9AF192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2BDD63FDC40DE1D64114B19B;
+			remoteInfo = echo;
+		};
+		1B1DE9B1192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 640F5DADDBEA0250854F2CBF;
+			remoteInfo = echo2;
+		};
+		1B1DE9B3192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 39C460917C27E012DBF26365;
+			remoteInfo = test_protobuf;
+		};
+		1B1DE9B5192FB07100FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6201BA87C25025417F3AE79F;
+			remoteInfo = robot_chat;
+		};
+		1B1DE9BB192FB07F00FACB84 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 59F286A69EC2A309743023EC;
 			remoteInfo = jansson;
 		};
-		1B213FC4192CE94A00FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9C1192FB09100FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
+			containerPortal = 1B1DE9BD192FB09100FACB84 /* uv.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1366FBDA3B41EA03E9CC86CA;
 			remoteInfo = libuv;
 		};
-		1B213FC6192CE95400FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9C3192FB09A00FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
+			containerPortal = 1B1DE9BD192FB09100FACB84 /* uv.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 178071661CB321BB5A46AC92;
 			remoteInfo = libuv;
 		};
-		1B213FC8192CE95B00FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9C5192FB09A00FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
+			containerPortal = 1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = A42BD6BC281DD5AD92086C4D;
 			remoteInfo = jansson;
 		};
-		1B213FCA192CE95B00FE3C95 /* PBXContainerItemProxy */ = {
+		1B1DE9C7192FB09A00FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
+			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = FFDDF0E039E6E9D6BDF304D9;
 			remoteInfo = libpomelo;
@@ -125,13 +174,13 @@
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
+		1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pomelo.xcodeproj; path = ../../deps/libpomelo/pomelo.xcodeproj; sourceTree = "<group>"; };
+		1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jansson.xcodeproj; path = ../../deps/libpomelo/deps/jansson/jansson.xcodeproj; sourceTree = "<group>"; };
+		1B1DE9BD192FB09100FACB84 /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = uv.xcodeproj; path = ../../deps/libpomelo/deps/uv/uv.xcodeproj; sourceTree = "<group>"; };
 		1B213FAD192CE52300FE3C95 /* GameProtoHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameProtoHandler.cpp; sourceTree = "<group>"; };
 		1B213FAE192CE52300FE3C95 /* GameProtoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameProtoHandler.h; sourceTree = "<group>"; };
 		1B213FAF192CE52300FE3C95 /* pushEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pushEventHandler.cpp; sourceTree = "<group>"; };
 		1B213FB0192CE52300FE3C95 /* roleRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roleRequest.cpp; sourceTree = "<group>"; };
-		1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pomelo.xcodeproj; path = ../../deps/libpomelo/pomelo.xcodeproj; sourceTree = "<group>"; };
-		1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jansson.xcodeproj; path = ../../deps/libpomelo/deps/jansson/jansson.xcodeproj; sourceTree = "<group>"; };
-		1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = uv.xcodeproj; path = ../../deps/libpomelo/deps/uv/uv.xcodeproj; sourceTree = "<group>"; };
 		1B213FD0192CFCB500FE3C95 /* FLTextInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLTextInput.cpp; sourceTree = "<group>"; };
 		1B213FD1192CFCB500FE3C95 /* FLTextInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTextInput.h; sourceTree = "<group>"; };
 		1B3E73BD191BCD0100DBB93C /* BattleRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleRequest.cpp; sourceTree = "<group>"; };
@@ -196,9 +245,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B213FCC192CE96400FE3C95 /* libjansson.a in Frameworks */,
-				1B213FCD192CE96400FE3C95 /* libpomelo.a in Frameworks */,
-				1B213FCE192CE96400FE3C95 /* libuv.a in Frameworks */,
+				1B1DE9C9192FB0A300FACB84 /* libjansson.a in Frameworks */,
+				1B1DE9CA192FB0A300FACB84 /* libpomelo.a in Frameworks */,
+				1B1DE9CB192FB0A300FACB84 /* libuv.a in Frameworks */,
 				1B5348C21913D65100EB74AE /* libcurl.a in Frameworks */,
 				1B5348C31913D65100EB74AE /* libwebp.a in Frameworks */,
 				1BDB389E1924F48B00380F47 /* libWeiboSDK.a in Frameworks */,
@@ -276,26 +325,33 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		1B213FB5192CE92200FE3C95 /* Products */ = {
+		1B1DE99A192FB07100FACB84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B213FB9192CE92200FE3C95 /* libpomelo.a */,
+				1B1DE9A8192FB07100FACB84 /* libpomelo.a */,
+				1B1DE9AA192FB07100FACB84 /* destroy */,
+				1B1DE9AC192FB07100FACB84 /* notify */,
+				1B1DE9AE192FB07100FACB84 /* request */,
+				1B1DE9B0192FB07100FACB84 /* echo */,
+				1B1DE9B2192FB07100FACB84 /* echo2 */,
+				1B1DE9B4192FB07100FACB84 /* test_protobuf */,
+				1B1DE9B6192FB07100FACB84 /* robot_chat */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1B213FBB192CE93800FE3C95 /* Products */ = {
+		1B1DE9B8192FB07F00FACB84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B213FBF192CE93800FE3C95 /* libjansson.a */,
+				1B1DE9BC192FB07F00FACB84 /* libjansson.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1B213FC1192CE94A00FE3C95 /* Products */ = {
+		1B1DE9BE192FB09100FACB84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B213FC5192CE94A00FE3C95 /* libuv.a */,
+				1B1DE9C2192FB09100FACB84 /* libuv.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -403,9 +459,9 @@
 		1B5348D01913DCCA00EB74AE /* libpomelo */ = {
 			isa = PBXGroup;
 			children = (
-				1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */,
-				1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */,
-				1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */,
+				1B1DE9BD192FB09100FACB84 /* uv.xcodeproj */,
+				1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */,
+				1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */,
 			);
 			name = libpomelo;
 			sourceTree = "<group>";
@@ -488,9 +544,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				1B213FC9192CE95B00FE3C95 /* PBXTargetDependency */,
-				1B213FCB192CE95B00FE3C95 /* PBXTargetDependency */,
-				1B213FC7192CE95400FE3C95 /* PBXTargetDependency */,
+				1B1DE9C4192FB09A00FACB84 /* PBXTargetDependency */,
+				1B1DE9C6192FB09A00FACB84 /* PBXTargetDependency */,
+				1B1DE9C8192FB09A00FACB84 /* PBXTargetDependency */,
 				1B5348BE1913D57900EB74AE /* PBXTargetDependency */,
 			);
 			name = HelloCpp;
@@ -524,16 +580,16 @@
 					ProjectRef = 1B5348B71913D53E00EB74AE /* cocos2dx.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B213FBB192CE93800FE3C95 /* Products */;
-					ProjectRef = 1B213FBA192CE93800FE3C95 /* jansson.xcodeproj */;
+					ProductGroup = 1B1DE9B8192FB07F00FACB84 /* Products */;
+					ProjectRef = 1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B213FB5192CE92200FE3C95 /* Products */;
-					ProjectRef = 1B213FB4192CE92200FE3C95 /* pomelo.xcodeproj */;
+					ProductGroup = 1B1DE99A192FB07100FACB84 /* Products */;
+					ProjectRef = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B213FC1192CE94A00FE3C95 /* Products */;
-					ProjectRef = 1B213FC0192CE94A00FE3C95 /* uv.xcodeproj */;
+					ProductGroup = 1B1DE9BE192FB09100FACB84 /* Products */;
+					ProjectRef = 1B1DE9BD192FB09100FACB84 /* uv.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -544,25 +600,74 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1B213FB9192CE92200FE3C95 /* libpomelo.a */ = {
+		1B1DE9A8192FB07100FACB84 /* libpomelo.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libpomelo.a;
-			remoteRef = 1B213FB8192CE92200FE3C95 /* PBXContainerItemProxy */;
+			remoteRef = 1B1DE9A7192FB07100FACB84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1B213FBF192CE93800FE3C95 /* libjansson.a */ = {
+		1B1DE9AA192FB07100FACB84 /* destroy */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = destroy;
+			remoteRef = 1B1DE9A9192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9AC192FB07100FACB84 /* notify */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = notify;
+			remoteRef = 1B1DE9AB192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9AE192FB07100FACB84 /* request */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = request;
+			remoteRef = 1B1DE9AD192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9B0192FB07100FACB84 /* echo */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = echo;
+			remoteRef = 1B1DE9AF192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9B2192FB07100FACB84 /* echo2 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = echo2;
+			remoteRef = 1B1DE9B1192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9B4192FB07100FACB84 /* test_protobuf */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = test_protobuf;
+			remoteRef = 1B1DE9B3192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9B6192FB07100FACB84 /* robot_chat */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = robot_chat;
+			remoteRef = 1B1DE9B5192FB07100FACB84 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B1DE9BC192FB07F00FACB84 /* libjansson.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libjansson.a;
-			remoteRef = 1B213FBE192CE93800FE3C95 /* PBXContainerItemProxy */;
+			remoteRef = 1B1DE9BB192FB07F00FACB84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1B213FC5192CE94A00FE3C95 /* libuv.a */ = {
+		1B1DE9C2192FB09100FACB84 /* libuv.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libuv.a;
-			remoteRef = 1B213FC4192CE94A00FE3C95 /* PBXContainerItemProxy */;
+			remoteRef = 1B1DE9C1192FB09100FACB84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1B5348BC1913D53F00EB74AE /* libcocos2dx.a */ = {
@@ -625,20 +730,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1B213FC7192CE95400FE3C95 /* PBXTargetDependency */ = {
+		1B1DE9C4192FB09A00FACB84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libuv;
-			targetProxy = 1B213FC6192CE95400FE3C95 /* PBXContainerItemProxy */;
+			targetProxy = 1B1DE9C3192FB09A00FACB84 /* PBXContainerItemProxy */;
 		};
-		1B213FC9192CE95B00FE3C95 /* PBXTargetDependency */ = {
+		1B1DE9C6192FB09A00FACB84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = jansson;
-			targetProxy = 1B213FC8192CE95B00FE3C95 /* PBXContainerItemProxy */;
+			targetProxy = 1B1DE9C5192FB09A00FACB84 /* PBXContainerItemProxy */;
 		};
-		1B213FCB192CE95B00FE3C95 /* PBXTargetDependency */ = {
+		1B1DE9C8192FB09A00FACB84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libpomelo;
-			targetProxy = 1B213FCA192CE95B00FE3C95 /* PBXContainerItemProxy */;
+			targetProxy = 1B1DE9C7192FB09A00FACB84 /* PBXContainerItemProxy */;
 		};
 		1B5348BE1913D57900EB74AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

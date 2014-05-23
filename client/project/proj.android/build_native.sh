@@ -3,7 +3,6 @@ APPNAME="HelloCpp"
 # options
 
 buildexternalsfromsource=
-#NDK_ROOT=/Developer/android-ndk-r9d/
 
 usage(){
 cat << EOF
@@ -33,7 +32,8 @@ done
 
 if [ -z "${NDK_ROOT+aaa}" ];then
 echo "please define NDK_ROOT"
-exit 1
+NDK_ROOT=/android/android-ndk-r9d/
+#exit 1
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
