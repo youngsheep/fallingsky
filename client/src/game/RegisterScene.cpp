@@ -60,7 +60,7 @@ void RegisterLayer::registerCallback(CCObject* pSender)
     GameProtoHandler::GetInstance().RoleCreateReq("");
 }
 
-void Response(std::string route,int result)
+void RegisterLayer::Response(std::string route,int result)
 {
     
 }
