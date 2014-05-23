@@ -10,14 +10,21 @@
 #define __HelloCpp__RegisterScene_H_
 
 #include "cocos2d.h"
+#include "net/GameProtoHandler.h"
 
-class RegisterLayer : public cocos2d::CCLayer
+class RegisterLayer : public cocos2d::CCLayer,public IGameProtoHandler
 {
 public:
     RegisterLayer(){}
     virtual ~RegisterLayer(){}
     
     virtual bool init();
+    // CCLayer
+    virtual void onEnter();
+    virtual void onExit();
+    
+    //IGameProtoHandler
+    virtual void Response(std::string route,int result);
     
     static cocos2d::CCScene* scene();
     
