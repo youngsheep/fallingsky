@@ -64,55 +64,6 @@
 			remoteGlobalIDString = 07390FDF2C637EBD093867CC;
 			remoteInfo = libpomelo;
 		};
-		1B1DE9A9192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FAED8970A57B163CCFC87ECA;
-			remoteInfo = destroy;
-		};
-		1B1DE9AB192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7FA2AD8C43CA89DDC8D3986C;
-			remoteInfo = notify;
-		};
-		1B1DE9AD192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CA1D6E61B836B3AD372F7877;
-			remoteInfo = request;
-		};
-		1B1DE9AF192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2BDD63FDC40DE1D64114B19B;
-			remoteInfo = echo;
-		};
-		1B1DE9B1192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 640F5DADDBEA0250854F2CBF;
-			remoteInfo = echo2;
-		};
-		1B1DE9B3192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 39C460917C27E012DBF26365;
-			remoteInfo = test_protobuf;
-		};
-		1B1DE9B5192FB07100FACB84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B1DE999192FB07100FACB84 /* pomelo.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6201BA87C25025417F3AE79F;
-			remoteInfo = robot_chat;
-		};
 		1B1DE9BB192FB07F00FACB84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B1DE9B7192FB07F00FACB84 /* jansson.xcodeproj */;
@@ -329,13 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				1B1DE9A8192FB07100FACB84 /* libpomelo.a */,
-				1B1DE9AA192FB07100FACB84 /* destroy */,
-				1B1DE9AC192FB07100FACB84 /* notify */,
-				1B1DE9AE192FB07100FACB84 /* request */,
-				1B1DE9B0192FB07100FACB84 /* echo */,
-				1B1DE9B2192FB07100FACB84 /* echo2 */,
-				1B1DE9B4192FB07100FACB84 /* test_protobuf */,
-				1B1DE9B6192FB07100FACB84 /* robot_chat */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -605,55 +549,6 @@
 			fileType = archive.ar;
 			path = libpomelo.a;
 			remoteRef = 1B1DE9A7192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9AA192FB07100FACB84 /* destroy */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = destroy;
-			remoteRef = 1B1DE9A9192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9AC192FB07100FACB84 /* notify */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = notify;
-			remoteRef = 1B1DE9AB192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9AE192FB07100FACB84 /* request */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = request;
-			remoteRef = 1B1DE9AD192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9B0192FB07100FACB84 /* echo */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = echo;
-			remoteRef = 1B1DE9AF192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9B2192FB07100FACB84 /* echo2 */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = echo2;
-			remoteRef = 1B1DE9B1192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9B4192FB07100FACB84 /* test_protobuf */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = test_protobuf;
-			remoteRef = 1B1DE9B3192FB07100FACB84 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1B1DE9B6192FB07100FACB84 /* robot_chat */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = robot_chat;
-			remoteRef = 1B1DE9B5192FB07100FACB84 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1B1DE9BC192FB07F00FACB84 /* libjansson.a */ = {

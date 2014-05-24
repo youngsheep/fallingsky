@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-package org.cocos2dx.hellocpp;
+package com.nilgame.fallingsky;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
@@ -59,14 +59,14 @@ public class HelloCpp extends Cocos2dxActivity{
 
     public void doWeiboAuth(){
         Log.e("doWeiboAuth", "doWeiboAuth enter!");
-        // 初始化微博对象
+        // ???�????�????对象
         mWeiboAuth = new WeiboAuth(this, APP_KEY, REDIRECT_URL, SCOPE);
         mSsoHandler = new SsoHandler(HelloCpp.this, mWeiboAuth);
         mSsoHandler.authorize(new AuthListener());
     }
 
     /**
-     * 当 SSO 授权 Activity 退出时，该函数被调用。
+     * �? SSO ?????? Activity ?????��?��??该�?��?��??�???��??
      * 
      * @see {@link Activity#onActivityResult}
      */
@@ -74,36 +74,36 @@ public class HelloCpp extends Cocos2dxActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-        // SSO 授权回调
-        // 重要：发起 SSO 登陆的 Activity 必须重写 onActivityResult
+        // SSO ?????????�?
+        // ???�?�????�? SSO ??��????? Activity �?须�????? onActivityResult
         if (mSsoHandler != null) {
             mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
     }
 
     /**
-     * 微博认证授权回调类。
-     * 1. SSO 授权时，需要在 {@link #onActivityResult} 中调用 {@link SsoHandler#authorizeCallBack} 后，
-     *    该回调才会被执行。
-     * 2. 非 SSO 授权时，当授权结束后，该回调就会被执行。
-     * 当授权成功后，请保存该 access_token、expires_in、uid 等信息到 SharedPreferences 中。
+     * �????认�???????????�?类�??
+     * 1. SSO ????????��?????�???? {@link #onActivityResult} �?�???? {@link SsoHandler#authorizeCallBack} ???�?
+     *    该�??�????�?�???��?????
+     * 2. ??? SSO ????????��??�???????�???????�?该�??�?就�??�???��?????
+     * �????????????????�?请�??�?�? access_token???expires_in???uid �?信�????? SharedPreferences �????
      */
     class AuthListener implements WeiboAuthListener {
         
         @Override
         public void onComplete(Bundle values) {
-            // 从 Bundle 中解析 Token
+            // �? Bundle �?解�?? Token
             mAccessToken = Oauth2AccessToken.parseAccessToken(values);
             if (mAccessToken.isSessionValid()) {
-                // 显示 Token
+                // ??�示 Token
                 //updateTokenView(false);
                 
-                // 保存 Token 到 SharedPreferences
+                // �?�? Token ??? SharedPreferences
                 //AccessTokenKeeper.writeAccessToken(HelloCpp.this, mAccessToken);
                 Toast.makeText(HelloCpp.this, 
                         "auth success!", Toast.LENGTH_SHORT).show();
             } else {
-                // 当您注册的应用程序签名不正确时，就会收到 Code，请确保签名正确
+                // �???�注??????�???��??�?签�??�?正确??��??就�????��?? Code�?请确�?签�??正确
                 String code = values.getString("code");
                 String message = "auth fail!";//getString(R.string.weibosdk_demo_toast_auth_failed);
                 if (code != null && code != "") {
@@ -111,6 +111,7 @@ public class HelloCpp extends Cocos2dxActivity{
                 }
                 Toast.makeText(HelloCpp.this, message, Toast.LENGTH_LONG).show();
             }
+            HelloCpp.this.OnWeiboAuth(mAccessToken.getUid(),mAccessToken.getToken());
         }
 
         @Override
@@ -126,14 +127,14 @@ public class HelloCpp extends Cocos2dxActivity{
         }
     }
 
-    /** 微博 Web 授权接口类，提供登陆等功能  */
+    /** �???? Web ????????��?�类�????�???��??�???????  */
     private WeiboAuth mWeiboAuth;
-    /** 注意：SsoHandler 仅当 SDK 支持 SSO 时有效 */
+    /** 注�??�?SsoHandler �?�? SDK ?????? SSO ??��????? */
     private SsoHandler mSsoHandler;
-    /** 获取到的 Token */
+    /** ??��????��?? Token */
     private Oauth2AccessToken mAccessToken;
 
-    public static final String  APP_KEY = "2475701841";
+    public static final String  APP_KEY = "2698066879";
     public static final String  REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
     public static final String SCOPE = 
             "email,direct_messages_read,direct_messages_write,"
@@ -141,6 +142,8 @@ public class HelloCpp extends Cocos2dxActivity{
             + "follow_app_official_microblog," + "invitation_write";
 
 
+    public static native void OnWeiboAuth(String uid,String token);
+    
     static {
         System.loadLibrary("cocos2dcpp");
     }   

@@ -7,7 +7,7 @@
 //
 
 #include "RegisterScene.h"
-//#include "GameScene.h"
+#include "GameScene.h"
 #include "net/GameProtoHandler.h"
 #include "common/FLTextInput.h"
 
@@ -62,5 +62,12 @@ void RegisterLayer::registerCallback(CCObject* pSender)
 
 void RegisterLayer::Response(std::string route,int result)
 {
-    
+    if(result == 0)
+    {
+        CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
+        if (transition)
+        {
+            CCDirector::sharedDirector()->replaceScene(transition);
+        }
+    }
 }

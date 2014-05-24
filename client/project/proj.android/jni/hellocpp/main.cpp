@@ -2,6 +2,8 @@
 #include "cocos2d.h"
 #include "CCEventType.h"
 #include "platform/android/jni/JniHelper.h"
+#include "entity/FLPlayer.h"
+#include "net/GameProtoHandler.h"
 #include <jni.h>
 #include <android/log.h>
 
@@ -16,15 +18,15 @@ static bool s_jniInit = false;
 
 void InitJni()
 {
-    if(!s_jniInit)
+    //if(!s_jniInit)
     {
         JniMethodInfo minfo;
-        bool ret = JniHelper::getStaticMethodInfo(minfo,"org.cocos2dx.hellocpp.HelloCpp","getInst","()Ljava/lang/Object;");
+        bool ret = JniHelper::getStaticMethodInfo(minfo,"com.nilgame.fallingsky.HelloCpp","getInst","()Ljava/lang/Object;");
         if(ret)
         {
             s_thisz = minfo.env->CallStaticObjectMethod(minfo.classID, minfo.methodID);
 
-            ret = JniHelper::getMethodInfo(s_weiboAuth,"org.cocos2dx.hellocpp.HelloCpp","doWeiboAuth","()V");
+            ret = JniHelper::getMethodInfo(s_weiboAuth,"com.nilgame.fallingsky.HelloCpp","doWeiboAuth","()V");
             if(ret)
             {
                 CCLog("success init jni");
@@ -38,8 +40,7 @@ void InitJni()
 
 void registerWeiboLogin()
 {
-    //GameProtoHandler::GetInstance().DoLogin("1449516883","2.00ZYBGaBrInXhC5fd379312ddlQZkB");
-    if(!s_jniInit)
+    //if(!s_jniInit)
     {
         InitJni();
     }
@@ -76,6 +77,20 @@ void Java_org_cocos2dx_lib_Cocos2dxRenderer_nativeInit(JNIEnv*  env, jobject thi
         CCNotificationCenter::sharedNotificationCenter()->postNotification(EVENT_COME_TO_FOREGROUND, NULL);
         CCDirector::sharedDirector()->setGLDefaultValues(); 
     }
+}
+
+void Java_com_nilgame_fallingsky_HelloCpp_OnWeiboAuth(JNIEnv*  env, jobject thiz,jstring uid , jstring token)
+{
+	const char *uidstr = env->GetStringUTFChars(uid, NULL);
+	const char *tokenstr = env->GetStringUTFChars(token, NULL);
+
+	FLPlayer::GetInstance().SetUid(uidstr);
+	FLPlayer::GetInstance().SetWeiboToken(tokenstr);
+
+	GameProtoHandler::GetInstance().DoLogin(uidstr, tokenstr);
+
+	env->ReleaseStringUTFChars(uid, uidstr);
+	env->ReleaseStringUTFChars(token, tokenstr);
 }
 
 }
