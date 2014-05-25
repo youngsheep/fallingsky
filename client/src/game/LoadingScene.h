@@ -1,23 +1,19 @@
 //
-//  PlayerInfoScene.h
+//  LoadingScene.h
 //  HelloCpp
 //
-//  Created by yy on 14-5-12.
+//  Created by yy on 14-5-25.
 //
 //
 
-#ifndef __HelloCpp__PlayerInfoScene__
-#define __HelloCpp__PlayerInfoScene__
+#ifndef __HelloCpp__LoadingScene__
+#define __HelloCpp__LoadingScene__
 
-#include "cocos2d.h"
-#include "cocos-ext.h"
-#include "net/GameProtoHandler.h"
-
-class PlayerInfo : public cocos2d::ui::TouchGroup,public IGameProtoHandler
+class LoadingScene : public cocos2d::ui::TouchGroup,public IGameProtoHandler
 {
 public:
-    PlayerInfo(){}
-    virtual ~PlayerInfo(){}
+    LoadingScene(){}
+    virtual LoadingScene(){}
     
     virtual bool init();
     // CCLayer
@@ -26,15 +22,21 @@ public:
     
     //IGameProtoHandler
     virtual void Response(std::string route,int result);
-
+    
     
     // a selector callback
     void loginCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     
     static cocos2d::CCScene* scene();
     // implement the "static node()" method manually
-    CREATE_FUNC(PlayerInfo);
+    CREATE_FUNC(LoadingScene);
+    
+    void SetState(int state){m_loadingState = state;}
+    
+private:
+    int m_loadingState;
     
 };
 
-#endif /* defined(__HelloCpp__PlayerInfoScene__) */
+
+#endif /* defined(__HelloCpp__LoadingScene__) */

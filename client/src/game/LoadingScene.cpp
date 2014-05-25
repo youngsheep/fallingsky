@@ -1,17 +1,15 @@
 //
-//  PlayerInfoScene.cpp
+//  LoadingScene.cpp
 //  HelloCpp
 //
-//  Created by yy on 14-5-12.
+//  Created by yy on 14-5-25.
 //
 //
 
-#include "PlayerInfoScene.h"
+#include "LoadingScene.h"
 #include "GameScene.h"
 #include "net/GameProtoHandler.h"
 #include "RegisterScene.h"
-
-extern void registerWeiboLogin();
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -25,7 +23,7 @@ CCScene* PlayerInfo::scene()
     return scene;
 }
 
-bool PlayerInfo::init()
+bool LoadingScene::init()
 {
     TouchGroup::init();
     Layout* layout = static_cast<Layout*>(GUIReader::shareReader()->
@@ -36,28 +34,28 @@ bool PlayerInfo::init()
         btn->addTouchEventListener(this,toucheventselector(PlayerInfo::loginCallback));
         btn->setScale9Enabled(true);
     }
-
+    
     addWidget(layout);
-
+    
     
     GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
     
     return true;
 }
 
-void PlayerInfo::onEnter()
+void LoadingScene::onEnter()
 {
     GameProtoHandler::GetInstance().RegisterProtoHandler(this);
     TouchGroup::onEnter();
 }
 
-void PlayerInfo::onExit()
+void LoadingScene::onExit()
 {
     GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
     TouchGroup::onExit();
 }
 
-void PlayerInfo::loginCallback(CCObject* pSender,TouchEventType type)
+void LoadingScene::loginCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED) {
         registerWeiboLogin();
@@ -65,7 +63,7 @@ void PlayerInfo::loginCallback(CCObject* pSender,TouchEventType type)
     }
 }
 
-void PlayerInfo::Response(std::string route,int result)
+void LoadingScene::Response(std::string route,int result)
 {
     if (route.compare("connector.entryHandler.entry") == 0) {
         if (result == 100) {
