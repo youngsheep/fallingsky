@@ -7,7 +7,7 @@
 //
 
 #include "LoadingScene.h"
-#include "GameScene.h"
+#include "GameMainScene.h"
 #include "net/GameProtoHandler.h"
 #include "RegisterScene.h"
 
@@ -37,6 +37,7 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameProtoHandler::GetInstance().RegisterProtoHandler(this);
+    StartLoadingSchdule();
     TouchGroup::onEnter();
 }
 
@@ -48,13 +49,57 @@ void LoadingScene::onExit()
 
 void LoadingScene::Response(std::string route,int result)
 {
-    if (route.compare("connector.entryHandler.entry") == 0) {
+    if (route.compare("game.roleHandler.info") == 0) {
         if(result == 0)
         {
+            m_loadingStep ++;
         }
         else if (result < 0)
         {
         }
+    }
+}
+
+void LoadingScene::StartLoadingSchdule()
+{
+    switch (m_loadingState)
+    {
+        case LOADING_STATE_APP_START:
+        {
+            CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(LoadingScene::AppStartLoading), this, 0, false);
+            break;
+        }
+        case LOADING_STATE_GAME_START:
+            break;
+        case LOADING_STATE_GAME_END:
+            break;
+        default:
+            break;
+    }
+}
+                                             
+void LoadingScene::AppStartLoading(float delta)
+{
+    switch (m_loadingStep) {
+        case 0:
+        {
+            GameProtoHandler::GetInstance().RoleInfoReq();
+            m_loadingStep ++;
+            break;
+        }
+        case 1:
+            CCLog("wait RoleInfoReq");
+            break;
+        case 2:
+        {
+            CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(LoadingScene::AppStartLoading), this);
+            ChangeScene();
+            m_loadingStep ++;
+            break;
+        }
+            
+        default:
+            break;
     }
 }
 
@@ -64,10 +109,10 @@ void LoadingScene::ChangeScene()
     {
     case LOADING_STATE_APP_START:
         {
-            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
-            if (transition)
+            //CCTransitionMoveInL* transition = CCTransitionMoveInL::create(3, FLGame::scene());
+            //if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(transition);
+                CCDirector::sharedDirector()->replaceScene(GameMainLayer::scene());
             }
             break;
         }

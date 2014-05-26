@@ -8,6 +8,7 @@
 
 void weiboUICallBack(const char* uid,const char* token)
 {
+    GameProtoHandler::GetInstance().ConnectGameSvr("127.0.0.1", 3010);
     GameProtoHandler::GetInstance().DoLogin(uid, token);
 }
 
