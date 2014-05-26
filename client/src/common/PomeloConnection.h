@@ -49,7 +49,6 @@ public:
 
 	void OnResponse(int reqId,json::Value res,const char* route);
 	void OnEvent(const char* event,json::Value eventData);
-	void OnClose();
 
     virtual void update(float dt);
 

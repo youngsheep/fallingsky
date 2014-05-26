@@ -7,10 +7,9 @@
 //
 
 #include "PlayerInfoScene.h"
-#include "GameScene.h"
 #include "net/GameProtoHandler.h"
+#include "LoadingScene.h"
 #include "RegisterScene.h"
-
 extern void registerWeiboLogin();
 
 USING_NS_CC;
@@ -34,13 +33,11 @@ bool PlayerInfo::init()
     Button* btn = static_cast<Button*>(layout->getChildByName("login"));
     if(btn){
         btn->addTouchEventListener(this,toucheventselector(PlayerInfo::loginCallback));
-        btn->setScale9Enabled(true);
     }
 
     addWidget(layout);
 
-    
-    GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
+    //GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
     
     return true;
 }
@@ -61,7 +58,6 @@ void PlayerInfo::loginCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED) {
         registerWeiboLogin();
-        //Response("connector.entryHandler.entry",100);
     }
 }
 
@@ -69,15 +65,15 @@ void PlayerInfo::Response(std::string route,int result)
 {
     if (route.compare("connector.entryHandler.entry") == 0) {
         if (result == 100) {
-            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(2, RegisterLayer::scene());
+            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, RegisterLayer::scene());
             if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(RegisterLayer::scene());
+                CCDirector::sharedDirector()->replaceScene(transition);
             }
         }
         else if(result == 0)
         {
-            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
+            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, LoadingScene::scene(LOADING_STATE_APP_START));
             if (transition)
             {
                 CCDirector::sharedDirector()->replaceScene(transition);
@@ -87,5 +83,8 @@ void PlayerInfo::Response(std::string route,int result)
         {
             
         }
+    }
+    else if (route.compare("disconnect") == 0)
+    {
     }
 }

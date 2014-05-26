@@ -27,14 +27,12 @@ public:
     //IGameProtoHandler
     virtual void Response(std::string route,int result);
 
-    
     // a selector callback
     void loginCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     
     static cocos2d::CCScene* scene();
     // implement the "static node()" method manually
     CREATE_FUNC(PlayerInfo);
-    
 };
 
 #endif /* defined(__HelloCpp__PlayerInfoScene__) */

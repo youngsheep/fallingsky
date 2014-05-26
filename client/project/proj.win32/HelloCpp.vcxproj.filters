@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\src\entity\FLPlayer.cpp">
       <Filter>entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\LoadingScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\entity\FLPlayer.h">
       <Filter>entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\LoadingScene.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

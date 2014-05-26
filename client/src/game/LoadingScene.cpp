@@ -15,10 +15,11 @@ USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace ui;
 
-CCScene* PlayerInfo::scene()
+CCScene* LoadingScene::scene(int state)
 {
     CCScene *scene = CCScene::create();
-    PlayerInfo *layer = PlayerInfo::create();
+    LoadingScene *layer = LoadingScene::create();
+    layer->SetState(state);
     scene->addChild(layer,1);
     return scene;
 }
@@ -28,18 +29,8 @@ bool LoadingScene::init()
     TouchGroup::init();
     Layout* layout = static_cast<Layout*>(GUIReader::shareReader()->
                                           widgetFromJsonFile
-                                          ("ui/fallingsky-ui-login.ExportJson"));
-    Button* btn = static_cast<Button*>(layout->getChildByName("login"));
-    if(btn){
-        btn->addTouchEventListener(this,toucheventselector(PlayerInfo::loginCallback));
-        btn->setScale9Enabled(true);
-    }
-    
+                                          ("ui/fallingsky-ui-loading.ExportJson"));  
     addWidget(layout);
-    
-    
-    GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
-    
     return true;
 }
 
@@ -55,35 +46,36 @@ void LoadingScene::onExit()
     TouchGroup::onExit();
 }
 
-void LoadingScene::loginCallback(CCObject* pSender,TouchEventType type)
-{
-    if (type == TOUCH_EVENT_ENDED) {
-        registerWeiboLogin();
-        //Response("connector.entryHandler.entry",100);
-    }
-}
-
 void LoadingScene::Response(std::string route,int result)
 {
     if (route.compare("connector.entryHandler.entry") == 0) {
-        if (result == 100) {
-            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(2, RegisterLayer::scene());
-            if (transition)
-            {
-                CCDirector::sharedDirector()->replaceScene(RegisterLayer::scene());
-            }
+        if(result == 0)
+        {
         }
-        else if(result == 0)
+        else if (result < 0)
+        {
+        }
+    }
+}
+
+void LoadingScene::ChangeScene()
+{
+    switch (m_loadingState)
+    {
+    case LOADING_STATE_APP_START:
         {
             CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
             if (transition)
             {
                 CCDirector::sharedDirector()->replaceScene(transition);
             }
+            break;
         }
-        else if (result < 0)
-        {
-            
-        }
+    case LOADING_STATE_GAME_START:
+        break;
+    case LOADING_STATE_GAME_END:
+        break;
+    default:
+        break;
     }
 }

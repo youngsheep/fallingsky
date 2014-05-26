@@ -140,6 +140,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\..\src\game\AppDelegate.cpp" />
     <ClCompile Include="..\..\src\game\GameBlock.cpp" />
     <ClCompile Include="..\..\src\game\GameScene.cpp" />
+    <ClCompile Include="..\..\src\game\LoadingScene.cpp" />
     <ClCompile Include="..\..\src\game\PlayerInfoScene.cpp" />
     <ClCompile Include="..\..\src\game\RegisterScene.cpp" />
     <ClCompile Include="..\..\src\net\BattleRequest.cpp" />
@@ -164,6 +165,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\..\src\game\AppMacros.h" />
     <ClInclude Include="..\..\src\game\GameBlock.h" />
     <ClInclude Include="..\..\src\game\GameScene.h" />
+    <ClInclude Include="..\..\src\game\LoadingScene.h" />
     <ClInclude Include="..\..\src\game\PlayerInfoScene.h" />
     <ClInclude Include="..\..\src\game\RegisterScene.h" />
     <ClInclude Include="..\..\src\net\GameProtoHandler.h" />

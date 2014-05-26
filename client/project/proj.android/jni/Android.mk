@@ -12,6 +12,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../../src/game/GameBlock.cpp \
                    ../../../src/game/PlayerInfoScene.cpp \
                    ../../../src/game/RegisterScene.cpp \
+		   ../../../src/game/LoadingScene.cpp \
                    ../../../src/common/FLTextInput.cpp \
                    ../../../src/common/PomeloConnection.cpp \
                    ../../../src/common/ResMgr.cpp \

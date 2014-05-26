@@ -10,9 +10,10 @@
 #define __HelloCpp__RegisterScene_H_
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
 #include "net/GameProtoHandler.h"
 
-class RegisterLayer : public cocos2d::CCLayer,public IGameProtoHandler
+class RegisterLayer : public cocos2d::ui::TouchGroup, public IGameProtoHandler
 {
 public:
     RegisterLayer(){}
@@ -29,7 +30,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void registerCallback(CCObject* pSender);
+    void registerCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     
     // implement the "static node()" method manually
     CREATE_FUNC(RegisterLayer);

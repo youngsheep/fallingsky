@@ -86,7 +86,8 @@ void Java_com_nilgame_fallingsky_HelloCpp_OnWeiboAuth(JNIEnv*  env, jobject thiz
 
 	FLPlayer::GetInstance().SetUid(uidstr);
 	FLPlayer::GetInstance().SetWeiboToken(tokenstr);
-
+        
+        GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
 	GameProtoHandler::GetInstance().DoLogin(uidstr, tokenstr);
 
 	env->ReleaseStringUTFChars(uid, uidstr);

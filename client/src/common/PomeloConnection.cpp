@@ -7,6 +7,8 @@
 #include "pomelo.h"
 #include "CCDirector.h"
 #include "CCScheduler.h"
+#include "entity/FLPlayer.h"
+#include "net/GameProtoHandler.h"
 
 static std::map<pc_client_t*,PomeloConnection*> s_connMap;
 
@@ -44,11 +46,6 @@ void on_push_event(pc_client_t *client, const char *event, void *data) {
 int hand_shake(pc_client_t *client, json_t *msg)
 {
 	printf("hand shake success.\n");
-    PomeloConnection* conn = get_conn(client);
-    if (conn)
-    {
-        cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(conn,1,false);
-    }
 	return 0;
 }
 
@@ -57,10 +54,16 @@ void on_conn_close(pc_client_t *client, const char *event, void *data) {
     PomeloConnection* conn = get_conn(client);
     if (conn)
     {
-        cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleUpdateForTarget(conn);
-        conn->OnClose();
+        conn->AddPomeloMsg(event,json::object(),true);
     }
+}
 
+void on_conn_timeout(pc_client_t *client, const char *event, void *data) {
+    printf("connection timeout: %d.\n", client->state);
+}
+
+void on_conn_kickout(pc_client_t *client, const char *event, void *data) {
+    printf("connection kickout: %d.\n", client->state);
 }
 
 PomeloConnection::PomeloConnection(IPomeloConnection& handler)
@@ -73,8 +76,10 @@ PomeloConnection::PomeloConnection(IPomeloConnection& handler)
 
 	// add some event callback.
 	pc_add_listener(m_pClient, PC_EVENT_DISCONNECT, on_conn_close);
-	pc_add_listener(m_pClient, PC_EVENT_TIMEOUT, on_conn_close);
-	pc_add_listener(m_pClient, PC_EVENT_KICK, on_conn_close);
+	pc_add_listener(m_pClient, PC_EVENT_TIMEOUT, on_conn_timeout);
+	pc_add_listener(m_pClient, PC_EVENT_KICK, on_conn_kickout);
+
+    cocos2d::CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(this,1,false);
 }
 
 PomeloConnection::~PomeloConnection()
@@ -85,6 +90,8 @@ PomeloConnection::~PomeloConnection()
         s_connMap.erase(itor);
     }
 	pc_client_destroy(m_pClient);
+
+    cocos2d::CCDirector::sharedDirector()->getScheduler()->unscheduleUpdateForTarget(this);
 }
 
 int PomeloConnection::Connect(const char* ip,int port)
@@ -133,11 +140,6 @@ void PomeloConnection::OnEvent(const char* event,json::Value eventData)
     free((void*)str);
 
 	AddPomeloMsg(event,eventData,true);
-}
-
-void PomeloConnection::OnClose()
-{
-
 }
 
 void PomeloConnection::update(float dt)

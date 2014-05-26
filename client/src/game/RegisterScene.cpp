@@ -14,6 +14,8 @@
 extern void registerWeiboLogin();
 
 USING_NS_CC;
+USING_NS_CC_EXT;
+using namespace ui;
 
 CCScene* RegisterLayer::scene()
 {
@@ -25,46 +27,44 @@ CCScene* RegisterLayer::scene()
 
 bool RegisterLayer::init()
 {
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    TouchGroup::init();
+    Layout* layout = static_cast<Layout*>(GUIReader::shareReader()->
+        widgetFromJsonFile
+        ("ui/fallingsky-ui_register.ExportJson"));
+    Button* btn = static_cast<Button*>(layout->getChildByName("register"));
+    if(btn){
+        btn->addTouchEventListener(this,toucheventselector(RegisterLayer::registerCallback));
+    }
     
-    CCLabelTTF* label = CCLabelTTF::create("input nickname:","Marker Felt", 30);
-    label->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 + 100));
-    addChild(label);
-
-    FLTextInput* TextField = FLTextInput::textFieldWithPlaceHolder("Input Text", "Marker Felt", 30);
-    TextField->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 100));
-    this->addChild(TextField);
-    
-    CCMenuItemFont *item = CCMenuItemFont::create("Create", this, menu_selector(RegisterLayer::registerCallback) );
-    CCMenu* menu = CCMenu::create( item , NULL);
-    menu->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 - 200));
-    addChild(menu);
-    
+    addWidget(layout);
     return true;
 }
 
 void RegisterLayer::onEnter()
 {
     GameProtoHandler::GetInstance().RegisterProtoHandler(this);
-    CCLayer::onEnter();
+    TouchGroup::onEnter();
 }
 
 void RegisterLayer::onExit()
 {
     GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
-    CCLayer::onExit();
+    TouchGroup::onExit();
 }
 
-void RegisterLayer::registerCallback(CCObject* pSender)
+void RegisterLayer::registerCallback(CCObject* pSender,TouchEventType type)
 {
-    GameProtoHandler::GetInstance().RoleCreateReq("");
+    if (type == TOUCH_EVENT_ENDED)
+    {
+        GameProtoHandler::GetInstance().RoleCreateReq("");
+    }
 }
 
 void RegisterLayer::Response(std::string route,int result)
 {
     if(result == 0)
     {
-        CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, FLGame::scene());
+        CCTransitionFadeBL* transition = CCTransitionFadeBL::create(2, FLGame::scene());
         if (transition)
         {
             CCDirector::sharedDirector()->replaceScene(transition);

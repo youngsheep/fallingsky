@@ -2,12 +2,17 @@
 #include "AppDelegate.h"
 #include "CCEGLView.h"
 #include "net/GameProtoHandler.h"
+#include "entity/FLPlayer.h"
 
 USING_NS_CC;
 
 void registerWeiboLogin()
 {
-    GameProtoHandler::GetInstance().DoLogin("1449516883","2.00ZYBGaBrInXhC5fd379312ddlQZkB");
+    FLPlayer& player = FLPlayer::GetInstance();
+    player.SetUid("1449516883");
+    player.SetWeiboToken("2.00ZYBGaBrInXhC5fd379312ddlQZkB");
+    GameProtoHandler::GetInstance().ConnectGameSvr("198.199.100.95", 3010);
+    GameProtoHandler::GetInstance().DoLogin(player.GetUid(),player.GetWeiboToken());
 }
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
