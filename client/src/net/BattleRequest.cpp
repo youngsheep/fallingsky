@@ -1,8 +1,10 @@
 #include "GameProtoHandler.h"
 #include "entity/FLPlayer.h"
 
-void GameProtoHandler::StartBattleReq()
+void GameProtoHandler::StartBattleReq(int type)
 {
+    FLPlayer& player = FLPlayer::GetInstance();
+
     std::string route("game.battleHandler.start");
     json::Value req(json::object());
     req.clear();
@@ -10,10 +12,11 @@ void GameProtoHandler::StartBattleReq()
     json::Value head(json::object());
 
     head.set_key("magic",json::Value(PROTO_MAGIC));
-    head.set_key("playerid",json::Value(0));
+    head.set_key("pid",json::Value(player.GetPlayerID()));
+    head.set_key("uid",json::Value(player.GetUid()));
 
     req.set_key("head",head);
-    req.set_key("type",json::Value(0));
+    req.set_key("type",json::Value(type));
 
     DoRequest(req,route,pomelo_selector(GameProtoHandler::OnStartBattle));
 }
@@ -36,6 +39,8 @@ int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
 
 void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
 {
+    FLPlayer& player = FLPlayer::GetInstance();
+
     std::string route("game.battleHandler.cmd");
     json::Value req(json::object());
     req.clear();
@@ -43,7 +48,8 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     json::Value head(json::object());
 
     head.set_key("magic",json::Value(PROTO_MAGIC));
-    head.set_key("pid",json::Value(0));
+    head.set_key("pid",json::Value(player.GetPlayerID()));
+    head.set_key("uid",json::Value(player.GetUid()));
 
     req.set_key("head",head);
     req.set_key("battleid",json::Value(battleid));

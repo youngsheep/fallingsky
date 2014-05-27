@@ -66,20 +66,21 @@ void GameMainLayer::menuCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED)
     {
+        ((Button*)pSender)->setEnabled(false);
         GameProtoHandler::GetInstance().StartBattleReq();
     }
 }
 
 void GameMainLayer::Response(std::string route,int result)
 {
-    if (route.compare("game.roleHandler.register") == 0)
+    if (route.compare("game.battleHandler.start") == 0)
     {
         if(result == 0)
         {
             //CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, LoadingScene::scene(LOADING_STATE_APP_START));
             //if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(LoadingScene::scene(LOADING_STATE_APP_START));
+                CCDirector::sharedDirector()->replaceScene(FLGame::scene());
             }
         }
     }

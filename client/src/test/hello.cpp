@@ -38,16 +38,20 @@ int main() {
             }
             else if (!strcmp(input, "start"))
             {
-                handler.StartBattleReq();
+                handler.StartBattleReq(1);
             }
             else if (!strcmp(input, "cmd"))
             {
                 if (player.GetBattle().GetState() == FL_BATTLE_STATE_START)
                 {
-                    handler.BattleCmdReq(player.GetBattle().GetID(),2,2,0);
+                    handler.BattleCmdReq(player.GetBattle().GetID(),1,1,0);
+                    handler.BattleCmdReq(player.GetBattle().GetID(),1,3,0);
+                    handler.BattleCmdReq(player.GetBattle().GetID(),1,5,0);
+                    handler.BattleCmdReq(player.GetBattle().GetID(),1,7,0);
                 }
             }
         }
+        handler.GetConn().update(0);
     }
 
 	return 0;

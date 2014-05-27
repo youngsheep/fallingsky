@@ -33,7 +33,7 @@ public:
     int OnLogin(json::Value data,const char* route);
 
     //battleRequest
-    void StartBattleReq();
+    void StartBattleReq(int type);
     int OnStartBattle(json::Value data,const char* route);
     void BattleCmdReq(int battleid,int xpos,int ypos,int flag);
     int OnBattleCmd(json::Value data,const char* route);
@@ -51,6 +51,7 @@ public:
     bool IsWait(){return m_bWait;}
     void NeedWait(bool w){m_bWait = w;}
 
+    PomeloConnection& GetConn(){return m_pomeloConn;}
 protected:
     GameProtoHandler()
         : m_pomeloConn(*this) 

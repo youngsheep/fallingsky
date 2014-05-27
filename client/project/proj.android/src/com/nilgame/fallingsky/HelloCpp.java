@@ -26,6 +26,10 @@ package com.nilgame.fallingsky;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import android.view.KeyEvent;
+import android.app.AlertDialog;
+import android.view.View.OnClickListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -58,52 +62,55 @@ public class HelloCpp extends Cocos2dxActivity{
     }
 
     public void doWeiboAuth(){
-        Log.e("doWeiboAuth", "doWeiboAuth enter!");
-        // ???å§????å¾????å¯¹è±¡
+        Log.e("fallingksy", "doWeiboAuth enter!");
         mWeiboAuth = new WeiboAuth(this, APP_KEY, REDIRECT_URL, SCOPE);
         mSsoHandler = new SsoHandler(HelloCpp.this, mWeiboAuth);
         mSsoHandler.authorize(new AuthListener());
     }
 
-    /**
-     * å½? SSO ?????? Activity ?????ºæ?¶ï??è¯¥å?½æ?°è??è°???¨ã??
-     * 
-     * @see {@link Activity#onActivityResult}
-     */
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         
-        // SSO ?????????è°?
-        // ???è¦?ï¼????èµ? SSO ??»é????? Activity å¿?é¡»é????? onActivityResult
         if (mSsoHandler != null) {
             mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
         }
     }
 
-    /**
-     * å¾????è®¤è???????????è°?ç±»ã??
-     * 1. SSO ????????¶ï?????è¦???? {@link #onActivityResult} ä¸?è°???? {@link SsoHandler#authorizeCallBack} ???ï¼?
-     *    è¯¥å??è°????ä¼?è¢???§è?????
-     * 2. ??? SSO ????????¶ï??å½???????ç»???????ï¼?è¯¥å??è°?å°±ä??è¢???§è?????
-     * å½????????????????ï¼?è¯·ä??å­?è¯? access_token???expires_in???uid ç­?ä¿¡æ????? SharedPreferences ä¸????
-     */
+    @Override
+    public boolean onKeyDown (int keyCode, KeyEvent event)
+    {
+        Log.e("fallingksy", "onKeyDown enter!");
+    	if (keyCode == KeyEvent.KEYCODE_BACK)
+    	{
+    		AlertDialog.Builder adb = new AlertDialog.Builder(this);
+    		adb.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					HelloCpp.this.finish();
+				}
+			});
+    		adb.setNegativeButton(R.string.no, null);
+    		adb.setTitle(R.string.quit_prompt);
+    		adb.show();
+    		return true;
+    	}
+    	return false;
+    }
+
     class AuthListener implements WeiboAuthListener {
         
         @Override
         public void onComplete(Bundle values) {
-            // ä»? Bundle ä¸?è§£æ?? Token
             mAccessToken = Oauth2AccessToken.parseAccessToken(values);
             if (mAccessToken.isSessionValid()) {
-                // ??¾ç¤º Token
                 //updateTokenView(false);
                 
-                // ä¿?å­? Token ??? SharedPreferences
                 //AccessTokenKeeper.writeAccessToken(HelloCpp.this, mAccessToken);
                 Toast.makeText(HelloCpp.this, 
                         "auth success!", Toast.LENGTH_SHORT).show();
             } else {
-                // å½???¨æ³¨??????åº???¨ç??åº?ç­¾å??ä¸?æ­£ç¡®??¶ï??å°±ä????¶å?? Codeï¼?è¯·ç¡®ä¿?ç­¾å??æ­£ç¡®
                 String code = values.getString("code");
                 String message = "auth fail!";//getString(R.string.weibosdk_demo_toast_auth_failed);
                 if (code != null && code != "") {
@@ -127,11 +134,8 @@ public class HelloCpp extends Cocos2dxActivity{
         }
     }
 
-    /** å¾???? Web ????????¥å?£ç±»ï¼????ä¾???»é??ç­???????  */
     private WeiboAuth mWeiboAuth;
-    /** æ³¨æ??ï¼?SsoHandler ä»?å½? SDK ?????? SSO ??¶æ????? */
     private SsoHandler mSsoHandler;
-    /** ??·å????°ç?? Token */
     private Oauth2AccessToken mAccessToken;
 
     public static final String  APP_KEY = "2698066879";

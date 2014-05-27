@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\src\game\LoadingScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\GameMainScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -135,6 +138,9 @@
       <Filter>entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\LoadingScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\GameMainScene.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
