@@ -91,9 +91,9 @@ void FLGameBlock::InitItem(const int* bItem)
 
             if (m_block[i][j] != 0)
             {
-                CCRect rect = CCRectMake(1,1,GAME_BLOCK_SIZE,GAME_BLOCK_SIZE);
+                CCRect rect = CCRectMake(1,1,GAME_BLOCK_SIZE_W,GAME_BLOCK_SIZE_H);
                 CCSprite* item = CCSprite::createWithTexture(this->getTexture(),rect);
-                item->setPosition( ccp(j*GAME_BLOCK_SIZE, i*GAME_BLOCK_SIZE) );
+                item->setPosition( ccp(j*GAME_BLOCK_SIZE_W, i*GAME_BLOCK_SIZE_H) );
                 item->setAnchorPoint(ccp(0,0));
                 addChild(item);
             }
@@ -176,7 +176,7 @@ void FLGameBlock::SetBlockXY(int x, int y)
     m_blockX = x;
     m_blockY = y;
 
-    setPosition(x*GAME_BLOCK_SIZE,y*GAME_BLOCK_SIZE);
+    setPosition(x*GAME_BLOCK_SIZE_W,y*GAME_BLOCK_SIZE_H);
     //CCLOG("pos x :%.0f  pos y :%.0f",getPositionX(),getPositionY());
     //CCLOG("block x :%d  block y :%d",m_blockX,m_blockY);
 }
@@ -203,7 +203,7 @@ void FLGameBlock::onExit()
 
 CCRect FLGameBlock::rect()
 {
-    return CCRectMake(0, 0, 4 * GAME_BLOCK_SIZE, 4 * GAME_BLOCK_SIZE);
+    return CCRectMake(0, 0, 4 * GAME_BLOCK_SIZE_W, 4 * GAME_BLOCK_SIZE_H);
 }
 
 bool FLGameBlock::containsTouchLocation(CCTouch *touch)
@@ -237,7 +237,7 @@ void FLGameBlock::ccTouchMoved(CCTouch *touch, CCEvent *event)
     {
         CCLOG("delta x : %.0f , y %.0f " , delta.x,delta.y);
         setPosition(getPositionX() + delta.x, getPositionY());
-        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE);
+        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE_W);
         m_pGame.CheckXMove();
         m_state = GAME_BLOCK_STATE_H_MOVING;
     }
@@ -253,7 +253,7 @@ void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)
     }
     else if(m_state == GAME_BLOCK_STATE_H_MOVING)
     {
-        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE + 0.5);
+        m_blockX = int (getPositionX() / GAME_BLOCK_SIZE_W + 0.5);
         SetBlockXY(m_blockX, m_blockY);
         m_state = GAME_BLOCK_STATE_IDLE;
     }

@@ -40,11 +40,13 @@ bool FLGameUI::init()
 
     addWidget(layout);
 
+    Widget* panel1 = layout->getChildByName("game_panel1");
     Widget* panel2 = layout->getChildByName("game_panel2");
     panel2->setVisible(false);
 
     m_pMyGame = FLGame::create();
     m_pMyGame->retain();
+    m_pMyGame->setPosition(panel1->getPosition());
     addChild(m_pMyGame);
     return true;
 }
@@ -122,7 +124,7 @@ void FLGame::update(float delta)
 
     offset += m_BlockSpeed;
 
-    int blockoffset = offset / GAME_BLOCK_SIZE;
+    int blockoffset = offset / GAME_BLOCK_SIZE_H;
 
     for (int i = 0 ; i < blockoffset ; i++)
     {
@@ -155,7 +157,7 @@ void FLGame::update(float delta)
         }
     }
 
-    offset = offset % GAME_BLOCK_SIZE;
+    offset = offset % GAME_BLOCK_SIZE_H;
     int inc = blockoffset > 0 ? offset : m_BlockSpeed;
     const CCPoint& p = getGameBlock()->getPosition();
     getGameBlock()->setPosition(p.x,p.y + inc);
@@ -183,7 +185,7 @@ void FLGame::fill_block()
                 CCAssert((bgy >= 0 && bgy < LayerSize.height) , "error");
 
                 int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 1 - bgy));
-                CCAssert(status == 0 || status == 4 , "this position already have tile" );
+                CCAssert(status == 0 || status == 3 , "this position already have tile" );
                
                 getBackground()->setTileGID(1,ccp(bgx,LayerSize.height - 1 - bgy));
 
@@ -211,7 +213,7 @@ void FLGame::check_score()
         for (int j = 0 ; j < LayerSize.width ; j++)
         {
             int status = *(tiles + int(bgy*LayerSize.width) + j);
-            if (status == 0 || status == 4)
+            if (status == 0 || status == 3)
             {
                 isFull = false;
                 break;
@@ -324,7 +326,7 @@ bool FLGame::can_move_y()
                 }
 
                 int status = getBackground()->tileGIDAt(ccp(bgx, LayerSize.height - 2 - bgy));
-                if (status > 0 && status != 4)
+                if (status > 0 && status != 3)
                 {
                     return false;
                 }                

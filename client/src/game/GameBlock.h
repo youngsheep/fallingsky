@@ -6,7 +6,8 @@
 #include "touch_dispatcher/CCTouch.h"
 #include "cocoa/CCGeometry.h"
 
-#define GAME_BLOCK_SIZE 32
+#define GAME_BLOCK_SIZE_W 22
+#define GAME_BLOCK_SIZE_H 20
 
 enum{
     GAME_BLOCK_STATE_IDLE = 0,

@@ -36,9 +36,14 @@ bool GameMainLayer::init()
                                           widgetFromJsonFile
                                           ("ui/fallingsky-ui-main.ExportJson"));
 
-    Button* btn = static_cast<Button*>(layout->getChildByName("menu"));
+    Button* btn = static_cast<Button*>(layout->getChildByName("pvebtn"));
     if(btn){
-        btn->addTouchEventListener(this,toucheventselector(GameMainLayer::menuCallback));
+        btn->addTouchEventListener(this,toucheventselector(GameMainLayer::pveCallback));
+    }
+    
+    Button* pvpbtn = static_cast<Button*>(layout->getChildByName("pvpbtn"));
+    if(pvpbtn){
+        pvpbtn->addTouchEventListener(this,toucheventselector(GameMainLayer::pvpCallback));
     }
     
     ImageView* image = static_cast<ImageView*>(layout->getChildByName("portrait"));
@@ -72,12 +77,21 @@ void GameMainLayer::onExit()
     TouchGroup::onExit();
 }
 
-void GameMainLayer::menuCallback(CCObject* pSender,TouchEventType type)
+void GameMainLayer::pveCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED)
     {
         GameProtoHandler::GetInstance().StartBattleReq(1);
-        ((Button*)pSender)->setEnabled(false);
+        this->setTouchEnabled(false);
+    }
+}
+
+void GameMainLayer::pvpCallback(CCObject* pSender,TouchEventType type)
+{
+    if (type == TOUCH_EVENT_ENDED)
+    {
+        GameProtoHandler::GetInstance().StartBattleReq(2);
+        this->setTouchEnabled(false);
     }
 }
 

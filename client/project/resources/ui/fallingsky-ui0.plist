@@ -99,25 +99,6 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>C:/Program Files (x86)/CocoStudio/EditorDefaultRes/GUI/image.png</key>
-			<dict>
-				<key>width</key>
-				<integer>80</integer>
-				<key>height</key>
-				<integer>80</integer>
-				<key>originalWidth</key>
-				<integer>80</integer>
-				<key>originalHeight</key>
-				<integer>80</integer>
-				<key>x</key>
-				<integer>701</integer>
-				<key>y</key>
-				<integer>768</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
 			<key>C:/Program Files (x86)/CocoStudio/EditorDefaultRes/GUI/button.png</key>
 			<dict>
 				<key>width</key>
@@ -129,7 +110,26 @@
 				<key>originalHeight</key>
 				<integer>40</integer>
 				<key>x</key>
-				<integer>781</integer>
+				<integer>701</integer>
+				<key>y</key>
+				<integer>768</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>C:/Program Files (x86)/CocoStudio/EditorDefaultRes/GUI/image.png</key>
+			<dict>
+				<key>width</key>
+				<integer>80</integer>
+				<key>height</key>
+				<integer>80</integer>
+				<key>originalWidth</key>
+				<integer>80</integer>
+				<key>originalHeight</key>
+				<integer>80</integer>
+				<key>x</key>
+				<integer>804</integer>
 				<key>y</key>
 				<integer>768</integer>
 				<key>offsetX</key>

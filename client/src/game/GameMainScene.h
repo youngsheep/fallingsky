@@ -31,7 +31,8 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void menuCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
+    void pveCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
+    void pvpCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     
     // implement the "static node()" method manually
     CREATE_FUNC(GameMainLayer);

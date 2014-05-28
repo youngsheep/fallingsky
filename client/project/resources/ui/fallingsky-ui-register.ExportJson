@@ -6,8 +6,8 @@
     "name": "AnimationManager",
     "actionlist": []
   },
-  "designHeight": 480,
-  "designWidth": 800,
+  "designHeight": 720,
+  "designWidth": 1024,
   "textures": [
     "fallingsky-ui0.plist"
   ],
@@ -69,8 +69,8 @@
           "useMergedTexture": true,
           "visible": true,
           "width": 1024,
-          "x": 40,
-          "y": 440,
+          "x": 512,
+          "y": 384,
           "capInsetsHeight": 0,
           "capInsetsWidth": 0,
           "capInsetsX": 0,
@@ -125,7 +125,7 @@
             "type": 2
           },
           "opacity": 255,
-          "positionPercentX": 0.50375,
+          "positionPercentX": 0.54125,
           "positionPercentY": 0.50625,
           "positionType": 0,
           "rotation": 0,

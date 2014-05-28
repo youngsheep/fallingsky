@@ -6,8 +6,8 @@
     "name": "AnimationManager",
     "actionlist": []
   },
-  "designHeight": 480,
-  "designWidth": 800,
+  "designHeight": 720,
+  "designWidth": 1024,
   "textures": [
     "fallingsky-ui0.plist"
   ],
