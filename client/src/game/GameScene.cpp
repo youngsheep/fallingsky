@@ -40,13 +40,12 @@ bool FLGameUI::init()
 
     addWidget(layout);
 
-    Widget* panel1 = layout->getChildByName("game_panel1");
     Widget* panel2 = layout->getChildByName("game_panel2");
     panel2->setVisible(false);
 
     m_pMyGame = FLGame::create();
     m_pMyGame->retain();
-    panel1->addChild(m_pMyGame);
+    addChild(m_pMyGame);
     return true;
 }
 
@@ -92,19 +91,13 @@ bool FLGame::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !CCLayer::init() )
+    if ( !TouchGroup::init() )
     {
         return false;
     }
-    
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
     do 
     {
-        //CCSprite* bg = CCSprite::create("bg.png");
-        //bg->setAnchorPoint(ccp(0,0));
-        //addChild(bg,-2);
         
         this->setTileMap(CCTMXTiledMap::create("bg.tmx"));
         this->setBackground(_tileMap->layerNamed("block_grid"));
@@ -145,9 +138,11 @@ void FLGame::update(float delta)
             fill_block();
             check_score();
 
-            GameProtoHandler::GetInstance().BattleCmdReq(getGameBlock()->GetBlockX(),getGameBlock()->GetBlockY()+1,getGameBlock()->GetBlockFlag());
-            
             const CCSize& LayerSize = getBackground()->getLayerSize();
+            int bx = getGameBlock()->GetBlockX();
+            int by = LayerSize.height - getGameBlock()->GetBlockY() - 2;
+            GameProtoHandler::GetInstance().BattleCmdReq(bx,by,getGameBlock()->GetBlockFlag());
+            
             if (LayerSize.height - m_BlockHeight < 4 )
             {
                 //gameover
@@ -337,33 +332,4 @@ bool FLGame::can_move_y()
         }
     }
     return true;
-}
-
-void FLGame::onEnter(){
-    
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
-    CCLayer::onEnter();
-}
-
-void FLGame::onExit(){
-    
-    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-    CCLayer::onExit();
-}
-
-bool FLGame::ccTouchBegan(CCTouch* touch, CCEvent* event)
-{
-	CCLOG("ccTouchBegan");
-    return true;
-}
-
-void FLGame::ccTouchMoved(CCTouch* touch, CCEvent* event){
-    CCLOG("ccTouchMoved");
-}
-
-void FLGame::ccTouchEnded(CCTouch* touch, CCEvent* event)
-{
-	CCLOG("ccTouchEnded");
-    //获取离开屏幕时对应的坐标
-    CCPoint point = touch->getLocation();
 }

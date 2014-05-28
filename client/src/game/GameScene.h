@@ -35,7 +35,7 @@ enum
     enuEnemyGameArea_Tag
 };
 
-class FLGame : public cocos2d::CCLayer
+class FLGame : public cocos2d::ui::TouchGroup
 {
     CC_SYNTHESIZE_RETAIN(cocos2d::CCTMXTiledMap*, _tileMap, TileMap);
     CC_SYNTHESIZE_RETAIN(cocos2d::CCTMXLayer*, _background, Background);
@@ -48,18 +48,6 @@ public:
     virtual bool init();  
 
     virtual void update(float delta);
-    
-    //重写触屏回调函数
-    virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-    virtual void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-    virtual void ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
-    
-    //重写生命周期函数
-    virtual void onEnter();
-    virtual void onExit();
-    
-    // a selector callback
-    void menuCloseCallback(CCObject* pSender);
     
     // implement the "static node()" method manually
     CREATE_FUNC(FLGame);

@@ -45,8 +45,8 @@ const int BLOCK_TYPE_VALUE[][4][4] = {
         ,{0, 0, 0, 0}
     },
     {
-         {7, 7, 7, 7}
-        ,{0, 0, 0, 0}
+         {0, 0, 0, 0}
+        ,{7, 7, 7, 7}
         ,{0, 0, 0, 0}
         ,{0, 0, 0, 0}
     }
@@ -71,6 +71,7 @@ void FLGameBlock::InitBlock(int type)
     CCAssert(type >= 0 && type < 7 , "type error!");
     
     m_blockType = type;
+    m_rotateFlag = 0;
     removeAllChildren();
     InitItem((const int*)BLOCK_TYPE_VALUE[type]);
 
