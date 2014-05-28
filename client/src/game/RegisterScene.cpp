@@ -66,10 +66,10 @@ void RegisterLayer::Response(std::string route,int result)
     {
         if(result == 0)
         {
-            //CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, LoadingScene::scene(LOADING_STATE_APP_START));
-            //if (transition)
+            CCTransitionFadeTR* transition = CCTransitionFadeTR::create(1, LoadingScene::scene(LOADING_STATE_APP_START));
+            if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(LoadingScene::scene(LOADING_STATE_APP_START));
+                CCDirector::sharedDirector()->replaceScene(transition);
             }
         }
     }

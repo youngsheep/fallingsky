@@ -3,7 +3,7 @@
 #include "entity/FLPlayer.h"
 #include "config/srcgen/testConfigHolder.h"
 
-const char *ip = "127.0.0.1";
+const char *ip = "198.199.100.95";
 int port = 3010;
 
 int main() {

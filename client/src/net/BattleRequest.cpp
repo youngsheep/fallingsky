@@ -37,7 +37,7 @@ int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
     return result;
 }
 
-void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
+void GameProtoHandler::BattleCmdReq(int xpos,int ypos,int flag)
 {
     FLPlayer& player = FLPlayer::GetInstance();
 
@@ -52,7 +52,7 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
     head.set_key("uid",json::Value(player.GetUid()));
 
     req.set_key("head",head);
-    req.set_key("battleid",json::Value(battleid));
+    req.set_key("battleid",json::Value(player.GetBattle().GetID()));
     req.set_key("xPos",json::Value(xpos));
     req.set_key("yPos",json::Value(ypos));
     req.set_key("rotateFlag",json::Value(flag));
@@ -63,6 +63,16 @@ void GameProtoHandler::BattleCmdReq(int battleid,int xpos,int ypos,int flag)
 int GameProtoHandler::OnBattleCmd(json::Value data,const char* route)
 {
     printf("recv battle cmd resp!\n");
+    int result = data["result"].as_integer();
+    if (result == 0)
+    {
+        printf("battle cmd success !\n");
+        FLPlayer::GetInstance().GetBattle().Update(data);
+    }
+    else
+    {
+        printf("fail battle cmd!\n");
+    }
     RemoveCallBack(route);
     return 0;
 }

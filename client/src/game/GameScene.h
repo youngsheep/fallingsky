@@ -2,12 +2,32 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
+#include "net/GameProtoHandler.h"
 #include "GameBlock.h"
 
-//tmp
-//#include "net/BattleRequest.h"
-//#include "net/LoginRequest.h"
-//#include "entity/FLBattle.h"
+class FLGameUI : public cocos2d::ui::TouchGroup,public IGameProtoHandler
+{
+public:
+    FLGameUI();
+    virtual ~FLGameUI();
+
+    virtual bool init();
+    // CCLayer
+    virtual void onEnter();
+    virtual void onExit();
+
+    //IGameProtoHandler
+    virtual void Response(std::string route,int result);
+
+    static cocos2d::CCScene* scene();
+
+    // implement the "static node()" method manually
+    CREATE_FUNC(FLGameUI);
+
+protected:
+    FLGame* m_pMyGame;
+};
 
 enum 
 {
@@ -38,9 +58,6 @@ public:
     virtual void onEnter();
     virtual void onExit();
     
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::CCScene* scene();
-    
     // a selector callback
     void menuCloseCallback(CCObject* pSender);
     
@@ -49,9 +66,10 @@ public:
 
 public:
     bool CheckXMove();
+    void GenerateBlock(int type);
 
 protected:
-    void generate_block();
+
     void fill_block();
     bool can_move_y();
     void check_score();

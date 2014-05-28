@@ -29,6 +29,8 @@ public:
 
     void SetBlockXY(int x, int y);
 
+    int GetBlockFlag(){return m_rotateFlag;}
+
     int GetBlockX(){return m_blockX;}
     int GetBlockY(){return m_blockY;}
 

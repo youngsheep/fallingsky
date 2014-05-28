@@ -35,7 +35,7 @@ public:
     //battleRequest
     void StartBattleReq(int type);
     int OnStartBattle(json::Value data,const char* route);
-    void BattleCmdReq(int battleid,int xpos,int ypos,int flag);
+    void BattleCmdReq(int xpos,int ypos,int flag);
     int OnBattleCmd(json::Value data,const char* route);
 
     //roleRequest

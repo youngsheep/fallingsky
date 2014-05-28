@@ -8,6 +8,7 @@
 
 #include "GameMainScene.h"
 #include "LoadingScene.h"
+#include "GameScene.h"
 #include "net/GameProtoHandler.h"
 #include "common/FLTextInput.h"
 #include "entity/FLPlayer.h"
@@ -29,9 +30,12 @@ CCScene* GameMainLayer::scene()
 bool GameMainLayer::init()
 {
     TouchGroup::init();
+    this->setTouchEnabled(true);
+
     Layout* layout = static_cast<Layout*>(GUIReader::shareReader()->
                                           widgetFromJsonFile
                                           ("ui/fallingsky-ui-main.ExportJson"));
+
     Button* btn = static_cast<Button*>(layout->getChildByName("menu"));
     if(btn){
         btn->addTouchEventListener(this,toucheventselector(GameMainLayer::menuCallback));
@@ -44,6 +48,7 @@ bool GameMainLayer::init()
     Label* nickname = static_cast<Label*>(layout->getChildByName("nickname"));
     if (nickname) {
         nickname->setText(FLPlayer::GetInstance().GetNickName());
+        nickname->setColor(ccc3(255,255,255));
     }
     
     addWidget(layout);
@@ -56,6 +61,11 @@ void GameMainLayer::onEnter()
     TouchGroup::onEnter();
 }
 
+void GameMainLayer::onEnterTransitionDidFinish()
+{
+    this->setTouchEnabled(true);
+}
+
 void GameMainLayer::onExit()
 {
     GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
@@ -66,8 +76,8 @@ void GameMainLayer::menuCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED)
     {
+        GameProtoHandler::GetInstance().StartBattleReq(1);
         ((Button*)pSender)->setEnabled(false);
-        GameProtoHandler::GetInstance().StartBattleReq();
     }
 }
 
@@ -80,7 +90,7 @@ void GameMainLayer::Response(std::string route,int result)
             //CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, LoadingScene::scene(LOADING_STATE_APP_START));
             //if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(FLGame::scene());
+                CCDirector::sharedDirector()->replaceScene(FLGameUI::scene());
             }
         }
     }

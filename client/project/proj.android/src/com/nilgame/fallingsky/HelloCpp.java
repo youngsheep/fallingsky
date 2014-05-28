@@ -32,6 +32,7 @@ import android.view.View.OnClickListener;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -61,11 +62,28 @@ public class HelloCpp extends Cocos2dxActivity{
     	return glSurfaceView;
     }
 
-    public void doWeiboAuth(){
+    private void updateResultsInUi() {
+        try{
         Log.e("fallingksy", "doWeiboAuth enter!");
         mWeiboAuth = new WeiboAuth(this, APP_KEY, REDIRECT_URL, SCOPE);
         mSsoHandler = new SsoHandler(HelloCpp.this, mWeiboAuth);
-        mSsoHandler.authorize(new AuthListener());
+        mSsoHandler.authorize(new AuthListener());            
+        }
+        catch(Exception ex)
+        {
+            Log.e("fallingsky",ex.toString());
+            ex.printStackTrace();
+        }
+    }
+
+    public void doWeiboAuth(){
+        Thread t = new Thread() {
+            public void run() {
+                mHandler.post(mUpdateResults);
+            }
+        };
+        t.start();
+
     }
 
 
@@ -110,6 +128,8 @@ public class HelloCpp extends Cocos2dxActivity{
                 //AccessTokenKeeper.writeAccessToken(HelloCpp.this, mAccessToken);
                 Toast.makeText(HelloCpp.this, 
                         "auth success!", Toast.LENGTH_SHORT).show();
+                        
+                HelloCpp.this.OnWeiboAuth(mAccessToken.getUid(),mAccessToken.getToken());
             } else {
                 String code = values.getString("code");
                 String message = "auth fail!";//getString(R.string.weibosdk_demo_toast_auth_failed);
@@ -118,7 +138,6 @@ public class HelloCpp extends Cocos2dxActivity{
                 }
                 Toast.makeText(HelloCpp.this, message, Toast.LENGTH_LONG).show();
             }
-            HelloCpp.this.OnWeiboAuth(mAccessToken.getUid(),mAccessToken.getToken());
         }
 
         @Override
@@ -137,6 +156,13 @@ public class HelloCpp extends Cocos2dxActivity{
     private WeiboAuth mWeiboAuth;
     private SsoHandler mSsoHandler;
     private Oauth2AccessToken mAccessToken;
+
+    final Handler mHandler = new Handler();
+    final Runnable mUpdateResults = new Runnable() {
+        public void run() {
+            updateResultsInUi();
+        }
+    };
 
     public static final String  APP_KEY = "2698066879";
     public static final String  REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";

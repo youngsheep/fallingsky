@@ -37,8 +37,13 @@ bool LoadingScene::init()
 void LoadingScene::onEnter()
 {
     GameProtoHandler::GetInstance().RegisterProtoHandler(this);
-    StartLoadingSchdule();
     TouchGroup::onEnter();
+}
+
+void LoadingScene::onEnterTransitionDidFinish()
+{
+    TouchGroup::onEnterTransitionDidFinish();
+    StartLoadingSchdule();
 }
 
 void LoadingScene::onExit()
@@ -109,10 +114,10 @@ void LoadingScene::ChangeScene()
     {
     case LOADING_STATE_APP_START:
         {
-            //CCTransitionMoveInL* transition = CCTransitionMoveInL::create(3, FLGame::scene());
-            //if (transition)
+            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, GameMainLayer::scene());
+            if (transition)
             {
-                CCDirector::sharedDirector()->replaceScene(GameMainLayer::scene());
+                CCDirector::sharedDirector()->replaceScene(transition);
             }
             break;
         }

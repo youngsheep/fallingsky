@@ -1,31 +1,76 @@
 #include "GameScene.h"
-//#include "common/PomeloConnection.h"
+#include "entity/FLPlayer.h"
+#include "net/GameProtoHandler.h"
 
 USING_NS_CC;
+USING_NS_CC_EXT;
+using namespace ui;
 
-//LoginRequest FLGame::m_loginReq;
-//FLBattle FLGame::m_battle;
-
-CCScene* FLGame::scene()
+CCScene* FLGameUI::scene()
 {
     // 'scene' is an autorelease object
     CCScene *scene = CCScene::create();
     
     // 'layer' is an autorelease object
-    FLGame *myLayer = FLGame::create();
+    FLGameUI *myLayer = FLGameUI::create();
 
     // add layer as a child to scene
-    scene->addChild(myLayer,1,enuMyGameArea_Tag);
-
-    FLGame *eneLayer = FLGame::create();
-    eneLayer->setPositionX(480);
-    scene->addChild(eneLayer,1,enuEnemyGameArea_Tag);
-    
-    //FLGame::m_loginReq.DoLogin();
-    //FLGame::m_battle.GetRequest().StartBattleReq();
+    scene->addChild(myLayer,1);
     
     // return the scene
     return scene;
+}
+
+FLGameUI::FLGameUI()
+{
+
+}
+
+FLGameUI::~FLGameUI()
+{
+    m_pMyGame->release();
+}
+
+bool FLGameUI::init()
+{
+    TouchGroup::init();
+    Layout* layout = static_cast<Layout*>(GUIReader::shareReader()->
+        widgetFromJsonFile
+        ("ui/fallingsky-ui-game.ExportJson"));
+
+    addWidget(layout);
+
+    Widget* panel1 = layout->getChildByName("game_panel1");
+    Widget* panel2 = layout->getChildByName("game_panel2");
+    panel2->setVisible(false);
+
+    m_pMyGame = FLGame::create();
+    m_pMyGame->retain();
+    panel1->addChild(m_pMyGame);
+    return true;
+}
+
+void FLGameUI::onEnter()
+{
+    GameProtoHandler::GetInstance().RegisterProtoHandler(this);
+    TouchGroup::onEnter();
+}
+
+void FLGameUI::onExit()
+{
+    GameProtoHandler::GetInstance().UnRegisterProtoHandler(this);
+    TouchGroup::onExit();
+}
+
+void FLGameUI::Response(std::string route,int result)
+{
+    if (route.compare("game.battleHandler.cmd") == 0)
+    {
+        if(result == 0)
+        {
+            m_pMyGame->GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
+        }
+    }
 }
 
 FLGame::FLGame()
@@ -67,7 +112,7 @@ bool FLGame::init()
 
         setGameBlock(new FLGameBlock(*this));
         getTileMap()->addChild(getGameBlock());
-        generate_block();
+        GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
 
     } while (0);
   
@@ -99,6 +144,8 @@ void FLGame::update(float delta)
             
             fill_block();
             check_score();
+
+            GameProtoHandler::GetInstance().BattleCmdReq(getGameBlock()->GetBlockX(),getGameBlock()->GetBlockY()+1,getGameBlock()->GetBlockFlag());
             
             const CCSize& LayerSize = getBackground()->getLayerSize();
             if (LayerSize.height - m_BlockHeight < 4 )
@@ -107,7 +154,7 @@ void FLGame::update(float delta)
                 return;
             
             }
-            generate_block();
+            //generate_block();
 
             return;
         }
@@ -119,9 +166,8 @@ void FLGame::update(float delta)
     getGameBlock()->setPosition(p.x,p.y + inc);
 }
 
-void FLGame::generate_block()
+void FLGame::GenerateBlock(int type)
 {
-    int type = rand()%7;
     getGameBlock()->InitBlock(type);
 }
 

@@ -31,6 +31,7 @@ public:
     // CCLayer
     virtual void onEnter();
     virtual void onExit();
+    virtual void onEnterTransitionDidFinish();
     
     //IGameProtoHandler
     virtual void Response(std::string route,int result);
