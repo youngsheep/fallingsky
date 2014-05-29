@@ -49,8 +49,7 @@ public:
     virtual void ccTouchMoved(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
     virtual void ccTouchEnded(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
 
-protected:
-    void rotate();
+    void Rotate();
     
 protected:
     int m_block[4][4];

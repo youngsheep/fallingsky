@@ -7,7 +7,7 @@ void GameProtoHandler::ProtoHandlerCallback(json::Value& data,const char* route,
     {
         int result = (this->*(itor->second))(data, route);
         for (std::set<IGameProtoHandler*>::iterator it = m_uiHandlerSet.begin(); it != m_uiHandlerSet.end(); it++) {
-            (*it)->Response(route, result);
+            (*it)->Response(route, result,data);
         }
     }
 }

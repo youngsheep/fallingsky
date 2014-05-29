@@ -61,7 +61,7 @@ void PlayerInfo::loginCallback(CCObject* pSender,TouchEventType type)
     }
 }
 
-void PlayerInfo::Response(std::string route,int result)
+void PlayerInfo::Response(std::string route,int result,json::Value data)
 {
     if (route.compare("connector.entryHandler.entry") == 0) {
         if (result == 100) {

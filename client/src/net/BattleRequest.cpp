@@ -33,7 +33,6 @@ int GameProtoHandler::OnStartBattle(json::Value data,const char* route)
     {
         printf("fail to start battle!\n");
     }
-    RemoveCallBack(route);
     return result;
 }
 

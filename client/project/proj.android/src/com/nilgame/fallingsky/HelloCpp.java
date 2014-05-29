@@ -59,6 +59,8 @@ public class HelloCpp extends Cocos2dxActivity{
     	// HelloCpp should create stencil buffer
     	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
     	
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
+        
     	return glSurfaceView;
     }
 
@@ -77,13 +79,18 @@ public class HelloCpp extends Cocos2dxActivity{
     }
 
     public void doWeiboAuth(){
-        Thread t = new Thread() {
-            public void run() {
-                mHandler.post(mUpdateResults);
-            }
-        };
-        t.start();
-
+        if (mAccessToken.isSessionValid()) {
+        	HelloCpp.this.OnWeiboAuth(mAccessToken.getUid(),mAccessToken.getToken());
+        }
+        else
+        {
+            Thread t = new Thread() {
+                public void run() {
+                    mHandler.post(mUpdateResults);
+                }
+            };
+            t.start();        	
+        }
     }
 
 
@@ -125,7 +132,7 @@ public class HelloCpp extends Cocos2dxActivity{
             if (mAccessToken.isSessionValid()) {
                 //updateTokenView(false);
                 
-                //AccessTokenKeeper.writeAccessToken(HelloCpp.this, mAccessToken);
+                AccessTokenKeeper.writeAccessToken(HelloCpp.this, mAccessToken);
                 Toast.makeText(HelloCpp.this, 
                         "auth success!", Toast.LENGTH_SHORT).show();
                         

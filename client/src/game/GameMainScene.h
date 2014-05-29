@@ -26,13 +26,14 @@ public:
     virtual void onEnterTransitionDidFinish();
     
     //IGameProtoHandler
-    virtual void Response(std::string route,int result);
+    virtual void Response(std::string route,int result,json::Value data = json::object());
     
     static cocos2d::CCScene* scene();
     
     // a selector callback
     void pveCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     void pvpCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
+    void menuCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     
     // implement the "static node()" method manually
     CREATE_FUNC(GameMainLayer);

@@ -38,3 +38,8 @@ void FLBattle::Update(json::Value& data)
     printf("battle update :%s  \n",data.save_string());
 }
 
+void FLBattle::UpdateOppState(json::Value& data)
+{
+    
+}
+

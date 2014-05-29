@@ -7,7 +7,7 @@
 class IGameProtoHandler
 {
 public:
-    virtual void Response(std::string route,int result) = 0;
+    virtual void Response(std::string route,int result,json::Value data = json::object()) = 0;
 };
 
 class GameProtoHandler : public IPomeloConnection 

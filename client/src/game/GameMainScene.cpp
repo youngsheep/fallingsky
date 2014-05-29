@@ -12,6 +12,7 @@
 #include "net/GameProtoHandler.h"
 #include "common/FLTextInput.h"
 #include "entity/FLPlayer.h"
+#include "FLMsgBox.h"
 
 extern void registerWeiboLogin();
 
@@ -55,6 +56,11 @@ bool GameMainLayer::init()
         nickname->setText(FLPlayer::GetInstance().GetNickName());
     }
     
+    Button* menu = static_cast<Button*>(layout->getChildByName("menu"));
+    if(menu){
+        menu->addTouchEventListener(this,toucheventselector(GameMainLayer::menuCallback));
+    }
+    
     addWidget(layout);
     return true;
 }
@@ -94,7 +100,17 @@ void GameMainLayer::pvpCallback(CCObject* pSender,TouchEventType type)
     }
 }
 
-void GameMainLayer::Response(std::string route,int result)
+void GameMainLayer::menuCallback(CCObject* pSender,TouchEventType type)
+{
+    if (type == TOUCH_EVENT_ENDED)
+    {
+        FLMsgBox* msgbox = FLMsgBox::create();
+        addChild(msgbox);
+        
+    }
+}
+
+void GameMainLayer::Response(std::string route,int result,json::Value data)
 {
     if (route.compare("game.battleHandler.start") == 0)
     {

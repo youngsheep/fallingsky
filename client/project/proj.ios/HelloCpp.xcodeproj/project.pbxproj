@@ -34,6 +34,7 @@
 		1B5348EB1917C6BE00EB74AE /* GameBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B5348E91917C6BE00EB74AE /* GameBlock.cpp */; };
 		1B536F0D19210BA90042886E /* PlayerInfoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B536F0B19210BA90042886E /* PlayerInfoScene.cpp */; };
 		1B6BB73C19265D4300DAC401 /* RegisterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B6BB73A19265D4300DAC401 /* RegisterScene.cpp */; };
+		1BA842A819378385009B7228 /* FLMsgBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BA842A619378385009B7228 /* FLMsgBox.cpp */; };
 		1BAAD58919337E0900C53912 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 1BAAD58819337E0900C53912 /* ui */; };
 		1BAAD58C1933888A00C53912 /* GameMainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BAAD58A1933888A00C53912 /* GameMainScene.cpp */; };
 		1BAE20D1191E30720072627B /* FLBattle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE20CF191E30720072627B /* FLBattle.cpp */; };
@@ -329,6 +330,8 @@
 		1B536F0C19210BA90042886E /* PlayerInfoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerInfoScene.h; sourceTree = "<group>"; };
 		1B6BB73A19265D4300DAC401 /* RegisterScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegisterScene.cpp; sourceTree = "<group>"; };
 		1B6BB73B19265D4300DAC401 /* RegisterScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterScene.h; sourceTree = "<group>"; };
+		1BA842A619378385009B7228 /* FLMsgBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FLMsgBox.cpp; sourceTree = "<group>"; };
+		1BA842A719378385009B7228 /* FLMsgBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMsgBox.h; sourceTree = "<group>"; };
 		1BAAD58819337E0900C53912 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ui; path = ../resources/ui; sourceTree = "<group>"; };
 		1BAAD58A1933888A00C53912 /* GameMainScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMainScene.cpp; sourceTree = "<group>"; };
 		1BAAD58B1933888A00C53912 /* GameMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMainScene.h; sourceTree = "<group>"; };
@@ -857,6 +860,8 @@
 				1BB2E18B193233E3004C0B7A /* LoadingScene.h */,
 				1BAAD58A1933888A00C53912 /* GameMainScene.cpp */,
 				1BAAD58B1933888A00C53912 /* GameMainScene.h */,
+				1BA842A619378385009B7228 /* FLMsgBox.cpp */,
+				1BA842A719378385009B7228 /* FLMsgBox.h */,
 			);
 			name = game;
 			path = ../../src/game;
@@ -1829,6 +1834,7 @@
 				1BB2E0881931FC10004C0B7A /* cpArbiter.c in Sources */,
 				1BB2E01E1931F9CE004C0B7A /* UIButton.cpp in Sources */,
 				1BB2E0031931F9CD004C0B7A /* CCDecorativeDisplay.cpp in Sources */,
+				1BA842A819378385009B7228 /* FLMsgBox.cpp in Sources */,
 				1BB2E0111931F9CE004C0B7A /* CCComController.cpp in Sources */,
 				1BB2E1721931FEBB004C0B7A /* CCControl.cpp in Sources */,
 				1BB2DFFC1931F9CD004C0B7A /* CCArmature.cpp in Sources */,

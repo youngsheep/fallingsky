@@ -26,6 +26,7 @@ public:
 
     void Init(json::Value& data);
     void Update(json::Value& data);
+    void UpdateOppState(json::Value& data);
 
     int GetState(){return m_BattleState;}
     void SetState(int state){m_BattleState = state;}

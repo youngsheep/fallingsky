@@ -52,7 +52,7 @@ void LoadingScene::onExit()
     TouchGroup::onExit();
 }
 
-void LoadingScene::Response(std::string route,int result)
+void LoadingScene::Response(std::string route,int result,json::Value data)
 {
     if (route.compare("game.roleHandler.info") == 0) {
         if(result == 0)

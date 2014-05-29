@@ -59,6 +59,7 @@ FLGameBlock::FLGameBlock(FLGame& pGame)
     , m_state(GAME_BLOCK_STATE_IDLE)
 {
     initWithFile("block.png",16);
+    setVisible(false);
 }
 
 
@@ -101,7 +102,7 @@ void FLGameBlock::InitItem(const int* bItem)
     }
 }
 
-void FLGameBlock::rotate()
+void FLGameBlock::Rotate()
 {
     m_rotateFlag ++;
     m_rotateFlag %= 4;
@@ -191,13 +192,15 @@ int FLGameBlock::GetBlockStatus(int x ,int y)
 
 void FLGameBlock::onEnter()
 {
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
+    if(m_pGame.IsMyGame())
+        CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this,0,false);
     CCSpriteBatchNode::onEnter();
 }
 
 void FLGameBlock::onExit()
 {
-    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    if (m_pGame.IsMyGame())
+        CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     CCSpriteBatchNode::onExit();
 }
 
@@ -248,7 +251,7 @@ void FLGameBlock::ccTouchEnded(CCTouch *touch, CCEvent *event)
     if (m_state == GAME_BLOCK_STATE_IDLE) {
         CCPoint delta = touch->getDelta();
         if (delta.getLength() < 3) {
-            rotate();
+            Rotate();
         }
     }
     else if(m_state == GAME_BLOCK_STATE_H_MOVING)

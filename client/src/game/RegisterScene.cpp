@@ -60,7 +60,7 @@ void RegisterLayer::registerCallback(CCObject* pSender,TouchEventType type)
     }
 }
 
-void RegisterLayer::Response(std::string route,int result)
+void RegisterLayer::Response(std::string route,int result,json::Value data)
 {
     if (route.compare("game.roleHandler.register") == 0)
     {

@@ -53,13 +53,12 @@ bool FLGameUI::init()
 
     Widget* panel1 = layout->getChildByName("game_panel1");
     Widget* panel2 = layout->getChildByName("game_panel2");
-    panel2->setVisible(false);
 
     Label* myname = static_cast<Label*>(layout->getChildByName("nickname1"));
     if (myname) {
         myname->setText(player.GetNickName());
     }
-    m_pMyGame = FLGame::create();
+    m_pMyGame = FLGame::create(true);
     m_pMyGame->retain();
     m_pMyGame->setPosition(panel1->getPosition());
     addChild(m_pMyGame);
@@ -73,12 +72,13 @@ bool FLGameUI::init()
         {
             oppname->setVisible(false);
             oppimage->setVisible(false);
+            panel2->setVisible(false);
         }
         else
         {
             oppname->setText(player.GetBattle().GetOppName());
 
-            m_pOppGame = FLGame::create();
+            m_pOppGame = FLGame::create(false);
             m_pOppGame->retain();
             m_pOppGame->setPosition(panel2->getPosition());
             addChild(m_pOppGame);
@@ -101,21 +101,34 @@ void FLGameUI::onExit()
     TouchGroup::onExit();
 }
 
-void FLGameUI::Response(std::string route,int result)
+void FLGameUI::Response(std::string route,int result,json::Value data)
 {
     if (route.compare("game.battleHandler.cmd") == 0)
     {
-        if(result == 0)
-        {
+        if (result == 0) {
             m_pMyGame->GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
         }
+
     }
     else if (route.compare("oppstate") == 0)
     {
+        int oppblocktype = data["nextType"].as_integer();
+        int oppPosX = data["blockXPos"].as_integer();
+        
+        m_pOppGame->GenerateBlock(oppblocktype);
+        m_pOppGame->getGameBlock()->SetBlockXY(oppPosX, 0);
+        
+        int flag = data["blockFlag"].as_integer();
+        flag %= 4;
+        for (int i = 0 ; i < flag; i++) {
+            m_pOppGame->getGameBlock()->Rotate();
+        }
+        
+        m_pOppGame->scheduleUpdate();
     }
 }
 
-FLGame::FLGame()
+FLGame::FLGame(bool bself)
 {
     _tileMap = NULL;
     _background = NULL;
@@ -124,6 +137,8 @@ FLGame::FLGame()
     m_BlockSpeed = 8;
     m_BlockHeight = 0;
     m_isBlockMove = false;
+    
+    m_bmyself = bself;
 }
 
 FLGame::~FLGame()
@@ -148,7 +163,9 @@ bool FLGame::init()
 
         setGameBlock(new FLGameBlock(*this));
         getTileMap()->addChild(getGameBlock());
-        GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
+        if (m_bmyself) {
+            GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
+        }
 
     } while (0);
   
@@ -182,10 +199,12 @@ void FLGame::update(float delta)
             check_score();
 
             const CCSize& LayerSize = getBackground()->getLayerSize();
-            int bx = getGameBlock()->GetBlockX();
-            int by = LayerSize.height - getGameBlock()->GetBlockY() - 2;
-            GameProtoHandler::GetInstance().BattleCmdReq(bx,by,getGameBlock()->GetBlockFlag());
-            
+            if (m_bmyself) {
+                int bx = getGameBlock()->GetBlockX();
+                int by = LayerSize.height - getGameBlock()->GetBlockY() - 2;
+                GameProtoHandler::GetInstance().BattleCmdReq(bx,by,getGameBlock()->GetBlockFlag());
+            }
+
             if (LayerSize.height - m_BlockHeight < 4 )
             {
                 //gameover

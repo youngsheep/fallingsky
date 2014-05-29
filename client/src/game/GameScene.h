@@ -18,7 +18,7 @@ public:
     virtual void onExit();
 
     //IGameProtoHandler
-    virtual void Response(std::string route,int result);
+    virtual void Response(std::string route,int result,json::Value data = json::object());
 
     static cocos2d::CCScene* scene();
 
@@ -43,7 +43,7 @@ class FLGame : public cocos2d::ui::TouchGroup
     CC_SYNTHESIZE_RETAIN(FLGameBlock*, _gameBlock, GameBlock);
 
 public:
-    FLGame();
+    FLGame(bool bself);
     virtual ~FLGame();
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
@@ -51,11 +51,26 @@ public:
     virtual void update(float delta);
     
     // implement the "static node()" method manually
-    CREATE_FUNC(FLGame);
+    static FLGame* create(bool bself)
+    {
+        FLGame *pRet = new FLGame(bself);
+        if (pRet && pRet->init())
+        {
+            pRet->autorelease();
+            return pRet;
+        }
+        else
+        {
+            delete pRet;
+            pRet = NULL;
+            return NULL;
+        }
+    }
 
 public:
     bool CheckXMove();
     void GenerateBlock(int type);
+    bool IsMyGame(){return m_bmyself;}
 
 protected:
 
@@ -67,6 +82,8 @@ protected:
     int m_BlockSpeed;
     int m_BlockHeight;
     bool m_isBlockMove;
+    
+    bool m_bmyself;
     
 public:
     //connection

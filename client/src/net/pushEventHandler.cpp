@@ -14,5 +14,6 @@ int GameProtoHandler::OnRoleBaseInfo(json::Value data,const char* route)
 int GameProtoHandler::OnOppState(json::Value data,const char* route)
 {
     printf("recv opp state push ! \n");
+    
     return 0;
 }

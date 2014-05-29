@@ -25,7 +25,7 @@ public:
     virtual void onExit();
     
     //IGameProtoHandler
-    virtual void Response(std::string route,int result);
+    virtual void Response(std::string route,int result,json::Value data = json::object());
     
     static cocos2d::CCScene* scene();
     
