@@ -27,6 +27,7 @@ public:
 
 protected:
     FLGame* m_pMyGame;
+    FLGame* m_pOppGame;
 };
 
 enum 

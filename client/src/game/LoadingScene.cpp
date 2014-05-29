@@ -114,7 +114,7 @@ void LoadingScene::ChangeScene()
     {
     case LOADING_STATE_APP_START:
         {
-            CCTransitionFadeBL* transition = CCTransitionFadeBL::create(1, GameMainLayer::scene());
+            CCTransitionSlideInR* transition = CCTransitionSlideInR::create(1, GameMainLayer::scene());
             if (transition)
             {
                 CCDirector::sharedDirector()->replaceScene(transition);

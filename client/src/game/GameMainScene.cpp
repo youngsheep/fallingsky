@@ -53,7 +53,6 @@ bool GameMainLayer::init()
     Label* nickname = static_cast<Label*>(layout->getChildByName("nickname"));
     if (nickname) {
         nickname->setText(FLPlayer::GetInstance().GetNickName());
-        nickname->setColor(ccc3(255,255,255));
     }
     
     addWidget(layout);
@@ -81,7 +80,7 @@ void GameMainLayer::pveCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED)
     {
-        GameProtoHandler::GetInstance().StartBattleReq(1);
+        GameProtoHandler::GetInstance().StartBattleReq(FL_BATTLE_TYPE_PVE);
         this->setTouchEnabled(false);
     }
 }
@@ -90,7 +89,7 @@ void GameMainLayer::pvpCallback(CCObject* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED)
     {
-        GameProtoHandler::GetInstance().StartBattleReq(2);
+        GameProtoHandler::GetInstance().StartBattleReq(FL_BATTLE_TYPE_PVP);
         this->setTouchEnabled(false);
     }
 }

@@ -11,6 +11,13 @@ enum
     FL_BATTLE_STATE_START,
     FL_BATTLE_STATE_END
 };
+
+enum 
+{
+    FL_BATTLE_TYPE_PVE = 1,
+    FL_BATTLE_TYPE_PVP
+};
+
 class FLBattle
 {
 public:
@@ -25,6 +32,7 @@ public:
 
     int GetID(){return m_battleid;}
     int GetOppID(){return m_oppid;}
+    int GetType(){return m_battleType;}
     const char* GetOppName(){return m_oppname;}
     int PickNextBlock()
     {
@@ -37,10 +45,15 @@ protected:
     int m_BattleState;
 
     int m_battleid;
-    int m_oppid;
-    char m_oppname[MAX_USERNAME_LEN];
+    int m_battleType;
 
     int m_nextBlock;
     int m_clearLines[4];
+
+    int m_oppid;
+    char m_oppname[MAX_USERNAME_LEN];
+    int m_oppBlock;
+
+
 };
 #endif

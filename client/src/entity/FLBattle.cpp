@@ -3,8 +3,8 @@
 FLBattle::FLBattle()
     : m_BattleState(FL_BATTLE_STATE_NOT_INIT)
     , m_battleid(-1)
-    , m_oppid(-1)
     , m_nextBlock(-1)
+    , m_oppid(-1)
 {
     memset(m_oppname,0x0,MAX_USERNAME_LEN);
     memset(m_clearLines,0x0,sizeof(int)*4);
@@ -13,6 +13,7 @@ FLBattle::FLBattle()
 void FLBattle::Init(json::Value& data)
 {
     m_battleid = data["battleid"].as_integer();
+    m_battleType = data["battleType"].as_integer();
     m_oppid = data["oppId"].as_integer();
     std::string name = data["oppName"].as_string();
     strncpy(m_oppname,name.c_str(),name.size());

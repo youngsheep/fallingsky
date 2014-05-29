@@ -56,7 +56,9 @@ protected:
     GameProtoHandler()
         : m_pomeloConn(*this) 
         , m_bWait(false)
-    {}
+    {
+        AddAllPushEvent();
+    }
 
     void DoRequest(json::Value& req , std::string route,ProtoCallBack cb);
     void RemoveCallBack(std::string route);

@@ -22,13 +22,22 @@ CCScene* FLGameUI::scene()
 }
 
 FLGameUI::FLGameUI()
+    : m_pMyGame(NULL)
+    , m_pOppGame(NULL)
 {
 
 }
 
 FLGameUI::~FLGameUI()
 {
-    m_pMyGame->release();
+    if (m_pMyGame)
+    {
+        m_pMyGame->release();
+    }
+    if (m_pOppGame)
+    {
+        m_pOppGame->release();
+    }
 }
 
 bool FLGameUI::init()
@@ -40,14 +49,43 @@ bool FLGameUI::init()
 
     addWidget(layout);
 
+    FLPlayer& player = FLPlayer::GetInstance();
+
     Widget* panel1 = layout->getChildByName("game_panel1");
     Widget* panel2 = layout->getChildByName("game_panel2");
     panel2->setVisible(false);
 
+    Label* myname = static_cast<Label*>(layout->getChildByName("nickname1"));
+    if (myname) {
+        myname->setText(player.GetNickName());
+    }
     m_pMyGame = FLGame::create();
     m_pMyGame->retain();
     m_pMyGame->setPosition(panel1->getPosition());
     addChild(m_pMyGame);
+
+    Label* oppname = static_cast<Label*>(layout->getChildByName("nickname2"));
+    ImageView* oppimage = static_cast<ImageView*>(layout->getChildByName("portrait2"));
+
+    if (oppname && oppimage)
+    {
+        if (player.GetBattle().GetType() == FL_BATTLE_TYPE_PVE)
+        {
+            oppname->setVisible(false);
+            oppimage->setVisible(false);
+        }
+        else
+        {
+            oppname->setText(player.GetBattle().GetOppName());
+
+            m_pOppGame = FLGame::create();
+            m_pOppGame->retain();
+            m_pOppGame->setPosition(panel2->getPosition());
+            addChild(m_pOppGame);
+        }
+    }
+
+
     return true;
 }
 
@@ -71,6 +109,9 @@ void FLGameUI::Response(std::string route,int result)
         {
             m_pMyGame->GenerateBlock(FLPlayer::GetInstance().GetBattle().PickNextBlock());
         }
+    }
+    else if (route.compare("oppstate") == 0)
+    {
     }
 }
 
