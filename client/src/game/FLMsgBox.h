@@ -28,6 +28,8 @@ public:
     // a selector callback
     void YesCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
     void NoCallback(CCObject* pSender,cocos2d::ui::TouchEventType type);
+
+    void ActionFinish();
     
     static cocos2d::CCScene* scene();
     // implement the "static node()" method manually

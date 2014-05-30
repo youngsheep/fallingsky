@@ -48,7 +48,29 @@ bool FLMsgBox::init()
         m_pTitle->retain();
     }
     addWidget(layout);
+
+    this->setTouchEnabled(false);
+    this->setScale(0.1);
+    CCScaleTo* scale1=CCScaleTo::create(0.3, 1.2);
+    CCScaleTo* scale2=CCScaleTo::create(0.05, 0.9);
+    CCScaleTo* scale3=CCScaleTo::create(0.02, 1);
+    this->runAction
+        (
+        CCSequence::create
+        (
+        scale1,
+        scale2,
+        scale3,
+        CCCallFunc::create(this, callfunc_selector(FLMsgBox::ActionFinish)),
+        NULL
+        )
+        );
     return true;
+}
+
+void FLMsgBox::ActionFinish()
+{
+    this->setTouchEnabled(true);
 }
 
 void FLMsgBox::YesCallback(CCObject* pSender,TouchEventType type)

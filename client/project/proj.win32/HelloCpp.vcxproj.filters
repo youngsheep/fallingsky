@@ -81,6 +81,9 @@
     <ClCompile Include="..\..\src\game\GameMainScene.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\game\FLMsgBox.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -141,6 +144,9 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game\GameMainScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game\FLMsgBox.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
